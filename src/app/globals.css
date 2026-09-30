@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/*
+ * Escuro é o padrão (era o único tema até o tema claro ser pedido). A troca
+ * é manual, via o botão sol/lua (ThemeToggle) — não segue a preferência do
+ * sistema operacional, guardada em localStorage e aplicada por
+ * `[data-theme="light"]` na tag <html> (ver o script inline em
+ * src/app/layout.tsx, que evita o "flash" do tema errado antes do React
+ * carregar).
+ */
+:root {
+  --radius: 0.65rem;
+  --background: oklch(0.145 0.004 285);
+  --foreground: oklch(0.96 0.003 285);
+  --card: oklch(0.185 0.007 285);
+  --card-foreground: oklch(0.96 0.003 285);
+  --popover: oklch(0.185 0.007 285);
+  --popover-foreground: oklch(0.96 0.003 285);
+  --primary: oklch(0.74 0.135 65);
+  --primary-foreground: oklch(0.16 0.02 65);
+  --secondary: oklch(0.26 0.007 285);
+  --secondary-foreground: oklch(0.96 0.003 285);
+  --muted: oklch(0.22 0.006 285);
+  --muted-foreground: oklch(0.64 0.012 285);
+  --accent: oklch(0.27 0.012 285);
+  --accent-foreground: oklch(0.96 0.003 285);
+  --destructive: oklch(0.58 0.21 27);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.74 0.135 65 / 55%);
+}
+
+:root[data-theme="light"] {
+  --background: oklch(0.98 0.003 90);
+  --foreground: oklch(0.18 0.008 285);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.008 285);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.008 285);
+  --primary: oklch(0.55 0.145 60);
+  --primary-foreground: oklch(0.99 0.005 90);
+  --secondary: oklch(0.94 0.006 90);
+  --secondary-foreground: oklch(0.18 0.008 285);
+  --muted: oklch(0.94 0.006 90);
+  --muted-foreground: oklch(0.47 0.012 285);
+  --accent: oklch(0.91 0.01 90);
+  --accent-foreground: oklch(0.18 0.008 285);
+  --destructive: oklch(0.52 0.19 27);
+  --border: oklch(0 0 0 / 10%);
+  --input: oklch(0 0 0 / 14%);
+  --ring: oklch(0.55 0.145 60 / 45%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/*
+ * Barras de rolagem (vertical e horizontal) finas, sem trilho e na cor do
+ * tema. Propriedades padrão em vez de ::-webkit-scrollbar: no Chrome, definir
+ * scrollbar-color faz o navegador ignorar os pseudo-elementos -webkit.
+ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklch, var(--muted-foreground) 45%, transparent) transparent;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+}

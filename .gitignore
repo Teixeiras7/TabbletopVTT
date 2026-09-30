@@ -1,0 +1,28 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# env
+.env*.local
+.env
+
+# PDF do livro (material com direitos autorais; fica só no computador de quem usa)
+/manual/
+
+# testing / coverage
+/coverage
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
