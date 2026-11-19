@@ -792,3 +792,9 @@ Tipos, lint e 49 testes de regra ok. **No Chrome**: Mestre iniciou o combate com
 - Tipos, lint e testes ok. Conferência visual no Chrome não feita (a extensão perdia o grupo de abas a cada comando).
 - **Ajustes**: o chat não recebe mais "Combate encerrado". Dossiê com os dados em duas colunas (Idade | Nacionalidade, Filiação | Organização, Altura | Peso) e "Observações (Crimes)" embaixo só quando preenchido; a foto continua comprida.
 - **Combate na tela**: "Iniciar combate" foi para a aba Mestre da barra lateral; a lista de turnos aparece no mapa ao iniciar e cada um pode recolhê-la na própria tela (mostra rodada e de quem é a vez). A aba Combate da ficha perdeu o bloco "Turno" (Desfazer/Novo turno): a vez fica na lista e as ações zeram sozinhas; Vitalidade e Buffs/debuffs ficam lado a lado.
+
+## Etapa 28 — Texto do livro só no banco (2026-11-19)
+
+- `data/catalog/*.json` continuam como fonte do banco e dos testes (a mesa lê só o banco), mas **sem texto do livro**: o repositório é público e o manual tem direitos autorais.
+- `scripts/textos-livro.py` lê o PDF de `manual/` e grava `manual/textos-livro.json` (fora do git): texto do livro de 160 magias e 147 habilidades (as com mais de 900 caracteres e Punhalada pelas Costas, sem descrição no livro, ficam com o resumo) e os detalhes de 226 equipamentos (antes em `equipment.json`). O `npm run db:seed` usa esse arquivo se existir. Ações continuam com os resumos (o texto do livro é prosa longa).
+- Para refazer: `uv run --with pymupdf python scripts/textos-livro.py` e depois `npm run db:seed`.
