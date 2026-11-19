@@ -11,28 +11,6 @@ export const GRID_SIZES = [16, 18, 20, 24, 30, 32, 36, 40, 45, 48, 60, 72, 80, 9
 export const MAX_BACKGROUND_BYTES = 4 * 1024 * 1024;
 export const BACKGROUND_TOO_BIG_MESSAGE = `Imagem muito grande (máximo ${MAX_BACKGROUND_BYTES / 1024 / 1024} MB).`;
 
-export function cellsPerSide(cellSize: number) {
-  return Math.floor(MAP_SIZE / cellSize);
-}
-
-/** Maior número de casas por lado (com o menor quadrado): limite das coordenadas de token. */
-export const MAX_CELLS = cellsPerSide(GRID_SIZES[0]);
-
-/** Mantém a casa dentro do mapa: token guardado numa casa que deixou de existir (quadrado maior) aparece na última. */
-export function clampCell(cell: number, cellSize: number) {
-  return Math.max(0, Math.min(cellsPerSide(cellSize) - 1, cell));
-}
-
-/** Casa (0, 1, 2…) que contém o ponto `px`, sempre dentro do mapa. */
-export function cellAt(px: number, cellSize: number) {
-  return clampCell(Math.floor(px / cellSize), cellSize);
-}
-
-/** Centro da casa em pixels; o token é desenhado aqui, então acompanha o tamanho do quadrado. */
-export function cellCenter(cell: number, cellSize: number) {
-  return clampCell(cell, cellSize) * cellSize + cellSize / 2;
-}
-
 /** Posição em GRID_SIZES do tamanho mais próximo (um valor antigo fora da lista ainda aparece no controle). */
 export function nearestGridSizeIndex(size: number) {
   let best = 0;
@@ -41,3 +19,11 @@ export function nearestGridSizeIndex(size: number) {
   });
   return best;
 }
+
+/** Tipo do arrasto da lista de Fichas para o mapa (o dado é o id do personagem). */
+export const CHARACTER_DRAG_TYPE = "application/x-personagem";
+
+/** Evento da página: algo do mapa mudou as fichas (ex.: no combate, as ações do personagem da vez zeram). */
+export const SHEETS_CHANGED_EVENT = "vtt:fichas-mudaram";
+/** O mesmo aviso para as janelas separadas da ficha (BroadcastChannel do navegador, mesmo site). */
+export const SHEETS_CHANNEL = "vtt-fichas";

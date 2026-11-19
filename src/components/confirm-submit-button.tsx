@@ -1,6 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
+import { confirm } from "@/components/confirm";
 
 export function ConfirmSubmitButton({
   message,
@@ -18,8 +19,10 @@ export function ConfirmSubmitButton({
       type="submit"
       disabled={pending}
       className={className}
-      onClick={(event) => {
-        if (!window.confirm(message)) event.preventDefault();
+      onClick={async (event) => {
+        event.preventDefault();
+        const form = event.currentTarget.form;
+        if (await confirm(message, { confirmLabel: "Confirmar" })) form?.requestSubmit();
       }}
     >
       {pending ? "Aguarde…" : children}

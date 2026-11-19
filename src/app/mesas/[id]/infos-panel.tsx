@@ -1,5 +1,6 @@
 "use client";
 
+import { confirm } from "@/components/confirm";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronRight, EyeOff, MoreHorizontal, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -72,8 +73,8 @@ export function InfosPanel({
       items.push({
         label: "Excluir",
         destructive: true,
-        onSelect: () => {
-          if (window.confirm(`Excluir "${info.name}"? Isso não pode ser desfeito.`)) run(actions.remove(info.id));
+        onSelect: async () => {
+          if (await confirm(`Excluir "${info.name}"?`, { message: "Isso não pode ser desfeito." })) run(actions.remove(info.id));
         },
       });
     }
@@ -173,8 +174,8 @@ export function InfosPanel({
 
       {menu && <ContextMenu x={menu.x} y={menu.y} items={menuItemsFor(menu.info)} onClose={() => setMenu(null)} />}
 
-      <Dialog open={viewing !== null} onOpenChange={(open) => !open && setViewingId(null)}>
-        <DialogContent className="max-h-[90dvh] overflow-y-auto sm:max-w-2xl">
+      <Dialog modal={false} open={viewing !== null} onOpenChange={(open) => !open && setViewingId(null)}>
+        <DialogContent floating className="max-h-[90dvh] overflow-y-auto sm:max-w-2xl">
           <DialogHeader>
             <DialogTitle className="pr-6 break-words">{viewing?.name}</DialogTitle>
             <DialogDescription className="sr-only">
@@ -324,8 +325,8 @@ function InfoFormDialog({
   const title = `${editing ? "Editar" : "Nova"} ${kind === "image" ? "imagem" : "nota"}`;
 
   return (
-    <Dialog open onOpenChange={(open) => !open && onClose()}>
-      <DialogContent>
+    <Dialog modal={false} open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent floating>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription className="sr-only">{title}</DialogDescription>

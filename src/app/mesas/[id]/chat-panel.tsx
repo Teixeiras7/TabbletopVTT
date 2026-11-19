@@ -45,34 +45,37 @@ export function ChatPanel({
 
   return (
     <div className="flex h-full flex-col">
-      <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-4">
+      <div className="min-h-0 flex-1 overflow-y-auto p-4">
         {messages.length === 0 ? (
           <p className="text-sm text-muted-foreground">Nenhuma mensagem ainda.</p>
         ) : (
-          messages.map((message) => {
+          messages.map((message, i) => {
             const mine = message.authorId === currentUserId;
+            // Mensagens seguidas da mesma pessoa continuam o bloco: sem repetir nome e horário.
+            const continues = messages[i - 1]?.authorId === message.authorId;
             return (
-              <div key={message.id} className={cn("space-y-0.5", mine && "text-right")}>
-                <div className={cn("flex items-baseline gap-2 text-xs", mine && "justify-end")}>
-                  <span
+              <div key={message.id} className={cn("space-y-0.5", mine && "text-right", continues ? "mt-1" : "mt-3 first:mt-0")}>
+                {!continues && (
+                  <div className={cn("flex items-baseline gap-2 text-xs", mine && "justify-end")}>
+                    <span className={cn("font-medium", message.authorId === masterId ? "text-primary" : "text-foreground")}>
+                      {mine ? "Você" : message.authorName}
+                      {message.authorId === masterId && " · Mestre"}
+                    </span>
+                    <span className="text-muted-foreground">{formatTime(message.createdAt)}</span>
+                  </div>
+                )}
+                {message.roll ? (
+                  <RollCard roll={message.roll} />
+                ) : (
+                  <p
                     className={cn(
-                      "font-medium",
-                      message.authorId === masterId ? "text-primary" : "text-foreground",
+                      "inline-block max-w-full rounded-lg px-3 py-1.5 text-left text-sm break-words whitespace-pre-wrap",
+                      mine ? "bg-primary/15" : "bg-muted",
                     )}
                   >
-                    {mine ? "Você" : message.authorName}
-                    {message.authorId === masterId && " · Mestre"}
-                  </span>
-                  <span className="text-muted-foreground">{formatTime(message.createdAt)}</span>
-                </div>
-                <p
-                  className={cn(
-                    "inline-block max-w-full rounded-lg px-3 py-1.5 text-left text-sm break-words whitespace-pre-wrap",
-                    mine ? "bg-primary/15" : "bg-muted",
-                  )}
-                >
-                  {message.content}
-                </p>
+                    {message.content}
+                  </p>
+                )}
               </div>
             );
           })
@@ -96,6 +99,28 @@ export function ChatPanel({
           </Button>
         </div>
       </form>
+    </div>
+  );
+}
+
+/** Modelo das rolagens no chat: quadrado com o título em cima, o total grande e o nome embaixo; o mouse mostra os dados. */
+function RollCard({ roll }: { roll: NonNullable<ChatMessage["roll"]> }) {
+  return (
+    <div
+      tabIndex={0}
+      aria-label={`${roll.title}, ${roll.label}: ${roll.detail}`}
+      className="group relative inline-flex size-28 flex-col items-center justify-between rounded-lg border border-border bg-muted px-2 py-2.5 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring"
+    >
+      <span className="text-[11px] font-medium tracking-wide text-muted-foreground uppercase">{roll.title}</span>
+      <span className="font-serif text-4xl leading-none font-semibold text-primary tabular-nums">{roll.total}</span>
+      <span className="w-full truncate text-xs">{roll.label}</span>
+      <span
+        role="tooltip"
+        className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1 rounded-lg bg-muted px-2 text-center text-xs opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
+      >
+        <span className="text-[11px] tracking-wide text-muted-foreground uppercase">Dados</span>
+        <span className="tabular-nums">{roll.detail}</span>
+      </span>
     </div>
   );
 }

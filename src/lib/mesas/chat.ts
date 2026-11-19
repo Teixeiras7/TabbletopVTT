@@ -1,18 +1,21 @@
 import "server-only";
-import { and, desc, eq, gt, sql } from "drizzle-orm";
+import { and, desc, eq, gt, notInArray, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
-import { chatMessages, gameTableMembers, gameTables, profiles } from "@/lib/db/schema";
+import { chatMessages, gameTableMembers, gameTables, profiles, type ChatRoll } from "@/lib/db/schema";
 
 // Mesma regra do resto de mesas/: o backend usa a conexão privilegiada (ignora
 // RLS), então "é participante?" e "é o Mestre?" são checados aqui.
 
-const HISTORY_LIMIT = 100;
+/** O banco guarda só as últimas mensagens de cada mesa; as mais antigas são apagadas a cada envio. */
+export const CHAT_LIMIT = 100;
 
 export type ChatMessage = {
   id: string;
   authorId: string;
   authorName: string;
   content: string;
+  /** Rolagem: mostrada como cartão (título, total, nome; o detalhe dos dados ao passar o mouse). */
+  roll: ChatRoll | null;
   createdAt: string;
 };
 
@@ -22,6 +25,7 @@ function toChatMessage(row: typeof chatMessages.$inferSelect): ChatMessage {
     authorId: row.authorId,
     authorName: row.authorName,
     content: row.content,
+    roll: row.roll ?? null,
     createdAt: row.createdAt.toISOString(),
   };
 }
@@ -44,13 +48,24 @@ export async function listChatForMember(tableId: string, userId: string) {
         : eq(chatMessages.tableId, tableId),
     )
     .orderBy(desc(chatMessages.createdAt))
-    .limit(HISTORY_LIMIT);
+    .limit(CHAT_LIMIT);
 
   return rows.reverse().map(toChatMessage);
 }
 
 /** Só participante envia. O nome do autor vem do perfil, nunca do cliente. Null se não participa. */
 export async function sendChatMessage(tableId: string, userId: string, content: string) {
+  const [message] = (await sendChatRows(tableId, userId, [{ content, roll: null }])) ?? [];
+  return message ?? null;
+}
+
+/** Rolagens no chat, um cartão cada (ex.: a iniciativa de cada personagem no início do combate). */
+export async function sendChatRolls(tableId: string, userId: string, rolls: ChatRoll[]) {
+  if (rolls.length === 0) return;
+  await sendChatRows(tableId, userId, rolls.map((roll) => ({ content: `${roll.title} — ${roll.label}: ${roll.detail}`, roll })));
+}
+
+async function sendChatRows(tableId: string, userId: string, rows: { content: string; roll: ChatRoll | null }[]) {
   const [author] = await db
     .select({ displayName: profiles.displayName })
     .from(gameTableMembers)
@@ -59,11 +74,13 @@ export async function sendChatMessage(tableId: string, userId: string, content: 
     .limit(1);
   if (!author) return null;
 
-  const [row] = await db
+  const inserted = await db
     .insert(chatMessages)
-    .values({ tableId, authorId: userId, authorName: author.displayName, content })
+    .values(rows.map((r) => ({ tableId, authorId: userId, authorName: author.displayName, content: r.content, roll: r.roll })))
     .returning();
-  return row ? toChatMessage(row) : null;
+  const newest = db.select({ id: chatMessages.id }).from(chatMessages).where(eq(chatMessages.tableId, tableId)).orderBy(desc(chatMessages.createdAt)).limit(CHAT_LIMIT);
+  await db.delete(chatMessages).where(and(eq(chatMessages.tableId, tableId), notInArray(chatMessages.id, newest)));
+  return inserted.map(toChatMessage);
 }
 
 /** "Limpar chat" pessoal: só grava um corte de horário; as mensagens continuam para os demais. Retorna o corte, ou null se não participa. */

@@ -1,253 +1,318 @@
-import {
-  boolean,
-  index,
-  integer,
-  pgEnum,
-  pgPolicy,
-  pgTable,
-  primaryKey,
-  text,
-  timestamp,
-  uuid,
-} from "drizzle-orm/pg-core";
+import { boolean, index, integer, jsonb, numeric, pgEnum, pgPolicy, pgTable, primaryKey, text, timestamp, unique, uuid } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
+import type { Archetype, Career, Equipment, Progression, Race, Skill, Action } from "../catalog/schemas";
+import type { CombatState } from "../engine/combat";
 
-/**
- * Espelha `auth.users` (gerenciado pela Supabase Auth) com os dados do
- * usuário que pertencem ao domínio da aplicação. Uma linha é criada aqui
- * quando o cadastro é concluído; o restante do modelo de dados (mesas,
- * personagens, etc.) depende de docs/modelo-de-dados.md e será
- * adicionado quando essas funcionalidades forem implementadas.
- *
- * O backend sempre acessa esta tabela com a conexão privilegiada do
- * Postgres (`DATABASE_URL`), que ignora RLS. As policies abaixo existem
- * como defesa em profundidade, caso a tabela venha a ser exposta também
- * via cliente Supabase (PostgREST) no futuro — hoje não é.
- */
+// Banco em português; as chaves em TypeScript ficam como o código já usa.
+// O backend acessa tudo pela conexão privilegiada (ignora RLS). As policies são defesa em profundidade
+// para quem consultar o Supabase direto, e para o Realtime, que respeita RLS.
+
+const createdAt = () => timestamp("criado_em", { withTimezone: true }).notNull().defaultNow();
+const isMember = (tableId: unknown) =>
+  sql`exists (select 1 from membros m where m.mesa_id = ${tableId} and m.usuario_id = auth.uid())`;
+const isMaster = (tableId: unknown) => sql`exists (select 1 from mesas g where g.id = ${tableId} and g.dono_id = auth.uid())`;
+
+/** Dados do usuário (espelha `auth.users`). */
 export const profiles = pgTable(
-  "profiles",
+  "perfis",
   {
     id: uuid("id").primaryKey(),
-    displayName: text("display_name").notNull(),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
+    displayName: text("nome").notNull(),
+    createdAt: createdAt(),
   },
-  (table) => [
-    pgPolicy("profiles_select_own", {
-      for: "select",
-      to: "authenticated",
-      using: sql`auth.uid() = ${table.id}`,
-    }),
-    pgPolicy("profiles_update_own", {
-      for: "update",
-      to: "authenticated",
-      using: sql`auth.uid() = ${table.id}`,
-    }),
+  (t) => [
+    pgPolicy("perfis_ler_proprio", { for: "select", to: "authenticated", using: sql`auth.uid() = ${t.id}` }),
+    pgPolicy("perfis_editar_proprio", { for: "update", to: "authenticated", using: sql`auth.uid() = ${t.id}` }),
   ],
 ).enableRLS();
 
-/**
- * Mesa de jogo. O papel de cada participante não é armazenado: quem criou a
- * mesa (`ownerId`) é o Mestre e os demais membros são Jogadores (CLAUDE.md
- * §17), então não há como o papel divergir do dono.
- */
+/** Mesa. Quem criou (`ownerId`) é o Mestre; os demais membros são Jogadores (papel não é gravado). */
 export const gameTables = pgTable(
-  "game_tables",
+  "mesas",
   {
     id: uuid("id").primaryKey().defaultRandom(),
-    name: text("name").notNull(),
-    description: text("description"),
-    ownerId: uuid("owner_id")
-      .notNull()
-      .references(() => profiles.id),
-    inviteCode: text("invite_code").notNull().unique(),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
+    name: text("nome").notNull(),
+    description: text("descricao"),
+    ownerId: uuid("dono_id").notNull().references(() => profiles.id),
+    inviteCode: text("codigo_convite").notNull().unique(),
+    createdAt: createdAt(),
   },
-  (table) => [
-    pgPolicy("game_tables_select_member", {
-      for: "select",
-      to: "authenticated",
-      using: sql`exists (select 1 from game_table_members m where m.table_id = ${table.id} and m.user_id = auth.uid())`,
-    }),
-  ],
+  (t) => [pgPolicy("mesas_ler_membro", { for: "select", to: "authenticated", using: isMember(t.id) })],
 ).enableRLS();
 
-/** Participantes da mesa. O criador também entra aqui como membro. */
+/** Participantes da mesa (o criador também). `chatClearedAt`: "limpar chat" só para esta pessoa. */
 export const gameTableMembers = pgTable(
-  "game_table_members",
+  "membros",
   {
-    tableId: uuid("table_id")
-      .notNull()
-      .references(() => gameTables.id, { onDelete: "cascade" }),
-    userId: uuid("user_id")
-      .notNull()
-      .references(() => profiles.id),
-    joinedAt: timestamp("joined_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
-    // "Limpar chat" pessoal: mensagens anteriores a este instante não são
-    // mostradas a este participante. Nada é apagado para os demais.
-    chatClearedAt: timestamp("chat_cleared_at", { withTimezone: true }),
+    tableId: uuid("mesa_id").notNull().references(() => gameTables.id, { onDelete: "cascade" }),
+    userId: uuid("usuario_id").notNull().references(() => profiles.id),
+    joinedAt: timestamp("entrou_em", { withTimezone: true }).notNull().defaultNow(),
+    chatClearedAt: timestamp("chat_limpo_em", { withTimezone: true }),
   },
-  (table) => [
-    primaryKey({ columns: [table.tableId, table.userId] }),
-    index("game_table_members_user_idx").on(table.userId),
-    pgPolicy("game_table_members_select_own", {
-      for: "select",
-      to: "authenticated",
-      using: sql`auth.uid() = ${table.userId}`,
-    }),
+  (t) => [
+    primaryKey({ columns: [t.tableId, t.userId] }),
+    index("membros_usuario_idx").on(t.userId),
+    pgPolicy("membros_ler_proprio", { for: "select", to: "authenticated", using: sql`auth.uid() = ${t.userId}` }),
   ],
 ).enableRLS();
 
-/**
- * Mensagens do chat da mesa. `authorName` é gravado junto (cópia do nome no
- * momento do envio) para o evento de Realtime já carregar tudo o que a tela
- * precisa, sem join, e para o histórico continuar legível se o autor sair.
- * `REPLICA IDENTITY FULL` e a publicação `supabase_realtime` vão por SQL
- * bruto na migration.
- */
+export type ChatRoll = { title: string; total: number; label: string; detail: string };
+
+/** Chat da mesa. Só as últimas mensagens ficam (src/lib/mesas/chat.ts apaga as antigas). */
 export const chatMessages = pgTable(
-  "chat_messages",
+  "mensagens",
   {
     id: uuid("id").primaryKey().defaultRandom(),
-    tableId: uuid("table_id")
-      .notNull()
-      .references(() => gameTables.id, { onDelete: "cascade" }),
-    authorId: uuid("author_id")
-      .notNull()
-      .references(() => profiles.id),
-    authorName: text("author_name").notNull(),
-    content: text("content").notNull(),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
+    tableId: uuid("mesa_id").notNull().references(() => gameTables.id, { onDelete: "cascade" }),
+    authorId: uuid("autor_id").notNull().references(() => profiles.id),
+    authorName: text("autor_nome").notNull(),
+    content: text("texto").notNull(),
+    /** Rolagem (cartão no chat: título, total, nome, detalhe dos dados). `texto` guarda a versão em texto. */
+    roll: jsonb("rolagem").$type<ChatRoll>(),
+    createdAt: createdAt(),
   },
-  (table) => [
-    index("chat_messages_table_created_idx").on(table.tableId, table.createdAt),
-    pgPolicy("chat_messages_select_member", {
+  (t) => [
+    index("mensagens_mesa_criado_idx").on(t.tableId, t.createdAt),
+    pgPolicy("mensagens_ler_membro", { for: "select", to: "authenticated", using: isMember(t.tableId) }),
+  ],
+).enableRLS();
+
+// ---------------------------------------------------------------------------------------------
+// Catálogo do manual: igual para todas as mesas, só leitura para o app. Fonte: data/catalog/*.json,
+// carregado por `npm run db:seed`. `id` é o identificador que a ficha guarda. Sem policy: só o backend lê.
+
+export const races = pgTable("racas", {
+  slug: text("id").primaryKey(),
+  name: text("nome").notNull(),
+  sourcePage: integer("pagina").notNull(),
+  attributes: jsonb("atributos").$type<Race["attributes"]>().notNull(),
+  archetypes: text("arquetipos").array().notNull(),
+  languages: text("idiomas").notNull(),
+  features: text("caracteristicas").notNull(),
+  grants: jsonb("concede").$type<Race["grants"]>().notNull(),
+  restrictions: jsonb("restricoes").$type<Race["restrictions"]>().notNull(),
+  heightWeightNote: text("altura_peso"),
+}).enableRLS();
+
+export const archetypes = pgTable("arquetipos", {
+  slug: text("id").primaryKey(),
+  name: text("nome").notNull(),
+  sourcePage: integer("pagina").notNull(),
+  rules: text("regras").array().notNull(),
+  benefits: jsonb("beneficios").$type<Archetype["benefits"]>().notNull(),
+}).enableRLS();
+
+export const careers = pgTable("carreiras", {
+  slug: text("id").primaryKey(),
+  name: text("nome").notNull(),
+  sourcePage: integer("pagina").notNull(),
+  prerequisites: jsonb("pre_requisitos").$type<Career["prerequisites"]>().notNull(),
+  initialOnly: boolean("apenas_inicial").notNull(),
+  focalizer: boolean("focalizador").notNull(),
+  special: text("especial"),
+  initial: jsonb("inicial").$type<Career["initial"]>().notNull(),
+  progression: jsonb("progressao").$type<Career["progression"]>().notNull(),
+  notes: text("notas").array().notNull(),
+  grantsBenefits: text("concede_beneficios").array(),
+  secondCareerOneOf: text("segunda_carreira_uma_de").array(),
+  variantLabel: text("rotulo_variante"),
+  variants: jsonb("variantes").$type<NonNullable<Career["variants"]>>(),
+}).enableRLS();
+
+export const skills = pgTable("pericias", {
+  slug: text("id").primaryKey(),
+  name: text("nome").notNull(),
+  category: text("categoria").$type<Skill["category"]>().notNull(),
+  attribute: text("atributo").notNull(),
+  attributeText: text("atributo_texto").notNull(),
+  multiChoice: boolean("varias_vezes").notNull(),
+  untrained: boolean("sem_treino").notNull(),
+  sourcePage: integer("pagina"),
+  text: text("texto").notNull(),
+}).enableRLS();
+
+export const abilities = pgTable("habilidades", {
+  slug: text("id").primaryKey(),
+  name: text("nome").notNull(),
+  prerequisites: text("pre_requisitos"),
+  text: text("texto").notNull(),
+  repeatable: boolean("repetivel").notNull(),
+  sourcePage: integer("pagina"),
+}).enableRLS();
+
+export const spells = pgTable("magias", {
+  slug: text("id").primaryKey(),
+  name: text("nome").notNull(),
+  sourcePage: integer("pagina"),
+  cost: integer("custo").notNull(),
+  costVariable: boolean("custo_variavel").notNull(),
+  range: text("alcance").notNull(),
+  area: text("area").notNull(),
+  pod: jsonb("pod").$type<number | string | null>(),
+  sustainable: boolean("manutencao").notNull(),
+  offensive: boolean("ofensiva"),
+  offensiveText: text("ofensiva_texto").notNull(),
+  text: text("texto").notNull(),
+}).enableRLS();
+
+export const spellLists = pgTable("listas_de_magias", {
+  slug: text("id").primaryKey(),
+  name: text("nome").notNull(),
+  entries: text("magias").array().notNull(),
+}).enableRLS();
+
+export const connections = pgTable("conexoes", {
+  slug: text("id").primaryKey(),
+  name: text("nome").notNull(),
+}).enableRLS();
+
+export const actions = pgTable("acoes", {
+  slug: text("id").primaryKey(),
+  name: text("nome").notNull(),
+  cost: text("custo").$type<Action["cost"]>().notNull(),
+  note: text("nota"),
+  freeWith: jsonb("sem_custo_com").$type<Action["freeWith"]>().notNull(),
+  altCost: jsonb("custo_alternativo").$type<NonNullable<Action["altCost"]>>(),
+  sourcePage: integer("pagina").notNull(),
+}).enableRLS();
+
+/** Tabela de progressão por XP (uma linha, id "padrao"). */
+export const progression = pgTable("progressao", {
+  id: text("id").primaryKey(),
+  source: text("fonte").notNull(),
+  skillMaxLevelByStage: jsonb("nivel_max_pericia").$type<Progression["skillMaxLevelByStage"]>().notNull(),
+  creationAttributePoints: integer("pontos_atributo_criacao").notNull(),
+  creationFacadePoints: integer("pontos_facanha_criacao").notNull(),
+  table: jsonb("tabela").$type<Progression["table"]>().notNull(),
+  grants: jsonb("concessoes").$type<Progression["grants"]>().notNull(),
+}).enableRLS();
+
+/** Lista de Preços do livro (pp. 241-245). Preço em coroas de ouro (CO). */
+export const equipment = pgTable("equipamentos", {
+  slug: text("id").primaryKey(),
+  name: text("nome").notNull(),
+  category: text("categoria").$type<Equipment["category"]>().notNull(),
+  price: integer("preco").notNull(),
+  minimum: boolean("preco_minimo").notNull().default(false), // "5+ CO"
+  addOn: boolean("acrescimo").notNull().default(false), // "+10 CO" sobre outro item
+  armorType: text("tipo_armadura").$type<NonNullable<Equipment["armorType"]>>(),
+  details: jsonb("detalhes").$type<NonNullable<Equipment["details"]>>(),
+  sourcePage: integer("pagina"),
+}).enableRLS();
+
+// ---------------------------------------------------------------------------------------------
+
+/**
+ * Personagem. Guarda só as ESCOLHAS (ids do catálogo), os detalhes narrativos, o estado da sessão
+ * (dano, ações gastas), as notas do jogador, o dinheiro e o inventário (ids do catálogo). Tudo que é calculado (DEF, ARM, perícias…) o engine
+ * monta na hora (src/lib/engine/character.ts).
+ */
+export const characters = pgTable(
+  "personagens",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    tableId: uuid("mesa_id").notNull().references(() => gameTables.id, { onDelete: "cascade" }),
+    ownerId: uuid("dono_id").notNull().references(() => profiles.id),
+    name: text("nome").notNull(),
+    choices: jsonb("escolhas").notNull(),
+    details: jsonb("detalhes").notNull(),
+    imageUrl: text("imagem_url"), // Storage `character-images/<mesa>/<personagem>/image`
+    state: jsonb("estado").notNull().default({}),
+    notes: jsonb("notas").$type<CharacterNote[]>().notNull().default([]),
+    /** XP total, dado pelo Mestre (livro, p. 151). As progressões que ele libera são escolhas da ficha. */
+    xp: integer("xp").notNull().default(0),
+    /** Coroas de ouro, com uma casa decimal. Começa com as CO das carreiras (livro). */
+    money: numeric("dinheiro", { precision: 10, scale: 1, mode: "number" }).notNull().default(0),
+    /** Equipamentos possuídos: id do catálogo e quantidade. */
+    inventory: jsonb("inventario").$type<InventoryItem[]>().notNull().default([]),
+    /** Última rolagem de Negociação (% de compra e de venda), válida enquanto a Loja está aberta. */
+    negotiation: jsonb("negociacao").$type<Negotiation>(),
+    createdAt: createdAt(),
+    updatedAt: timestamp("atualizado_em", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("personagens_mesa_idx").on(t.tableId),
+    // Ficha completa: dono e Mestre. Os demais veem só o dossiê, entregue pelo backend.
+    pgPolicy("personagens_ler_dono_ou_mestre", {
       for: "select",
       to: "authenticated",
-      using: sql`exists (select 1 from game_table_members m where m.table_id = ${table.tableId} and m.user_id = auth.uid())`,
+      using: sql`${t.ownerId} = auth.uid() or ${isMaster(t.tableId)}`,
     }),
   ],
 ).enableRLS();
 
-export const infoKind = pgEnum("info_kind", ["image", "note"]);
+export type CharacterNote = { id: string; title: string; content: string };
+/** Item possuído: da Lista de Preços (`id`) ou de texto (`custom`: bens fora da lista, nome e descrição editáveis). */
+export type InventoryItem = { id: string; qty: number } | { custom: string; name: string; description: string; qty: number };
+export type Negotiation = { buy?: number; sell?: number };
+
+export const infoKind = pgEnum("tipo_info", ["image", "note"]);
 
 /**
- * Aba Infos: imagens (só o Mestre cria; nome + imagem) e notas (qualquer
- * participante cria; nome + descrição). Quem pode editar/excluir depende de
- * quem criou (src/lib/mesas/info-rules.ts). O que o Mestre cria nasce
- * `hidden` (só ele vê) até ele mostrar; a policy de leitura garante isso mesmo
- * que alguém consulte o Supabase direto, sem passar pelo backend.
+ * Aba Infos: imagens (só o Mestre cria) e notas (qualquer participante). O que o Mestre cria nasce
+ * oculto até ele mostrar (src/lib/mesas/info-rules.ts).
  */
 export const infos = pgTable(
   "infos",
   {
     id: uuid("id").primaryKey().defaultRandom(),
-    tableId: uuid("table_id")
-      .notNull()
-      .references(() => gameTables.id, { onDelete: "cascade" }),
-    kind: infoKind("kind").notNull(),
-    name: text("name").notNull(),
-    description: text("description"),
-    imageUrl: text("image_url"),
-    createdBy: uuid("created_by")
-      .notNull()
-      .references(() => profiles.id),
-    hidden: boolean("hidden").notNull().default(false),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
+    tableId: uuid("mesa_id").notNull().references(() => gameTables.id, { onDelete: "cascade" }),
+    kind: infoKind("tipo").notNull(),
+    name: text("nome").notNull(),
+    description: text("descricao"),
+    imageUrl: text("imagem_url"),
+    createdBy: uuid("criado_por").notNull().references(() => profiles.id),
+    hidden: boolean("oculta").notNull().default(false),
+    createdAt: createdAt(),
   },
-  (table) => [
-    index("infos_table_idx").on(table.tableId),
-    pgPolicy("infos_select_visible", {
+  (t) => [
+    index("infos_mesa_idx").on(t.tableId),
+    pgPolicy("infos_ler_visiveis", {
       for: "select",
       to: "authenticated",
-      using: sql`exists (select 1 from game_table_members m where m.table_id = ${table.tableId} and m.user_id = auth.uid())
-        and (not ${table.hidden} or exists (select 1 from game_tables g where g.id = ${table.tableId} and g.owner_id = auth.uid()))`,
+      using: sql`${isMember(t.tableId)} and (not ${t.hidden} or ${isMaster(t.tableId)})`,
     }),
   ],
 ).enableRLS();
 
-/**
- * Área de jogo da mesa (mapa). Uma mesa tem uma cena por enquanto — o
- * modelo já suporta várias (CLAUDE.md §10 prepara para o futuro), mas nada
- * na interface cria uma segunda ainda, então não há por que construir essa
- * troca agora.
- */
+/** Mapa da mesa (uma cena por mesa por enquanto). */
 export const scenes = pgTable(
-  "scenes",
+  "cenas",
   {
     id: uuid("id").primaryKey().defaultRandom(),
-    tableId: uuid("table_id")
-      .notNull()
-      .references(() => gameTables.id, { onDelete: "cascade" }),
-    name: text("name").notNull().default("Mesa"),
-    gridSize: integer("grid_size").notNull().default(40),
-    backgroundUrl: text("background_url"),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
+    tableId: uuid("mesa_id").notNull().references(() => gameTables.id, { onDelete: "cascade" }),
+    name: text("nome").notNull().default("Mesa"),
+    gridSize: integer("tamanho_grid").notNull().default(40),
+    backgroundUrl: text("fundo_url"),
+    /** Combate em andamento (rodada, vez e ordem de iniciativa); null = sem combate. */
+    combat: jsonb("combate").$type<CombatState>(),
+    createdAt: createdAt(),
   },
-  (table) => [
-    pgPolicy("scenes_select_member", {
-      for: "select",
-      to: "authenticated",
-      using: sql`exists (select 1 from game_table_members m where m.table_id = ${table.tableId} and m.user_id = auth.uid())`,
-    }),
-    pgPolicy("scenes_update_master", {
-      for: "update",
-      to: "authenticated",
-      using: sql`exists (select 1 from game_tables g where g.id = ${table.tableId} and g.owner_id = auth.uid())`,
-    }),
+  (t) => [
+    pgPolicy("cenas_ler_membro", { for: "select", to: "authenticated", using: isMember(t.tableId) }),
+    pgPolicy("cenas_editar_mestre", { for: "update", to: "authenticated", using: isMaster(t.tableId) }),
   ],
 ).enableRLS();
 
 /**
- * Marcador no grid. Ainda não é ligado a personagem/criatura (isso depende
- * do catálogo do manual, docs/modelo-de-dados.md fases B/C) — por ora é só
- * nome, cor e posição, controlado pelo Mestre. `x`/`y` são a casa do token
- * (0 = primeira) num mapa de tamanho fixo (src/lib/mesas/map.ts); o token
- * acompanha o tamanho do quadrado.
- *
- * `REPLICA IDENTITY FULL` e a publicação em `supabase_realtime` são
- * adicionadas por SQL bruto na migration (Drizzle não tem essa API): sem
- * isso, o evento de DELETE do Supabase Realtime não carrega `scene_id`, e o
- * filtro por cena do cliente não teria como saber qual token sumiu.
+ * Personagem no mapa: a casa (`x`,`y`) onde ele está na cena. Um por personagem por cena. Nome e imagem vêm do
+ * personagem. `REPLICA IDENTITY FULL` e a publicação `supabase_realtime` vêm de SQL na migration.
  */
 export const tokens = pgTable(
   "tokens",
   {
     id: uuid("id").primaryKey().defaultRandom(),
-    sceneId: uuid("scene_id")
-      .notNull()
-      .references(() => scenes.id, { onDelete: "cascade" }),
-    label: text("label").notNull(),
-    color: text("color").notNull().default("#6366f1"),
-    x: integer("x").notNull().default(0),
-    y: integer("y").notNull().default(0),
-    createdBy: uuid("created_by")
-      .notNull()
-      .references(() => profiles.id),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .notNull()
-      .defaultNow(),
+    sceneId: uuid("cena_id").notNull().references(() => scenes.id, { onDelete: "cascade" }),
+    characterId: uuid("personagem_id").notNull().references(() => characters.id, { onDelete: "cascade" }),
+    x: integer("x").notNull(),
+    y: integer("y").notNull(),
   },
-  (table) => [
-    pgPolicy("tokens_select_member", {
+  (t) => [
+    unique("tokens_cena_personagem").on(t.sceneId, t.characterId),
+    pgPolicy("tokens_ler_membro", {
       for: "select",
       to: "authenticated",
-      using: sql`exists (
-        select 1 from scenes s
-        join game_table_members m on m.table_id = s.table_id
-        where s.id = ${table.sceneId} and m.user_id = auth.uid()
-      )`,
+      using: sql`exists (select 1 from cenas s join membros m on m.mesa_id = s.mesa_id where s.id = ${t.sceneId} and m.usuario_id = auth.uid())`,
     }),
   ],
 ).enableRLS();

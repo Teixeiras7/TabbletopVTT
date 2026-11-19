@@ -566,3 +566,229 @@ Medido: o projeto Supabase está em us-east-2 (Ohio) e cada ida à rede custa ~0
 
 - Tudo o que é visual e de interação no navegador: abrir/fechar as seções, modais de ver/criar/editar, menu de botão direito e o ⋯ no celular, aparência das barras de rolagem. Precisa do teste manual do usuário.
 - Autor da nota e "info do Mestre" não aparecem na interface (só o ícone de oculta). Se quiser ver quem criou, ou um cadeado nas notas do Mestre, é um pedido à parte.
+
+## Etapa 14 — Catálogo do manual no banco (2026-10-02), 1ª parte da criação de personagem
+
+**Status**: catálogo concluído e no banco. A criação de personagem em si (wizard, ficha, lista, janela separada) **ainda não foi feita**; esta etapa é a base de dados que ela exige (CLAUDE.md §9: as opções vêm do banco, não são digitadas).
+
+### Pedido e escopo combinado
+
+O usuário quer criar personagem pela aba Fichas: modal com o passo a passo do livro (1 raça, 2 arquétipo, 3 duas carreiras recebendo seus benefícios, 4 pontos de atributo, 5 toques finais: nome, idade, nacionalidade, altura, peso, aparência), ao salvar abrir a ficha num modal (X à direita; à esquerda um botão para abrir em janela separada, reaproveitada ao clicar no nome na lista). Todos veem as fichas; só o dono mexe na mecânica. **Sem compra de equipamento** na criação (fica para a aba Loja). **Dotado entra**, com as magias já no banco. Ainda sem resposta: um personagem ou vários por jogador; o que o dono pode alterar depois de criar (perguntar ao chegar na ficha).
+
+### O que foi feito
+
+- **Catálogo em JSON** (`data/catalog/`), gerado por script a partir de `docs/regras/` e revisado: 7 raças (atributos por estágio, idiomas, benefícios e restrições estruturados), 4 arquétipos (10 benefícios cada), 50 perícias (11 militares, 29 profissionais, 10 gerais), 149 habilidades, 160 magias e 10 listas de magias, 30 carreiras, 13 tipos de conexão e a tabela de progressão por XP.
+- **Carreiras estruturadas**: pré-requisitos (raça, arquétipo, nação, "apenas inicial"), iniciais com **escolhas** ("1 entre…", "+ 2 entre…"), progressão com nível máximo por perícia, bens (CO), segunda carreira restrita (Lâmina Tempestuosa, Presa de Ferro, Soldado de Trincheira), variantes do **Feiticeiro (4 elementos, com bônus de FIS/VEL da Pedra e da Tempestade)** e do **Sacerdote (Morrow/Menoth)**.
+- **Validação**: `src/lib/catalog/schemas.ts` (zod, `strict`) e `catalog.test.ts` (11 testes): tamanhos do livro, identificadores únicos, e **toda referência existe** (habilidades, perícias, magias, listas, raças, arquétipos). Esse teste já achou um erro real (carreiras sem dinheiro inicial) durante a montagem.
+- **Banco** (migration `0010`): tabela única `catalog_entries (kind, slug, name, data)`, RLS de leitura para logados, sem escrita pelo app. Carga com `npm run db:seed` (apaga e recarrega numa transação, repetível). Conferido no banco real: os 424 itens são **idênticos** aos arquivos, sem login não lê, usuário comum não escreve nem apaga.
+- Páginas do PDF conferidas **como imagem** onde o texto extraído era ambíguo (Explorador, Ladrão, Sacerdote, Feiticeiro).
+
+### Inconsistências do livro (pedem decisão)
+
+Ver `docs/regras-rpg.md` §5.4: "Senso de Direção" (Explorador) não existe como perícia, "Esfriar" (Feiticeiro de Gelo) não existe como magia, e dois pontos de leitura (Ladrão, Sacerdote de Menoth). Tudo marcado nos dados; nenhuma foi tratada como regra.
+
+### Testes e verificação
+
+- `tsc`, `eslint`, `next build` sem erros; 122 testes unitários passando.
+
+### Próximos passos desta funcionalidade
+
+1. Motor: atributos derivados (DEF, ARM, Iniciativa, VON, espiral vital) e validação da criação (3 pontos, limites por raça, pré-requisitos de carreira/arquétipo, nação), como funções puras com testes.
+2. Tabelas do personagem (`characters` e filhas) e a Server Action de criação, com o backend validando de novo cada escolha.
+3. Interface: aba Fichas (lista), wizard em modal, ficha em modal e janela separada.
+
+## Etapa 15 — Aba Fichas: criação de personagem (2026-10-03)
+
+**Status**: implementada e verificada por testes, banco real e renderização no servidor. **O assistente de criação e o modal nunca foram clicados num navegador** (a extensão do Chrome não conecta nesta sessão): precisam do teste manual do usuário.
+
+### Como funciona
+
+- **Aba Fichas** no painel lateral: botão "Criar personagem" e a lista de personagens da mesa (nome, raça, arquétipo, carreiras, dono). Todos os participantes veem todas as fichas; só o dono altera a própria. A lista atualiza sozinha para os outros (aviso `characters:<mesa>` + busca no servidor, como em Infos).
+- **Assistente (modal, 5 passos do livro, p. 105/148)**: 1 raça (humano escolhe o Potencial Excepcional), 2 arquétipo + benefício inicial, 3 duas carreiras (com variante de Feiticeiro/Sacerdote, escolhas de perícia, idiomas, habilidade extra do Iosano e parâmetro do Virtuoso/Estudo Adicional), 4 três pontos de atributo, 5 toques finais (nome, idade, nacionalidade, altura, peso, aparência). As opções vêm do catálogo no banco; o motor valida em tempo real e só deixa avançar com o passo correto; carreiras indisponíveis aparecem desabilitadas com o motivo.
+- **Ao salvar abre a ficha** num modal: X à direita e, à esquerda, o botão "abrir em janela separada" (`/mesas/<mesa>/fichas/<personagem>`, uma janela por personagem). Clicar no nome na lista traz a janela se já estiver aberta; senão abre o modal. A janela se atualiza quando alguém muda a ficha.
+- **A ficha não guarda cálculo**: o banco tem só as **escolhas** (`characters.choices`) e os **detalhes** (`details`); o backend monta tudo na hora (`src/lib/engine/character.ts`): atributos, DEF (VEL+AGI+PER, +1 Gobber), Iniciativa, ARM, Vontade, alcance de comando, vitalidade, totais de perícia, habilidades, benefícios, magias, conexões, dinheiro inicial. O teste de integração confere que nada derivado vai para o banco.
+- **Motor** (funções puras, também usadas pela tela para mostrar opções; o backend revalida tudo antes de gravar): perícia que vem das duas carreiras começa no nível 2; Dotado: ARC 3 (tecelão) ou 2 (focalizador, se tiver Conjurador de Guerra); Feiticeiro de Pedra/Tempestade: +1 FIS/VEL e +1 no máximo; restrições de raça (Nyss/Trolloide Dotado, armas do Gobber), de arquétipo, de nação e segunda carreira obrigatória (Lâmina Tempestuosa etc.); magias ≤ 2 × INT; pré-requisitos de habilidade lidos por regra (o teste garante que todas as do livro são entendidas).
+- Carreiras com nação (cygnarano/khadorano): ao escolher, a nacionalidade é preenchida; o backend exige que bata.
+
+### Decisões minhas (sem resposta do usuário; fáceis de mudar)
+
+- **Sem limite de personagens por jogador** (o contrário bloquearia quem quer mais de um; se quiser "um só", é uma checagem).
+- **O dono só edita os detalhes** (nome, idade, nacionalidade, altura, peso, aparência). Atributos, raça e carreiras ficam travados até existir ganho de XP. O Mestre só vê (como o usuário descreveu: "somente o seu você consegue mexer").
+- Sem excluir personagem (não pedido).
+
+### Ainda não feito
+
+Equipamentos no catálogo e compra (aba Loja); pontos de façanha, dinheiro e dano/cura na vitalidade durante a sessão; ganho de XP e progressão; personalizações opcionais da criação aprovadas pelo Mestre (trocar habilidade/perícia/magia inicial); excluir personagem.
+
+### Infraestrutura de testes (achado)
+
+A "falha intermitente" dos testes de integração (etapa 4) tinha causa: a latência até o banco em Ohio oscila de ~130 ms a ~1 s e os testes fazem dezenas de consultas, estourando os limites (30 s por teste, 10 s por gancho). Subidos para 120 s e 60 s em `vitest.integration.config.ts`. Execuções que estouraram deixaram dados de teste no banco (13 perfis "Teste…", 2 mesas e 1 personagem), que foram **removidos** (só o que era inequivocamente de teste; as mesas do Admin ficaram).
+
+### Verificação
+
+- 138 testes unitários (16 do motor de criação, 11 do catálogo), 5 de integração no banco real (inclui personagens com o catálogo do banco), `tsc`, `eslint` e `next build` sem erros.
+- Servidor de desenvolvimento: `/mesas/[id]` responde 200 com a aba Fichas; a ficha em janela separada renderiza para um personagem real (nome, raça, carreiras, derivados, perícias, magias, tradição, "Editar detalhes"), responde 404 se não existe e redireciona ao login sem sessão.
+- **Não verificado**: o assistente e os modais com cliques de verdade, a abertura da janela separada e a atualização entre janelas, o visual em telas pequenas.
+
+## Etapa 16 — Ficha em abas, dossiê, imagem, espiral vital e ações (2026-10-03)
+
+**Status**: concluída e **testada num navegador de verdade** (Microsoft Edge controlado por Playwright, fora do projeto): 32 de 33 verificações passaram na última rodada; a que falhou (Mestre marcando dano) passou na rodada anterior e falhou por o teste ler o banco antes de o salvamento terminar na rede lenta (padrão confirmado nas outras duas falhas, que sumiram quando o teste passou a esperar).
+
+### O que o usuário pediu e foi feito
+
+- **Mestre edita**: o Mestre abre e edita a ficha de qualquer personagem da mesa (detalhes, imagem, notas, dano, ações). O backend decide por papel (dono ou Mestre); outro jogador não recebe a ficha.
+- **Dossiê** (prévia ao clicar no nome, para todos): imagem à esquerda, nome em cima, à direita idade, nacionalidade, filiação, organização, altura, peso e crimes. **Só o dono e o Mestre** têm o botão "Abrir ficha". Mudança de regra em relação à etapa 15: a ficha completa **não** é mais visível a todos (a RLS de `characters` também passou a ser dono ou Mestre).
+- **Imagem do personagem**: opcional na criação, e incluir/trocar/remover em Pessoal. Bucket `character-images` (public read; escrita só dono ou Mestre via policy, com `objects.name` qualificado). Mesmo limite do fundo e das infos (PNG/JPEG/WEBP, 4 MB). Verificado no navegador: o upload chegou ao Storage.
+- **Ficha em abas**: Ficha (nome, raça, arquétipo, carreiras, XP; atributos em círculos com linhas ligando aos secundários; Iniciativa, Defesa, Armadura, Vontade, Comando; vitalidade), Combate, Perícias, Habilidades e benefícios, Notas, Pessoal. Modal grande com X à direita e botão de janela separada à esquerda; janela separada com as mesmas abas e atualização entre janelas.
+- **Vitalidade = espiral vital do livro** (6 ramos numerados, 1-2 Físico, 3-4 Agilidade, 5-6 Intelecto): clicar num círculo marca o dano (de fora para dentro), clicar no último marcado desfaz; mostra enfraquecido por aspecto e debilitado; o dano fica salvo e Mestre e dono veem o mesmo. Círculos que o ramo não tem aparecem riscados.
+- **Combate**: vitalidade, buffs e debuffs (efeito base do arquétipo, modificadores raciais e os aspectos enfraquecidos como debuff), Armas (vazio: dependem do equipamento/Loja), **ações do turno** e poderes (façanhas).
+- **Ações do turno, automáticas** (livro p. 201): 2 rápidas, ou 1 rápida + 1 de ataque, ou 1 completa; os botões só liberam o que ainda cabe; "Desfazer" e "Novo turno". Ações que uma habilidade deixa sem custo (Saque Rápido, Recarga Rápida, Granadeiro, Ás Comandante, Avanço Cuidadoso, Legado de Bragg, Alquimista de Campo, Conjurador Rápido do Dotado) aparecem como "Sem custo" e **não gastam** ação; Besteiro barateia recarregar besta (completa → rápida). Dados em `data/catalog/actions.json`, só com o que o livro diz (pp. 201-202 e a tabela de habilidades que concedem ações).
+- **Perícias**: todas as do jogo; as do personagem marcadas com nível; as outras mostram o valor do atributo (podem ser usadas sem treino) ou **0 se exigem treino**; perícia social tem lista suspensa para escolher o atributo.
+- **Notas** (título e texto): criar, editar, excluir. **Pessoal**: dados e imagem, editáveis. Criação ganhou Filiação, Organização e Crimes e a imagem; o modal de criação ficou maior.
+- **Decisões do usuário no catálogo**: "Esfriar" → Calafrio; "Senso de Direção" dentro de Sobrevivência (ver `docs/regras-rpg.md` §5.4). Novo ponto provisório: qual ramo da espiral ganha o círculo a mais quando o atributo é ímpar (o livro não diz; usado o de número menor).
+
+### Testes
+
+- Unitários (146): motor (espiral, ações do turno, ações grátis por habilidade, perícias que o personagem não tem), catálogo (referências de ações e das decisões do usuário).
+- Integração no banco real, cenário mínimo como pedido (**2 perfis, 1 mesa, 2 personagens**; os outros testes também foram reduzidos a 2 perfis): dossiê para todos, ficha só dono/Mestre, edição por dono ou Mestre, estado (dano limitado ao ramo, ações válidas), imagem, notas.
+- **Navegador (Edge via Playwright)**: assistente completo (bloqueios corretos), ficha abre ao salvar, 6 abas, atributos em círculos, espiral, dano salvo, imagem no Storage, ação gasta, 50 perícias com "exige treino = 0" e listas sociais, notas, edição em Pessoal, janela separada, dossiê (sem "Abrir ficha" em personagem de outro; com no próprio), Mestre abre a ficha do jogador.
+- `tsc`, `eslint`, `next build` sem erros.
+
+### Achados de ambiente (não são defeitos do app)
+
+- A rede daqui até o Supabase oscila (quedas de conexão e latência de ~0,1 a 1 s); testes e scripts precisam de tentativas e esperas.
+- **404 na janela separada em desenvolvimento**: o cache do Turbopack (`.next/dev`) pode guardar uma compilação antiga dessa rota e servi-la mesmo reiniciando. Se acontecer: parar o `npm run dev`, apagar a pasta `.next` e subir de novo (confirmado: com o cache limpo a rota responde 200). Rodar `next build` com o servidor de desenvolvimento ligado também mexe nesse cache.
+- A extensão do Chrome não serve (o usuário não usa Chrome); o Playwright controla o Edge já instalado, sem baixar navegador.
+
+### Ainda não feito
+
+Equipamentos no catálogo e a Loja (e, com eles, armas na aba Combate); efeitos reais de buffs/debuffs; tracking de pontos de façanha e de dinheiro; ganho de XP e progressão; excluir personagem.
+
+## Etapa 17 — Loja: catálogo de equipamentos (2026-10-05)
+
+**Status**: implementada e verificada por testes; **não clicada num navegador** (fica para o teste do usuário). A ficha ficou para o final, a pedido do usuário.
+
+### Como funciona
+
+- **Aba Loja** no painel lateral (todos da mesa): busca pelo nome (ignora acentos e maiúsculas), filtro de categoria e a lista agrupada nas **14 categorias da Lista de Preços do livro** (Armaduras, Armas corpo-a-corpo, Armas de ataque à distância, Munições e acessórios, Vestuário, Equipamentos, Montarias, Alimentação e acomodação, Mekânica, Runas mekânicas, Dispositivos mecânicos, Ingredientes, Compostos e Armas alquímicas). Cada item mostra **Compra** e **Venda** em CO; armaduras mostram o tipo (Leve/Média/Pesada); "5+" = a partir de; "+10" = acréscimo sobre outro item.
+- **Venda = metade do preço** (Negociação sem treino, pp. 182-183), calculada no backend (`src/lib/engine/shop.ts`); o teste de Negociação que melhora a revenda fica para quando houver venda de verdade.
+- **Dados**: `data/catalog/equipment.json` (294 itens), gerado da Lista de Preços do PDF (pp. 241-245) com pymupdf. A Baioneta, repetida no livro, entra uma vez; as pontas da lança explosiva e os rebites viram itens com o nome do pai. Novo tipo `equipment` em `catalog_entries` (migration `0014_catalog_equipment`), carregado por `npm run db:seed`. A tela busca a lista uma vez por página (ação `getShopAction`, só para quem participa da mesa).
+
+### Ainda não feito
+
+Comprar/vender de verdade (dinheiro e inventário do personagem), estatísticas de armas e armaduras na Loja e na ficha, preços de usado/refinado (vestuário) e de cárter mekânico (10x).
+
+### Verificação
+
+- 148 testes unitários (2 novos: tamanho da lista por categoria e preços conferidos no livro), `tsc` e `eslint` sem erros. Migration aplicada e seed com 294 itens no banco.
+
+## Etapa 18 — Banco em português e enxugamento (2026-10-05)
+
+Pedido do usuário: banco legível, sem crescer à toa, e só testes de regras.
+
+- **Tabelas e colunas em português**, renomeadas no lugar (migration `0015_banco_em_portugues`, sem perder dados): `perfis`, `mesas`, `membros`, `mensagens`, `personagens`, `infos`, `cenas`, `tokens`. No código, as chaves TypeScript continuam as mesmas (o Drizzle faz a ponte).
+- **Catálogo: uma tabela por tipo**, com colunas de verdade: `racas`, `arquetipos`, `carreiras`, `pericias`, `habilidades`, `magias`, `listas_de_magias`, `conexoes`, `acoes`, `progressao`, `equipamentos`. A coluna `id` é o identificador que a ficha guarda em `personagens.escolhas`. Regras aninhadas (ex.: o que a carreira concede) ficam em colunas jsonb. Saiu a tabela genérica `catalog_entries`. Seed: `npm run db:seed` (`scripts/seed-catalog.ts`, Node roda TS direto).
+- **Notas da ficha** viraram a coluna `personagens.notas` (lista de título + texto); saiu a tabela `character_notes`.
+- **Chat**: o banco guarda só as **últimas 100 mensagens por mesa**; cada envio apaga as mais antigas (`src/lib/mesas/chat.ts`).
+- **Testes**: ficaram só os de regras (engine e catálogo, 41). Saíram os de integração com o banco real e os de telas/ações, junto com `vitest.integration.config.ts`.
+- Achado: há uma tabela `"Projeto VTT"` no schema público que não é do app (não mexi).
+
+## Etapa 19 — Loja: comprar e vender (2026-10-05)
+
+**Status**: implementada; tipos, lint e testes de regra ok. **Não clicada no navegador** (teste do usuário).
+
+- **Aba Loja** → botão "Abrir loja" → modal: personagem (o jogador vê os seus; o Mestre, todos), dinheiro, abas **Comprar** (categorias à esquerda, busca, preço já com a % negociada) e **Inventário** (vender).
+- **Personagem** ganhou `dinheiro` (CO com uma casa decimal; começa com as CO das carreiras iniciais — os já existentes receberam na migration `0016_loja`) e `inventario` (id do equipamento + quantidade).
+- **Comprar**: desconta na hora; bloqueia sem saldo. **Vender**: só o que tem; recebe metade (sem Negociação).
+- **Negociação** (pp. 182-183), decisões do usuário: só para quem tem a perícia; o jogador escolhe o atributo; o servidor rola 2d6 + atributo + Negociação e aplica a tabela (compra 100→75%, revenda 50→75%); **compra e venda são rolagens separadas**; o resultado vai para o **chat**. Vale enquanto a Loja está aberta (sem "visita"); dentro dela não se repete o teste (o livro: "1 teste, sem repetir").
+- **Mestre**: dá item de graça, tira item e define o dinheiro (clicando no valor).
+- Regras em `src/lib/engine/shop.ts` (com teste); backend em `src/lib/mesas/shop.ts`.
+
+Ainda não: equipar (armas/armadura mudando DEF/ARM e aparecendo em Combate), munição consumida, usado/refinado.
+
+## Etapa 20 — Mapa, Regras (Magias), dossiê e limpeza (2026-10-05)
+
+Pedidos do usuário. Tipos, lint e testes de regra ok; **não clicado no navegador**.
+
+- **Tokens removidos** (código e tabela, migration `0017_remover_tokens`). Voltam quando houver criaturas/personagens no mapa.
+- **Fundo do mapa**: a imagem não estica mais; o mapa assume a proporção dela (lado maior = 1440 px) e o grid é cortado em casas inteiras sobre ela. Na Configuração, o Mestre tem **"Remover imagem"** (apaga o arquivo do Storage e volta ao grid normal).
+- **Aba Regras → botão "Magias"**: modal com as 160 magias, busca por nome e filtro por **carreira** (as listas do livro: Feiticeiro de Fogo, Sacerdote de Morrow…); Custo, ALC, ADE, POD, Manutenção e Ofensiva na linha; clicar expande a descrição (sem outro modal).
+- **Dossiê**: abre já com o nome do personagem (sem "Dossiê" enquanto carrega) e sem o nome do jogador. **Lista de Fichas** mostra a foto do personagem.
+- **Limpeza**: página inicial agora só redireciona (mesas ou login); cadastro com o mesmo visual do login; removidos estilos antigos (`form-styles.ts`) e exports sem uso.
+
+## Etapa 21 — Mesa travando (entrar/criar) (2026-10-06)
+
+**Problema relatado**: entrar ou criar mesa demorava até dar erro.
+
+**Causa (medida, não suposta)**: no banco havia conexões presas há 11 minutos em `ClientRead`, sempre nas consultas paralelas da página da mesa. O driver `postgres` empilha consultas numa conexão ocupada (pipelining) e o pooler do Supabase em modo transação trava com isso; o catálogo sem cache em desenvolvimento (11 consultas a cada tela, mudança da etapa 18) multiplicou o problema. Diagnóstico reproduzido fora do Next: a página travava com pipelining 100 e 1, e funcionava com 0.
+
+**Correção**:
+- `src/lib/db/index.ts`: `max_pipeline: 0` e cliente único em `globalThis`.
+- Catálogo lido uma vez por processo (também no dev). Depois de `npm run db:seed`, reiniciar o `npm run dev`.
+- `createTable` virou um comando só (mesa + Mestre + cena), já que transação não funciona sem pipelining (e é 1 ida ao banco em vez de 5).
+- `getTableForMember`: as duas consultas em paralelo.
+- Encerradas as 6 conexões presas no banco.
+
+**Verificado no Chrome**: criar mesa → entra nela (7 s na primeira vez, com compilação do dev); recarregar a mesa: 2-3 s; Loja abre com os 294 itens em 3 s. O tempo que sobra é a latência até o banco nos EUA (~170 ms por consulta, ~1 s para abrir conexão).
+
+## Etapa 22 — Mestre/XP, Progressão, detalhes da Loja, janelas soltas, chat em tempo real (2026-10-07)
+
+Tipos, lint e 43 testes de regra ok. **Testado no Chrome**: chat em tempo real (mensagem de outra conta chega sem F5), detalhes da Loja, XP gravado, Progressão, janela solta (sem fundo escuro, arrasta pelo topo, continua aberta ao trocar de aba).
+
+- **Chat em tempo real (bug)**: o filtro do Realtime (`mesa_id=eq.…`) parou de casar depois da renomeação das colunas (etapa 18), então nenhuma mensagem chegava a quem não enviou. Agora a assinatura é sem filtro e a mesa é conferida no navegador (a RLS já limita o que cada um recebe); o mesmo para a cena do mapa. Também passou a aplicar o login ao Realtime antes de assinar (`createAuthedRealtimeClient`).
+- **Aba Mestre** (antes "Bestiário"): botões **XP** e **Bestiário** (desativado até a ficha estabilizar). XP: os prêmios do livro (p. 151: Jogo +1, Trabalho de Equipe +1, Marco +1, conclusão de história +1 a +3) somam o valor; o Mestre escolhe quem recebe e pode mudar o valor de cada um (ou não dar). Fica em `personagens.xp` (migration `0019_xp`) e aparece na ficha. Sem aviso no chat (decisão do usuário).
+- **Regras → Progressão por XP**: tabela do livro (p. 152) por estágio, o que cada progressão dá e o limite de perícia; regra de não guardar progressões.
+- **Loja**: clicar no item abre o que o livro diz dele (perícia, POD, modificadores, alcance, munição, descrição, regras especiais, runas, fabricação…), com a página. Extraído do PDF (pp. 245-287) direto para `data/catalog/equipment.json` (`details`, `sourcePage`; colunas `detalhes` e `pagina`, migration `0018`). 226 de 294 itens têm descrição; os outros (roupas, utensílios simples, pacotes de munição) só aparecem na Lista de Preços do livro. Texto duplicado do PDF (sombra em cor quase igual) foi descartado na extração.
+- **Janelas soltas**: todas as janelas da mesa (`DialogContent floating` + `Dialog modal={false}`) não escurecem o fundo, não fecham ao clicar fora (só X/Esc) e são arrastadas pela faixa do topo. Os painéis laterais ficam montados (escondidos) para a janela não fechar ao trocar de aba.
+- **Ficha em janela separada**: o código já pede janela (`popup=yes`); no teste com clique real abriu janela, não guia.
+- Catálogo no `npm run dev` expira em 1 minuto (um seed aparece sem reiniciar).
+
+## Etapa 23 — Ficha: novo visual, Equipamentos, bens das carreiras, excluir (2026-11-18)
+
+Tipos, lint e 44 testes de regra ok. Visual de Combate/Perícias/Habilidades conferido no Chrome; **Equipamentos, bens na criação e exclusão ainda não clicados** (extensão do Chrome desconectada).
+
+- **Ficha** (prévia do usuário): abas fixas no topo e sem rolagem lateral; Combate com vitalidade em bolinhas por aspecto, Turno, buffs em etiquetas e ações por tipo (clicar abre a descrição); Perícias em colunas alinhadas (nome | nível | atributo | valor), sem busca nem filtro, atributo em sigla, perícia social com quadradinho de outra cor que abre a escolha; Habilidades em lista com seta; Ficha com Atributos e Derivados lado a lado (texto maior, siglas nos secundários) e a espiral embaixo. Modal com altura fixa.
+- **Ataque** separado em "Ataque corpo-a-corpo" (ACO) e "Ataque à distância" (ADI), cada um com a fórmula do livro. Os dois gastam a mesma ação de ataque: o livro (pp. 201-202) diz que é um ataque só, corpo-a-corpo **ou** à distância.
+- **Bens das carreiras** (`careers.json` → `initial.gear.kit` e `choices`): itens da Lista de Preços, itens de texto e escolhas. Decisões do usuário: munição vira pacotes da loja (revestimento de papel); porta-mapas = Estojo para mapa, lupa = Lente de aumento, kit do alquimista viajante = Kit de alquimista de viagem; o fuzil do Fuzileiro e o tipo das 5 granadas do Alquimista são escolhidos na criação; o que não está na lista entra como item de texto. Na criação, as escolhas aparecem no passo das carreiras e são obrigatórias; ao salvar, os bens vão para o inventário (`src/lib/engine/inventory.ts`).
+- **Aba Equipamentos**: dinheiro e itens; itens da loja abrem o que o livro diz; itens de texto têm nome e descrição editáveis e podem ser excluídos.
+- **Excluir personagem**: aba Pessoal, com confirmação (apaga a imagem antes, por causa da policy do Storage).
+- Personagens criados antes desta etapa (ex.: Thomas) não têm os bens da carreira: o Mestre pode dar pela Loja ou o personagem pode ser recriado.
+
+## Etapa 24 — Progressão por XP, confirmação única, espiral no Combate (2026-11-19)
+
+Tipos, lint e 47 testes de regra ok. **No Chrome**: a bolinha verde aparece na ficha do Thomas (6 XP → 3 progressões) e a de 2 XP lista só as perícias profissionais das carreiras dele, com o máximo de Herói 2. As escolhas em si não foram gravadas no teste (ficam para o jogador).
+
+- **Progressão** (pp. 151-152): a bolinha verde com seta, no canto das abas da ficha, mostra quantas progressões o XP liberou; clicar abre a próxima, na ordem da tabela. +2 perícias profissionais (os 2 pontos podem ir na mesma), +1 perícia militar/habilidade/conexão/magia, +1 atributo, +1 benefício de arquétipo, ou benefício **ou** nova carreira +2 perícias. As opções vêm só das listas das carreiras do personagem, respeitam o nível máximo do estágio (perícia 2/3/4), o máximo de cada carreira, o máximo racial de atributo, os pré-requisitos de habilidade e o limite de magias (2 × INT; 3 × INT com Acadêmico Arcano). Carreira nova não dá os itens iniciais, só abre as listas.
+- **Gravado só como escolha** (`personagens.escolhas.advances`): o motor (`evaluateCharacter` com XP e Épico) aplica e revalida tudo a cada montagem; o servidor só aceita a próxima progressão pendente.
+- **Estágios** (decisão do usuário; o livro não diz): Veterano aos 50 XP; Épico quando o Mestre marca (caixinha "Épico" na janela de XP, coluna `personagens.epico`, migration `0020`).
+- **Confirmação única**: `confirm()` (`src/components/confirm.tsx`) abre um modalzinho do app no lugar do `window.confirm`, em todas as exclusões (mesa, personagem, nota, info, item, fundo, chat, sair da mesa). "Excluir personagem" foi para dentro do modo Editar da aba Pessoal.
+- **Combate**: a espiral vital voltou, pequena, no canto da vitalidade, e marca o dano ali também.
+- **Ajustes (2026-11-19)**: bolinha de progressão minimalista (só a borda verde e um ˄ verde). Abas na ordem pedida: Ficha, Combate, Perícias, Habilidades e benefícios, Equipamentos, Magias, Notas, Pessoal. **Magias** virou aba própria (as magias conhecidas abrem a descrição do livro) e só aparece para quem conjura. **Equipamentos**: o dono e o Mestre editam o dinheiro, mudam a quantidade (+/−) e adicionam itens achados na aventura (da Lista de Preços, buscando pelo nome, ou de texto com nome e descrição), uma operação só no servidor (`editInventory`).
+
+### Pedido registrado (próximo bloco do combate)
+Combate por iniciativa, pedido do usuário: o Mestre **inicia o combate**; todos que estão no grid rolam iniciativa e entram numa lista que define os turnos; quando o personagem faz suas ações e **encerra**, passa para o próximo. Depende de voltar a ter personagens/criaturas no grid (os tokens foram tirados a pedido) e das armas no Combate. Perguntar os detalhes antes de construir.
+
+## Etapa 25 — Personagem no mapa e Épico (2026-11-19)
+
+Tipos, lint e 47 testes de regra ok. **No Chrome**: o Thomas foi arrastado da lista de Fichas para o mapa e apareceu na casa (foto em círculo e nome embaixo).
+
+- **Personagem no mapa**: na aba Fichas, o dono (ou o Mestre) arrasta o personagem e solta no mapa: ele entra na casa onde foi solto. No mapa, arrastar move de casa em casa; clique duplo tira (com confirmação). Todos da mesa veem em tempo real. Tabela `tokens` (cena, personagem, casa x/y; um por personagem por cena; migration `0021`), `src/lib/mesas/tokens.ts`. Visual pedido pelo usuário: a imagem do personagem num círculo do tamanho da casa, sem esticar, e o nome pequeno embaixo.
+- **Épico** (decisão do usuário): vira Épico aos 100 XP (Herói até 49, Veterano 50-99); a tabela de Épico continua de 5 em 5 depois do 95 (100 a 145), na mesma sequência do Veterano. Saíram a caixinha "Épico" do Mestre e a coluna `epico` (migration `0022`).
+
+## Etapa 26 — Combate por iniciativa (2026-11-19)
+
+Tipos, lint e 49 testes de regra ok. **No Chrome**: Mestre iniciou o combate com o Thomas no mapa (2d6 + Iniciativa = 21), encerrou o turno (rodada 2) e encerrou o combate.
+
+- O Mestre **inicia o combate** (botão no canto do mapa): todos os personagens no mapa rolam 2d6 + Iniciativa (da ficha); empate rola de novo; ordem fixa do maior para o menor (pp. 197-198). Rolagens vão para o chat (decisão do usuário).
+- Lista de turnos no canto do mapa, para todos, em tempo real (estado em `cenas.combate`, migration `0023`). O dono do personagem da vez ou o Mestre **encerra o turno**; ao virar a rodada, quem entrou no mapa no meio rola e é inserido pela posição do total; quem saiu do mapa deixa a ordem. Ao chegar a vez de um personagem, as ações do turno dele zeram sozinhas (decisão do usuário). O Mestre **encerra o combate**.
+- Regras em `src/lib/engine/combat.ts` (com teste); servidor em `src/lib/mesas/combat.ts`.
+- Ainda não: adiar ativação, rodada surpresa, criaturas (Bestiário), armas/ataques no Combate. A janela separada da ficha também atualiza quando as ações zeram (BroadcastChannel do navegador).
+
+## Etapa 27 — Rolagens como cartão no chat (2026-11-19)
+
+- **Modelo das rolagens** (pedido do usuário): cartão quadrado no chat com o título centralizado em cima (ex.: "Iniciativa"), o total grande no meio e o nome embaixo; passar o mouse (ou focar pelo teclado) mostra os dados e a soma sobre o próprio cartão. Coluna `mensagens.rolagem` (jsonb: título, total, nome, detalhe; migration `0024`); `texto` guarda a versão em texto. `sendChatRolls` grava vários de uma vez.
+- No início do combate cada personagem ganha seu cartão de Iniciativa (sem o texto "Combate iniciado"); quem entra no meio também.
+- Mensagens seguidas da mesma pessoa continuam o bloco, sem repetir nome e horário.
+- Tipos, lint e testes ok. Conferência visual no Chrome não feita (a extensão perdia o grupo de abas a cada comando).
+- **Ajustes**: o chat não recebe mais "Combate encerrado". Dossiê com os dados em duas colunas (Idade | Nacionalidade, Filiação | Organização, Altura | Peso) e "Observações (Crimes)" embaixo só quando preenchido; a foto continua comprida.
+- **Combate na tela**: "Iniciar combate" foi para a aba Mestre da barra lateral; a lista de turnos aparece no mapa ao iniciar e cada um pode recolhê-la na própria tela (mostra rodada e de quem é a vez). A aba Combate da ficha perdeu o bloco "Turno" (Desfazer/Novo turno): a vez fica na lista e as ações zeram sozinhas; Vitalidade e Buffs/debuffs ficam lado a lado.

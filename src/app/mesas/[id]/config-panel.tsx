@@ -5,16 +5,16 @@ import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ConfirmSubmitButton } from "@/components/confirm-submit-button";
+import { confirm } from "@/components/confirm";
 import type { MesaRole } from "@/lib/mesas/roles";
 import {
   BACKGROUND_TOO_BIG_MESSAGE,
   GRID_SIZES,
   MAX_BACKGROUND_BYTES,
-  cellsPerSide,
   nearestGridSizeIndex,
 } from "@/lib/mesas/map";
 import { leaveMesaAction } from "../actions";
-import { updateGridSizeAction, uploadSceneBackgroundAction } from "./actions";
+import { removeSceneBackgroundAction, updateGridSizeAction, uploadSceneBackgroundAction } from "./actions";
 
 export function ConfigPanel({
   table,
@@ -38,6 +38,7 @@ export function ConfigPanel({
   const [savingGrid, setSavingGrid] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [hasBackground, setHasBackground] = useState(scene.backgroundUrl !== null);
   const [clearing, setClearing] = useState(false);
   const [chatMessage, setChatMessage] = useState<string | null>(null);
 
@@ -55,7 +56,7 @@ export function ConfigPanel({
     const message = all
       ? "Apagar o chat para TODOS os participantes? Isso não pode ser desfeito."
       : "Limpar o chat? As mensagens somem só para você; os outros continuam vendo.";
-    if (!window.confirm(message)) return;
+    if (!(await confirm(message, { confirmLabel: all ? "Apagar" : "Limpar" }))) return;
     setClearing(true);
     setChatMessage(null);
     const ok = await (all ? onClearAllChat() : onClearMyChat());
@@ -85,7 +86,18 @@ export function ConfigPanel({
     formData.set("file", file);
     const result = await uploadSceneBackgroundAction(scene.id, table.id, formData);
     setUploading(false);
-    if (!result.ok) setUploadError(result.message ?? "Não foi possível enviar a imagem.");
+    if (result.ok) setHasBackground(true);
+    else setUploadError(result.message ?? "Não foi possível enviar a imagem.");
+  }
+
+  async function removeBackground() {
+    if (!(await confirm("Remover a imagem de fundo?", { message: "O mapa volta ao grid normal.", confirmLabel: "Remover" }))) return;
+    setUploading(true);
+    setUploadError(null);
+    const result = await removeSceneBackgroundAction(scene.id, table.id);
+    setUploading(false);
+    if (result.ok) setHasBackground(false);
+    else setUploadError("Não foi possível remover a imagem.");
   }
 
   return (
@@ -126,7 +138,7 @@ export function ConfigPanel({
             <div className="flex items-center justify-between text-sm">
               <label htmlFor="grid-size">Tamanho dos quadrados</label>
               <span className="text-muted-foreground">
-                {gridSize}px · {cellsPerSide(gridSize)}×{cellsPerSide(gridSize)}
+                {gridSize}px
                 {savingGrid ? " · salvando…" : ""}
               </span>
             </div>
@@ -148,7 +160,7 @@ export function ConfigPanel({
           <div className="space-y-1.5">
             <span className="text-sm">Imagem de fundo</span>
             <p className="text-xs text-muted-foreground">
-              Aparece para todos os participantes, como o mapa da mesa. Enviar outra substitui a atual. Só
+              Aparece para todos, como o mapa da mesa, na proporção da própria imagem (o grid se ajusta a ela). Enviar outra substitui a atual. Só
               imagem PNG, JPEG ou WEBP, até {MAX_BACKGROUND_BYTES / 1024 / 1024} MB.
             </p>
             <label
@@ -157,7 +169,7 @@ export function ConfigPanel({
                 className: "w-full cursor-pointer justify-center",
               })}
             >
-              {uploading ? "Enviando…" : scene.backgroundUrl ? "Trocar imagem" : "Escolher imagem"}
+              {uploading ? "Enviando…" : hasBackground ? "Trocar imagem" : "Escolher imagem"}
               <input
                 type="file"
                 accept="image/png,image/jpeg,image/webp"
@@ -166,6 +178,11 @@ export function ConfigPanel({
                 onChange={handleBackgroundChange}
               />
             </label>
+            {hasBackground && (
+              <Button type="button" variant="ghost" className="w-full text-destructive" disabled={uploading} onClick={removeBackground}>
+                Remover imagem
+              </Button>
+            )}
             {uploadError && <p className="text-sm text-destructive">{uploadError}</p>}
           </div>
         </section>

@@ -1,24 +1,26 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { createAuthedRealtimeClient } from "@/lib/supabase/client";
 import type { ChatMessage } from "@/lib/mesas/chat";
 import { clearAllChatAction, clearMyChatAction, sendChatMessageAction } from "./actions";
 
-const MAX_IN_MEMORY = 300;
+const CHAT_LIMIT = 100; // o mesmo que o banco guarda (src/lib/mesas/chat.ts)
 
-// Colunas como estão no Postgres (snake_case) — é o que o Realtime entrega.
+// Colunas como estão no Postgres — é o que o Realtime entrega.
 type ChatRow = {
   id: string;
-  author_id: string;
-  author_name: string;
-  content: string;
-  created_at: string;
+  mesa_id: string;
+  rolagem: ChatMessage["roll"];
+  autor_id: string;
+  autor_nome: string;
+  texto: string;
+  criado_em: string;
 };
 
 function addMessage(prev: ChatMessage[], message: ChatMessage) {
   if (prev.some((m) => m.id === message.id)) return prev;
-  return [...prev, message].slice(-MAX_IN_MEMORY);
+  return [...prev, message].slice(-CHAT_LIMIT);
 }
 
 /**
@@ -39,36 +41,49 @@ export function useChat({
   const openRef = useRef(false);
 
   useEffect(() => {
-    const supabase = createSupabaseBrowserClient();
-    const channel = supabase
-      .channel(`chat:${tableId}`)
-      .on(
-        "postgres_changes",
-        { event: "INSERT", schema: "public", table: "chat_messages", filter: `table_id=eq.${tableId}` },
-        (payload) => {
-          const row = payload.new as ChatRow;
-          setMessages((prev) =>
-            addMessage(prev, {
-              id: row.id,
-              authorId: row.author_id,
-              authorName: row.author_name,
-              content: row.content,
-              createdAt: row.created_at,
-            }),
-          );
-          if (row.author_id !== currentUserId && !openRef.current) setUnread((n) => n + 1);
-        },
-      )
-      // O Realtime não filtra DELETE (nem entrega mais que o id com RLS ligado):
-      // ids de outras mesas simplesmente não casam com nada na lista local.
-      .on("postgres_changes", { event: "DELETE", schema: "public", table: "chat_messages" }, (payload) => {
-        const id = (payload.old as { id?: string }).id;
-        if (id) setMessages((prev) => prev.filter((m) => m.id !== id));
-      })
-      .subscribe();
+    let cleanup = () => {};
+    let cancelled = false;
+    void createAuthedRealtimeClient().then((supabase) => {
+      if (cancelled) return;
+      const channel = supabase
+        .channel(`chat:${tableId}`)
+        .on(
+          "postgres_changes",
+          {
+            event: "INSERT",
+            schema: "public",
+            table: "mensagens",
+          },
+          (payload) => {
+            const row = payload.new as ChatRow;
+            // Filtrado aqui, não no Realtime: o filtro do servidor parou de casar depois da renomeação das colunas.
+            if (row.mesa_id !== tableId) return;
+            setMessages((prev) =>
+              addMessage(prev, {
+                id: row.id,
+                authorId: row.autor_id,
+                authorName: row.autor_nome,
+                content: row.texto,
+                roll: row.rolagem ?? null,
+                createdAt: row.criado_em,
+              }),
+            );
+            if (row.autor_id !== currentUserId && !openRef.current) setUnread((n) => n + 1);
+          },
+        )
+        // O Realtime não filtra DELETE (nem entrega mais que o id com RLS ligado):
+        // ids de outras mesas simplesmente não casam com nada na lista local.
+        .on("postgres_changes", { event: "DELETE", schema: "public", table: "mensagens" }, (payload) => {
+          const id = (payload.old as { id?: string }).id;
+          if (id) setMessages((prev) => prev.filter((m) => m.id !== id));
+        })
+        .subscribe();
+      cleanup = () => void supabase.removeChannel(channel);
+    });
 
     return () => {
-      supabase.removeChannel(channel);
+      cancelled = true;
+      cleanup();
     };
   }, [tableId, currentUserId]);
 

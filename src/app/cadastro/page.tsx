@@ -1,17 +1,30 @@
 import { redirect } from "next/navigation";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { getCurrentUser } from "@/lib/auth/session";
 import { SignUpForm } from "./signup-form";
 
 export default async function CadastroPage() {
-  const user = await getCurrentUser();
-  if (user) {
-    redirect("/mesas");
-  }
+  if (await getCurrentUser()) redirect("/mesas");
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-6 p-6">
-      <h1 className="text-xl font-semibold">Criar conta</h1>
-      <SignUpForm />
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden p-6">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,color-mix(in_oklch,var(--primary)_18%,transparent),transparent)]"
+      />
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
+      <Card className="relative w-full max-w-sm shadow-2xl shadow-black/40">
+        <CardHeader>
+          <CardTitle>Criar conta</CardTitle>
+          <CardDescription>Crie sua conta para jogar Reinos de Ferro com seu grupo.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <SignUpForm />
+        </CardContent>
+      </Card>
     </main>
   );
 }

@@ -1,0 +1,15 @@
+[
+  { "slug": "cla-anao", "name": "Clã Anão" },
+  { "slug": "exercito-ou-companhia-mercenaria", "name": "Exército ou Companhia Mercenária" },
+  { "slug": "igreja", "name": "Igreja" },
+  { "slug": "kriel", "name": "Kriel (trolloides)" },
+  { "slug": "nobreza", "name": "Nobreza" },
+  { "slug": "ordem-alquimica", "name": "Ordem Alquímica" },
+  { "slug": "ordem-de-cavalaria", "name": "Ordem de Cavalaria" },
+  { "slug": "ordem-magica", "name": "Ordem Mágica" },
+  { "slug": "organizacao-de-mekanicos", "name": "Organização de Mekânicos" },
+  { "slug": "patronos-ricos", "name": "Patronos Ricos" },
+  { "slug": "rede-de-inteligencia", "name": "Rede de Inteligência (inclui Retribuição de Scyrah)" },
+  { "slug": "submundo", "name": "Submundo" },
+  { "slug": "tripulacao-pirata", "name": "Tripulação Pirata" }
+]

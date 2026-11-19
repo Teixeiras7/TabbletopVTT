@@ -92,9 +92,22 @@ Cada parte tem a lista completa. Aqui estão as que **bloqueiam ou distorcem** d
 11. **Recarga da besta**: "ação completa" na arma, "ação rápida" na regra geral. Tratada a regra específica como prevalente (interpretação, não fato).
 12. **Flecha explosiva** definida com valores diferentes nas pp. 264 e 287.
 13. **DEF base 5** (derrubado/imóvel): não está dito se bônus de cobertura, ocultação e elevação somam à base.
-14. **Peso e carga**: o livro não tem coluna de peso nem regra de carga de equipamento (só levantar/carregar por FOR).
+14. **Loja e Negociação** (pp. 182-183): sem a perícia, compra pelo preço de tabela e vende por metade. Com ela, decisões do usuário (2026-10-05): o jogador escolhe o atributo; 2d6 + atributo + Negociação; compra e venda são rolagens separadas, mostradas no chat, válidas enquanto a Loja está aberta. Dinheiro com uma casa decimal (aceita fração de coroa). **Preços da Lista** (p. 241-245) conferidos pelo texto do PDF com pymupdf: a ordem é limpa, então as dúvidas de alinhamento da parte 06 (cinto 15, coldre 5, coldre de pulso 15, flecha explosiva 20, kit de armeiro 20, mira 20) estão resolvidas.
+15. **Peso e carga**: o livro não tem coluna de peso nem regra de carga de equipamento (só levantar/carregar por FOR).
 15. **Frio Intenso** (magia, p. 235) não consta em nenhuma lista de carreira: omissão do manual ou perda de extração.
 16. **XP por inimigo**: o capítulo do Mestre não traz tabela de XP por criatura; ganho de XP fica com o Mestre.
+
+### 5.4 Inconsistências do próprio livro achadas ao montar o catálogo (etapa 14)
+
+Conferidas contra as páginas do PDF (renderizadas como imagem). Não são erros de extração: o livro impresso é que diz isso. Cada uma está marcada nos dados, para o Mestre/usuário decidir, e nenhuma foi tratada como regra.
+
+17. **Explorador, "Senso de Direção 1"** (p. 129): consta nas perícias profissionais iniciais, mas não existe na lista de perícias (pp. 165-166). **Decisão do usuário (2026-10-03)**: fica dentro de Sobrevivência, que o Explorador já tem; não vira perícia à parte.
+18. **Feiticeiro de Gelo, magia inicial "Esfriar"** (p. 130): não existe entre as 160 magias. **Decisão do usuário (2026-10-03, "talvez seja Calafrio")**: usada Calafrio (CST 2, lista do Gelo). Se o usuário descobrir outra, é só trocar em data/catalog.
+19. **Ladrão, perícias militares iniciais** (p. 134): o livro imprime "Arma de Arremesso e 1 Arma de Mão 1". Lido como Arma de Arremesso 1 e Arma de Mão 1 (nota na carreira).
+20. **Sacerdote de Menoth, Conhecimento (fé menita)** (p. 144): a linha é "Conhecimento (fé menita) e Oratória 1"; lido como nível 1 nas duas perícias, no mesmo padrão do Sacerdote de Morrow.
+21. **Carreiras com bens sem dinheiro** (Conjurador de Guerra, Lâmina Tempestuosa): só itens; dinheiro inicial 0 (o livro soma os CO de cada carreira inicial).
+
+22. **Espiral vital: ramo com o círculo a mais quando o atributo é ímpar** (p. 148, "o mais igualmente possível"): o livro não diz. Provisório: o ramo de número menor (constante `ODD_EXTRA_GOES_TO_LOWER_BRANCH` no engine, fácil de trocar).
 
 ## 6. O que o engine já pode assumir com segurança
 

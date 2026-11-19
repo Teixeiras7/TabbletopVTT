@@ -1,0 +1,5562 @@
+[
+  {
+    "slug": "alquimista",
+    "name": "Alquimista",
+    "sourcePage": 118,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "granadeiro"
+        },
+        {
+          "ability": "resistencia-a-veneno"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-arremesso",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "alquimia",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "medicina",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 50,
+        "items": "avental de alquimista, máscara de gás, kit do alquimista viajante, 5 granadas alquímicas, bandoleira de granadeiro",
+        "kit": [
+          {
+            "item": "avental-de-alquimista",
+            "qty": 1
+          },
+          {
+            "item": "mascara-de-gas",
+            "qty": 1
+          },
+          {
+            "item": "kit-de-alquimista-de-viagem",
+            "qty": 1
+          },
+          {
+            "item": "bandoleira-de-granadeiro",
+            "qty": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "Tipo das 5 granadas alquímicas",
+            "options": [
+              {
+                "label": "Bomba ácida",
+                "kit": [
+                  {
+                    "item": "granada-alquimica-bomba-acida",
+                    "qty": 5
+                  }
+                ]
+              },
+              {
+                "label": "Bomba corrosiva",
+                "kit": [
+                  {
+                    "item": "granada-alquimica-bomba-corrosiva",
+                    "qty": 5
+                  }
+                ]
+              },
+              {
+                "label": "Bomba flamejante",
+                "kit": [
+                  {
+                    "item": "granada-alquimica-bomba-flamejante",
+                    "qty": 5
+                  }
+                ]
+              },
+              {
+                "label": "Bomba nocaute",
+                "kit": [
+                  {
+                    "item": "granada-alquimica-bomba-nocaute",
+                    "qty": 5
+                  }
+                ]
+              },
+              {
+                "label": "Cinzas de Urcaen",
+                "kit": [
+                  {
+                    "item": "granada-alquimica-cinzas-de-urcaen",
+                    "qty": 5
+                  }
+                ]
+              },
+              {
+                "label": "Vazia",
+                "kit": [
+                  {
+                    "item": "granada-alquimica-vazia",
+                    "qty": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "alquimista-de-campo"
+        },
+        {
+          "ability": "bombardeiro"
+        },
+        {
+          "ability": "estilo-livre"
+        },
+        {
+          "ability": "fogo-no-buraco"
+        },
+        {
+          "ability": "granadeiro"
+        },
+        {
+          "ability": "mestre-das-infusoes"
+        },
+        {
+          "ability": "preparacao-rapida"
+        },
+        {
+          "ability": "resistencia-a-veneno"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "alquimia",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "falsificar",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "medicina",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "oficio",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "pesquisar",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Ordem Alquímica"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "única carreira que usa plenamente a alquimia (criar itens, granadas, alquimia de campo)."
+    ]
+  },
+  {
+    "slug": "arauto-da-matanca",
+    "name": "Arauto da Matança",
+    "sourcePage": 119,
+    "prerequisites": {
+      "races": [
+        "trolloide"
+      ],
+      "archetypes": [],
+      "nation": null,
+      "text": "trolloide"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "brado-chamado"
+        },
+        {
+          "ability": "brado-rajada-sonica"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "arma-grande",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "brado-de-matanca",
+          "level": 2,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "conhecimento",
+          "level": 1,
+          "specialty": "trolloide"
+        },
+        {
+          "type": "fixed",
+          "skill": "oratoria",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "brado-balada-heroica"
+        },
+        {
+          "ability": "brado-cacofonia"
+        },
+        {
+          "ability": "brado-chamado"
+        },
+        {
+          "ability": "brado-chamado-do-desafio"
+        },
+        {
+          "ability": "brado-rajada-sonica"
+        },
+        {
+          "ability": "brado-reverberacao"
+        },
+        {
+          "ability": "brado-tremor"
+        },
+        {
+          "ability": "legado-de-bragg"
+        },
+        {
+          "ability": "lider-natural"
+        },
+        {
+          "ability": "plano-de-batalha-chamado-para-acao"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-grande",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "brado-de-matanca",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "comandar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "oratoria",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "seduzir",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Kriel"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "brados são **ataques à distância** (não magias): penalidades em combate corpo-a-corpo. Legado de Bragg dá 1 brado grátis por turno; Brado: Tremor (Veterano) derruba."
+    ]
+  },
+  {
+    "slug": "arcanista",
+    "name": "Arcanista",
+    "sourcePage": 120,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [
+        "dotado"
+      ],
+      "nation": null,
+      "text": "Dotado"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": "ganha o benefício Leitura de Runas (Dotado).",
+    "initial": {
+      "abilities": [
+        {
+          "ability": "poder-maior"
+        }
+      ],
+      "militarySkills": [],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "conhecimento",
+          "level": 1,
+          "specialty": "arcano"
+        },
+        {
+          "type": "fixed",
+          "skill": "pesquisar",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [
+        "aura-de-protecao",
+        "luz-nas-trevas",
+        "raio-arcano"
+      ],
+      "gear": {
+        "co": 75,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "academico-arcano"
+        },
+        {
+          "ability": "defesas-arcanas"
+        },
+        {
+          "ability": "educacao-universitaria"
+        },
+        {
+          "ability": "poder-maior"
+        }
+      ],
+      "militarySkills": [],
+      "professionalSkills": [
+        {
+          "skill": "etiqueta",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "oficio",
+          "maxLevel": 2,
+          "specialty": "qualquer"
+        },
+        {
+          "skill": "oratoria",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "pesquisar",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Ordem Mágica"
+      ],
+      "spellLists": [
+        "arcanista"
+      ]
+    },
+    "notes": [
+      "sem perícias militares. Aura de Proteção = magia sustentada que aumenta ARM (sustentada de graça com Poder Maior)."
+    ],
+    "grantsBenefits": [
+      "leitura-de-runas"
+    ]
+  },
+  {
+    "slug": "aristocrata",
+    "name": "Aristocrata",
+    "sourcePage": 121,
+    "prerequisites": {
+      "races": [
+        "humano"
+      ],
+      "archetypes": [],
+      "nation": null,
+      "text": "humano, carreira inicial"
+    },
+    "initialOnly": true,
+    "focalizer": false,
+    "special": "50 CO por mês das posses da família.",
+    "initial": {
+      "abilities": [
+        {
+          "ability": "boa-criacao"
+        },
+        {
+          "ability": "idioma",
+          "param": "qualquer"
+        },
+        {
+          "ability": "privilegio"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arco",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "fuzil",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "etiqueta",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Nobreza"
+      ],
+      "spells": [],
+      "gear": {
+        "co": 200,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "avaliacao"
+        },
+        {
+          "ability": "boa-criacao"
+        },
+        {
+          "ability": "conselheiro"
+        },
+        {
+          "ability": "ginete-especialista"
+        },
+        {
+          "ability": "ginete-veloz"
+        },
+        {
+          "ability": "grito-de-guerra"
+        },
+        {
+          "ability": "idioma"
+        },
+        {
+          "ability": "lider-natural"
+        },
+        {
+          "ability": "plano-de-batalha-chamado-para-acao"
+        },
+        {
+          "ability": "privilegio"
+        },
+        {
+          "ability": "resistencia-a-veneno"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arco",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "fuzil",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "lanca",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "criptografia",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "direito",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "enganar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "etiqueta",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "oratoria",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "seduzir",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "subornar",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "qualquer"
+      ],
+      "spellLists": []
+    },
+    "notes": []
+  },
+  {
+    "slug": "assassino",
+    "name": "Assassino",
+    "sourcePage": 122,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "espreitar"
+        },
+        {
+          "ability": "precisao-anatomica"
+        },
+        {
+          "ability": "punhalada-pelas-costas"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arma-de-arremesso",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "besta",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "combate-desarmado",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "esgueirar-se",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "intimidar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "manha",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "ataque-em-sequencia-sangrar"
+        },
+        {
+          "ability": "ataque-surpresa"
+        },
+        {
+          "ability": "camuflagem"
+        },
+        {
+          "ability": "combater-com-duas-armas"
+        },
+        {
+          "ability": "especializacao",
+          "param": "lâmina do assassino"
+        },
+        {
+          "ability": "espreitar"
+        },
+        {
+          "ability": "idioma",
+          "param": "Língua dos Cinco"
+        },
+        {
+          "ability": "precisao-anatomica"
+        },
+        {
+          "ability": "punhalada-pelas-costas"
+        },
+        {
+          "ability": "sanguinario"
+        },
+        {
+          "ability": "saque-rapido"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "besta",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "interrogatorio",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "manha",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Submundo"
+      ],
+      "spellLists": []
+    },
+    "notes": []
+  },
+  {
+    "slug": "cacador-de-magos",
+    "name": "Caçador de Magos",
+    "sourcePage": 123,
+    "prerequisites": {
+      "races": [
+        "iosano"
+      ],
+      "archetypes": [],
+      "nation": null,
+      "text": "iosano"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "assassino-arcano"
+        },
+        {
+          "ability": "vontade-de-ferro"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arco",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "besta",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "escalar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "esgueirar-se",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "rastrear",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "saltar",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Retribuição de Scyrah"
+      ],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "aparar"
+        },
+        {
+          "ability": "assassino-arcano"
+        },
+        {
+          "ability": "assassino-de-magos"
+        },
+        {
+          "ability": "besteiro"
+        },
+        {
+          "ability": "camuflagem"
+        },
+        {
+          "ability": "eximio-atirador"
+        },
+        {
+          "ability": "magia-das-sombras"
+        },
+        {
+          "ability": "rastro-sem-pegadas"
+        },
+        {
+          "ability": "recarga-rapida"
+        },
+        {
+          "ability": "saque-rapido"
+        },
+        {
+          "ability": "trabalho-rapido"
+        },
+        {
+          "ability": "vontade-de-ferro"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arco",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "besta",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "disfarce",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "enganar",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "rastrear",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "sobrevivencia",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "usar-cordas",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Retribuição de Scyrah"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "Assassino de Magos (Veterano) concede dados de dano adicionais contra conjuradores."
+    ]
+  },
+  {
+    "slug": "cacador-de-recompensas",
+    "name": "Caçador de Recompensas",
+    "sourcePage": 124,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "imobilizar"
+        },
+        {
+          "ability": "retentor"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 2,
+          "options": [
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "besta",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "combate-desarmado",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "fuzil",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "intimidar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "rastrear",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "usar-cordas",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "absorver-impacto"
+        },
+        {
+          "ability": "ataque-surpresa"
+        },
+        {
+          "ability": "besteiro"
+        },
+        {
+          "ability": "cabecada"
+        },
+        {
+          "ability": "imobilizar"
+        },
+        {
+          "ability": "idioma",
+          "param": "Língua dos Cinco"
+        },
+        {
+          "ability": "perseguir"
+        },
+        {
+          "ability": "retentor"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "besta",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "fuzil",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "direito",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "disfarce",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "enganar",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "interrogatorio",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "manha",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "rastrear",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "subornar",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "usar-cordas",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "qualquer"
+      ],
+      "spellLists": []
+    },
+    "notes": []
+  },
+  {
+    "slug": "cavaleiro",
+    "name": "Cavaleiro",
+    "sourcePage": 125,
+    "prerequisites": {
+      "races": [
+        "humano",
+        "iosano"
+      ],
+      "archetypes": [],
+      "nation": null,
+      "text": "humano ou iosano"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "defensor"
+        },
+        {
+          "ability": "trespassar"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "arma-grande",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "escudo",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "conhecimento",
+          "level": 1,
+          "specialty": "ordem de cavalaria"
+        },
+        {
+          "type": "fixed",
+          "skill": "etiqueta",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Ordem de Cavalaria"
+      ],
+      "spells": [],
+      "gear": {
+        "co": 100,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "ataque-montado"
+        },
+        {
+          "ability": "ataque-preciso"
+        },
+        {
+          "ability": "defensor"
+        },
+        {
+          "ability": "forcar-o-ataque"
+        },
+        {
+          "ability": "ginete-de-combate"
+        },
+        {
+          "ability": "ginete-especialista"
+        },
+        {
+          "ability": "golpe-com-escudo"
+        },
+        {
+          "ability": "investida-de-cavalaria"
+        },
+        {
+          "ability": "investida-implacavel"
+        },
+        {
+          "ability": "lider-natural"
+        },
+        {
+          "ability": "linha-defensiva"
+        },
+        {
+          "ability": "suportar-carga"
+        },
+        {
+          "ability": "trespassar"
+        },
+        {
+          "ability": "vontade-de-ferro"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "arma-grande",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "escudo",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "lanca",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "direito",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "etiqueta",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Ordem de Cavalaria"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "com Defensor + Trespassar, mesmo iniciante faz 3 ataques numa rodada (4 se Habilidoso); Trespassar liga-se a armas grandes."
+    ]
+  },
+  {
+    "slug": "conjurador-de-guerra",
+    "name": "Conjurador de Guerra",
+    "sourcePage": 126,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [
+        "dotado"
+      ],
+      "nation": null,
+      "text": "Dotado, carreira inicial; torna o personagem focalizador"
+    },
+    "initialOnly": true,
+    "focalizer": true,
+    "special": "muda a tradição para focalizador se tiver outra carreira arcana; só pode ampliar armas mekânicas às quais tem vínculo.",
+    "initial": {
+      "abilities": [
+        {
+          "ability": "vinculo"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "pistola",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [
+        "conveccao",
+        "investida-irrestrita"
+      ],
+      "gear": {
+        "co": 0,
+        "items": "1 à escolha entre armadura de conjurador de guerra (leve ou média), arma de mão mekânica, canhão de mão mekânico (10 cargas). Armas mekânicas têm placas rúnicas com a runa de Vínculo, abastecidas por capacitores alquímicos. Item começa vinculado ao conjurador",
+        "kit": [],
+        "choices": [
+          {
+            "label": "Um item à escolha",
+            "options": [
+              {
+                "label": "Armadura de conjurador de guerra leve",
+                "kit": [
+                  {
+                    "item": "armadura-de-conjurador-de-guerra-leve",
+                    "qty": 1
+                  }
+                ]
+              },
+              {
+                "label": "Armadura de conjurador de guerra média",
+                "kit": [
+                  {
+                    "item": "armadura-de-conjurador-de-guerra-media",
+                    "qty": 1
+                  }
+                ]
+              },
+              {
+                "label": "Arma de mão mekânica",
+                "kit": [
+                  {
+                    "text": "Arma de mão mekânica (placa rúnica com a runa de Vínculo, capacitor alquímico; começa vinculada)",
+                    "qty": 1
+                  }
+                ]
+              },
+              {
+                "label": "Canhão de mão mekânico (10 cargas)",
+                "kit": [
+                  {
+                    "text": "Canhão de mão mekânico (placa rúnica com a runa de Vínculo, capacitor alquímico; começa vinculado)",
+                    "qty": 1
+                  },
+                  {
+                    "item": "municao-pesada-revestimento-de-papel-5-tiros",
+                    "qty": 2
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "comandante-de-campo-ataque-magico"
+        },
+        {
+          "ability": "comandante-de-campo-investida-implacavel"
+        },
+        {
+          "ability": "comandante-de-campo-protecao-de-escudo"
+        },
+        {
+          "ability": "lider-natural"
+        },
+        {
+          "ability": "vinculo"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "arma-grande",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Exército ou Companhia Mercenária"
+      ],
+      "spellLists": [
+        "conjurador-de-guerra"
+      ]
+    },
+    "notes": [
+      "armadura vinculada aumenta vitalidade e pode ser potencializada (+ARM); armas vinculadas podem usar pontos de foco para ataque/dano ampliados ou ataques adicionais; gigantes-a-vapor vinculados (Cap. 7). Veteranos/Épicos podem escolher habilidades de comandante."
+    ]
+  },
+  {
+    "slug": "duelista",
+    "name": "Duelista",
+    "sourcePage": 127,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "aparar"
+        },
+        {
+          "ability": "contragolpe"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "pistola",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "intimidar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "jogatina",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "saltar",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "absorver-impacto"
+        },
+        {
+          "ability": "acrobatico"
+        },
+        {
+          "ability": "aparar"
+        },
+        {
+          "ability": "ataque-preciso"
+        },
+        {
+          "ability": "atirador"
+        },
+        {
+          "ability": "combater-com-duas-armas"
+        },
+        {
+          "ability": "contragolpe"
+        },
+        {
+          "ability": "saque-rapido"
+        },
+        {
+          "ability": "trabalho-rapido"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "direito",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "etiqueta",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "manha",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "oratoria",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "seduzir",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spellLists": []
+    },
+    "notes": []
+  },
+  {
+    "slug": "espiao",
+    "name": "Espião",
+    "sourcePage": 128,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "identidade-falsa"
+        },
+        {
+          "ability": "idioma",
+          "param": "escolha um"
+        },
+        {
+          "ability": "plano-de-batalha-sombra"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arma-de-arremesso",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "disfarce",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "enganar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "esgueirar-se",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Rede de Inteligência"
+      ],
+      "spells": [],
+      "gear": {
+        "co": 100,
+        "items": "e documentos de identidade falsos",
+        "kit": [
+          {
+            "text": "Documentos de identidade falsos",
+            "qty": 1
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "ataque-surpresa"
+        },
+        {
+          "ability": "detectar-mentiras"
+        },
+        {
+          "ability": "espreitar"
+        },
+        {
+          "ability": "identidade-falsa"
+        },
+        {
+          "ability": "idioma"
+        },
+        {
+          "ability": "linguagem-de-sinais"
+        },
+        {
+          "ability": "plano-de-batalha-sombra"
+        },
+        {
+          "ability": "resistencia-a-veneno"
+        },
+        {
+          "ability": "vontade-de-ferro"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "arrombar",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "arte-da-fuga",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "comandar",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "criptografia",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "direito",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "disfarce",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "enganar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "etiqueta",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "falsificar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "interrogatorio",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "manha",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "seduzir",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "subornar",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "qualquer"
+      ],
+      "spellLists": []
+    },
+    "notes": []
+  },
+  {
+    "slug": "explorador",
+    "name": "Explorador",
+    "sourcePage": 129,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": "25 CO por mês do patrono enquanto explora novas regiões, envia relatórios regulares e traz presentes de locais exóticos.",
+    "initial": {
+      "abilities": [
+        {
+          "ability": "cacador-de-feras"
+        },
+        {
+          "ability": "idioma",
+          "param": "qualquer"
+        },
+        {
+          "ability": "porto-de-escala"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arco",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "fuzil",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "medicina",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "sobrevivencia",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Patronos Ricos"
+      ],
+      "spells": [],
+      "gear": {
+        "co": 150,
+        "items": "porta-mapas e lupa",
+        "kit": [
+          {
+            "item": "estojo-para-mapa",
+            "qty": 1
+          },
+          {
+            "item": "lente-de-aumento",
+            "qty": 1
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "cacador-de-feras"
+        },
+        {
+          "ability": "ginete-especialista"
+        },
+        {
+          "ability": "ginete-veloz"
+        },
+        {
+          "ability": "idioma"
+        },
+        {
+          "ability": "lider-natural"
+        },
+        {
+          "ability": "linguagem-de-sinais"
+        },
+        {
+          "ability": "plano-de-batalha-reconhecimento"
+        },
+        {
+          "ability": "porto-de-escala"
+        },
+        {
+          "ability": "resistencia-a-doencas"
+        },
+        {
+          "ability": "resistencia-a-veneno"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arco",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "besta",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "fuzil",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "criptografia",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "etiqueta",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "oficio",
+          "maxLevel": 2,
+          "specialty": "qualquer"
+        },
+        {
+          "skill": "medicina",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "navegacao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "sobrevivencia",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "usar-cordas",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Patronos Ricos e Tribos Isoladas"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "Caçador de Feras acumula com a perícia Sobrevivência (mira contra criaturas selvagens).",
+      "O livro (p. 129) lista a perícia \"Senso de Direção\", que não existe; por decisão do usuário ela fica dentro de Sobrevivência (o Explorador já começa com Sobrevivência 1)."
+    ]
+  },
+  {
+    "slug": "feiticeiro",
+    "name": "Feiticeiro",
+    "sourcePage": 130,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [
+        "dotado"
+      ],
+      "nation": null,
+      "text": "Dotado, carreira inicial"
+    },
+    "initialOnly": true,
+    "focalizer": false,
+    "special": "escolher um elemento (Fogo, Gelo, Pedra, Tempestade), irreversível; habilidades e magias dependem dele:",
+    "initial": {
+      "abilities": [],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arco",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "besta",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "sobrevivencia",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "camuflagem"
+        },
+        {
+          "ability": "esquivo"
+        },
+        {
+          "ability": "imunidade-fogo"
+        },
+        {
+          "ability": "imunidade-frio"
+        },
+        {
+          "ability": "maestria-elemental"
+        },
+        {
+          "ability": "rastro-sem-pegadas"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arco",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "besta",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "sobrevivencia",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spellLists": [
+        "feiticeiro-fogo",
+        "feiticeiro-gelo",
+        "feiticeiro-pedra",
+        "feiticeiro-tempestade"
+      ]
+    },
+    "notes": [
+      "exemplo do manual — cavaleiro/feiticeiro de pedra com Escudo 2 e magia Força da Pedra chega a +4 ARM.",
+      "O livro (p. 130) lista a magia inicial \"Esfriar\" para o Gelo, que não existe no catálogo; por decisão do usuário (provável) é Calafrio."
+    ],
+    "variantLabel": "Elemento",
+    "variants": [
+      {
+        "slug": "fogo",
+        "name": "Fogo",
+        "abilities": [
+          {
+            "ability": "imunidade-fogo"
+          }
+        ],
+        "spells": [
+          "acender-fogo",
+          "chamas-imensas",
+          "muralha-de-fogo"
+        ],
+        "spellList": "feiticeiro-fogo",
+        "bonus": null
+      },
+      {
+        "slug": "gelo",
+        "name": "Gelo",
+        "abilities": [
+          {
+            "ability": "imunidade-frio"
+          }
+        ],
+        "spells": [
+          "calafrio",
+          "nevasca",
+          "raio-de-gelo"
+        ],
+        "spellList": "feiticeiro-gelo",
+        "bonus": null
+      },
+      {
+        "slug": "pedra",
+        "name": "Pedra",
+        "abilities": [],
+        "spells": [
+          "ariete",
+          "postura-de-pedra",
+          "terreno-solido"
+        ],
+        "spellList": "feiticeiro-pedra",
+        "bonus": {
+          "attribute": "FIS",
+          "initial": 1,
+          "maxPerStage": 1,
+          "text": "+1 FIS inicial e +1 no FIS máximo a cada nível (estágio)"
+        }
+      },
+      {
+        "slug": "tempestade",
+        "name": "Tempestade",
+        "abilities": [],
+        "spells": [
+          "jogado-pela-tempestade",
+          "rajada-de-vento",
+          "vento-cortante"
+        ],
+        "spellList": "feiticeiro-tempestade",
+        "bonus": {
+          "attribute": "VEL",
+          "initial": 1,
+          "maxPerStage": 1,
+          "text": "+1 VEL inicial e +1 na VEL máxima a cada nível (estágio)"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "fuzileiro",
+    "name": "Fuzileiro",
+    "sourcePage": 131,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "atirador-de-elite"
+        },
+        {
+          "ability": "eximio-atirador"
+        },
+        {
+          "ability": "tiro-duplo"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "fuzil",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "escalar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "sobrevivencia",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 50,
+        "items": "bandoleira de munição, 1 fuzil pesado ou fuzil longo de repetição (pólvora e munição para 10 tiros)",
+        "kit": [
+          {
+            "item": "bandoleira-de-municao",
+            "qty": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "Fuzil (com pólvora e munição para 10 tiros)",
+            "options": [
+              {
+                "label": "Fuzil pesado",
+                "kit": [
+                  {
+                    "item": "fuzil-pesado",
+                    "qty": 1
+                  },
+                  {
+                    "item": "municao-pesada-revestimento-de-papel-5-tiros",
+                    "qty": 2
+                  }
+                ]
+              },
+              {
+                "label": "Fuzil longo",
+                "kit": [
+                  {
+                    "item": "fuzil-longo",
+                    "qty": 1
+                  },
+                  {
+                    "item": "municao-leve-revestimento-de-papel-5-tiros",
+                    "qty": 2
+                  }
+                ]
+              },
+              {
+                "label": "Fuzil de repetição",
+                "kit": [
+                  {
+                    "item": "fuzil-de-repeticao",
+                    "qty": 1
+                  },
+                  {
+                    "item": "municao-leve-revestimento-de-papel-5-tiros",
+                    "qty": 2
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "atirador-de-elite"
+        },
+        {
+          "ability": "cacador-veloz"
+        },
+        {
+          "ability": "disparo-montado"
+        },
+        {
+          "ability": "eximio-atirador"
+        },
+        {
+          "ability": "franco-atirador"
+        },
+        {
+          "ability": "lutador-noturno"
+        },
+        {
+          "ability": "mira-aprimorada"
+        },
+        {
+          "ability": "recarga-rapida"
+        },
+        {
+          "ability": "retornar-fogo"
+        },
+        {
+          "ability": "tiro-duplo"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "fuzil",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "oficio",
+          "maxLevel": 4,
+          "specialty": "fabricação de armas de fogo"
+        },
+        {
+          "skill": "sobrevivencia",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spellLists": []
+    },
+    "notes": [
+      "Atirador de Elite = abre mão do movimento para tiros mais precisos; Tiro Duplo = abre mão do movimento para 1 tiro adicional."
+    ]
+  },
+  {
+    "slug": "homem-de-armas",
+    "name": "Homem de Armas",
+    "sourcePage": 132,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "linha-defensiva"
+        },
+        {
+          "ability": "protecao-de-escudo"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-grande",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "escudo",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 100,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "especializacao",
+          "param": "Alabarda"
+        },
+        {
+          "ability": "especializacao",
+          "param": "Lança"
+        },
+        {
+          "ability": "guarda-costas"
+        },
+        {
+          "ability": "golpe-com-escudo"
+        },
+        {
+          "ability": "golpe-de-retaliacao"
+        },
+        {
+          "ability": "linha-defensiva"
+        },
+        {
+          "ability": "preparar-defesa"
+        },
+        {
+          "ability": "protecao-de-escudo"
+        },
+        {
+          "ability": "protegido"
+        },
+        {
+          "ability": "suportar-carga"
+        },
+        {
+          "ability": "trespassar"
+        },
+        {
+          "ability": "vontade-de-ferro"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-grande",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "escudo",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "oficio",
+          "maxLevel": 4,
+          "specialty": "metalurgia"
+        }
+      ],
+      "connections": [
+        "Empregador"
+      ],
+      "spellLists": []
+    },
+    "notes": []
+  },
+  {
+    "slug": "investigador",
+    "name": "Investigador",
+    "sourcePage": 133,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": "ganha o benefício Superpercepção (testes de PER ampliados).",
+    "initial": {
+      "abilities": [
+        {
+          "ability": "astuto"
+        },
+        {
+          "ability": "idioma",
+          "param": "qualquer"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "ciencia-forense",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "esgueirar-se",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "interrogatorio",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "medicina",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 100,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "astuto"
+        },
+        {
+          "ability": "detectar-mentiras"
+        },
+        {
+          "ability": "espreitar"
+        },
+        {
+          "ability": "idioma"
+        },
+        {
+          "ability": "linguagem-de-sinais"
+        },
+        {
+          "ability": "precisao-anatomica"
+        },
+        {
+          "ability": "vontade-de-ferro"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "ciencia-forense",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "criptografia",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "direito",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "enganar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "etiqueta",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "interrogatorio",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "manha",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "medicina",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "pesquisar",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "qualquer"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "Astuto = nova jogada em testes (duas chances de sucesso)."
+    ],
+    "grantsBenefits": [
+      "superpercepcao"
+    ]
+  },
+  {
+    "slug": "ladrao",
+    "name": "Ladrão",
+    "sourcePage": 134,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "enganador"
+        },
+        {
+          "ability": "esquivo"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-arremesso",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "arrombar",
+          "level": 2,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "arte-da-fuga",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "enganar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "esgueirar-se",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "manha",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "punga",
+          "level": 2,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "subornar",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": "ferramentas de ladrão",
+        "kit": [
+          {
+            "item": "ferramentas-de-ladrao",
+            "qty": 1
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "aparar"
+        },
+        {
+          "ability": "avaliacao"
+        },
+        {
+          "ability": "camuflagem"
+        },
+        {
+          "ability": "carteador"
+        },
+        {
+          "ability": "enganador"
+        },
+        {
+          "ability": "escapar"
+        },
+        {
+          "ability": "espreitar"
+        },
+        {
+          "ability": "esquivo"
+        },
+        {
+          "ability": "idioma",
+          "param": "Língua dos Cinco"
+        },
+        {
+          "ability": "pes-ligeiros"
+        },
+        {
+          "ability": "rastro-sem-pegadas"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "arrombar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "arte-da-fuga",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "direito",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "disfarce",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "enganar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "etiqueta",
+          "maxLevel": 1,
+          "specialty": null
+        },
+        {
+          "skill": "falsificar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "manha",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "oficio",
+          "maxLevel": 2,
+          "specialty": "qualquer"
+        },
+        {
+          "skill": "punga",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "subornar",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Submundo"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "Escapar é habilidade de Veterano (avança com VEL completa ao esquivar em vez de 4 m/2\").",
+      "Perícias militares iniciais: o livro imprime \"Arma de Arremesso e 1 Arma de Mão 1\"; interpretado como Arma de Arremesso 1 e Arma de Mão 1."
+    ]
+  },
+  {
+    "slug": "lamina-tempestuosa",
+    "name": "Lâmina Tempestuosa",
+    "sourcePage": 135,
+    "prerequisites": {
+      "races": [
+        "humano"
+      ],
+      "archetypes": [],
+      "nation": "cygnarano",
+      "text": "humano, ogrun ou trolloide (cygnaranos); carreira inicial e segunda carreira restrita"
+    },
+    "initialOnly": true,
+    "focalizer": false,
+    "special": "segunda carreira obrigatória ∈ {aristocrata, cavaleiro, conjurador de guerra, homem de armas, oficial militar, soldado}.",
+    "initial": {
+      "abilities": [
+        {
+          "ability": "detonador"
+        },
+        {
+          "ability": "especializacao",
+          "param": "gládio tempestuoso"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-grande",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "etiqueta",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Exército Cygnarano"
+      ],
+      "spells": [],
+      "gear": {
+        "co": 0,
+        "items": "gládio tempestuoso, armadura de lâmina tempestuosa",
+        "kit": [
+          {
+            "item": "gladio-tempestuoso",
+            "qty": 1
+          },
+          {
+            "item": "armadura-de-lamina-tempestuosa",
+            "qty": 1
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "controlador-de-gigantes"
+        },
+        {
+          "ability": "detonador"
+        },
+        {
+          "ability": "especializacao",
+          "param": "gládio tempestuoso"
+        },
+        {
+          "ability": "investida-implacavel"
+        },
+        {
+          "ability": "suportar-carga"
+        },
+        {
+          "ability": "tiro-proximo"
+        },
+        {
+          "ability": "trabalho-rapido"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-grande",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "etiqueta",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "medicina",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Exército Cygnarano"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "\"após derrubar um inimigo em combate corpo-a-corpo pode aprender a rajada elétrica do gládio\" (habilidade de Veterano; não nomeada aqui)."
+    ],
+    "secondCareerOneOf": [
+      "aristocrata",
+      "cavaleiro",
+      "conjurador-de-guerra",
+      "homem-de-armas",
+      "oficial-militar",
+      "soldado"
+    ]
+  },
+  {
+    "slug": "mago-pistoleiro",
+    "name": "Mago-Pistoleiro",
+    "sourcePage": 136,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [
+        "dotado"
+      ],
+      "nation": null,
+      "text": "Dotado"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "fabricar-bala-runica"
+        },
+        {
+          "ability": "recarga-rapida"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "fuzil",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "intimidar",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [
+        "tiro-arcano-brutal",
+        "tiro-arcano-preciso",
+        "tiro-arcano-trovao"
+      ],
+      "gear": {
+        "co": 25,
+        "items": "bandoleira de munição, pistola arcana ou fuzil arcano (com pólvora e 10 cargas de munição), kit de fabricação de bala rúnica",
+        "kit": [
+          {
+            "item": "bandoleira-de-municao",
+            "qty": 1
+          },
+          {
+            "item": "kit-de-fabricacao-de-bala-runica",
+            "qty": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "Arma (com pólvora e 10 cargas de munição)",
+            "options": [
+              {
+                "label": "Pistola arcana",
+                "kit": [
+                  {
+                    "item": "pistola-arcana",
+                    "qty": 1
+                  },
+                  {
+                    "item": "pistola-ou-fuzil-arcano-1-bala-runica",
+                    "qty": 10
+                  }
+                ]
+              },
+              {
+                "label": "Fuzil arcano",
+                "kit": [
+                  {
+                    "item": "fuzil-arcano",
+                    "qty": 1
+                  },
+                  {
+                    "item": "pistola-ou-fuzil-arcano-1-bala-runica",
+                    "qty": 10
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "atirador"
+        },
+        {
+          "ability": "fabricar-bala-runica"
+        },
+        {
+          "ability": "mira-agucada"
+        },
+        {
+          "ability": "precisao-arcana"
+        },
+        {
+          "ability": "recarga-rapida"
+        },
+        {
+          "ability": "saque-rapido"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "fuzil",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "seduzir",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spellLists": [
+        "mago-pistoleiro"
+      ]
+    },
+    "notes": [
+      "Regra referenciada (p.226, fora deste trecho): tiros arcanos não exigem ações rápidas para conjurar; várias magias podem afetar o mesmo tiro."
+    ]
+  },
+  {
+    "slug": "mekanico-arcano",
+    "name": "Mekânico Arcano",
+    "sourcePage": 137,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [
+        "dotado"
+      ],
+      "nation": null,
+      "text": "Dotado"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "inscrever-formulas"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "fuzil",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "engenharia-mekanica",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "oficio",
+          "level": 1,
+          "specialty": "armas de fogo"
+        },
+        {
+          "type": "fixed",
+          "skill": "oficio",
+          "level": 1,
+          "specialty": "metalurgia"
+        }
+      ],
+      "connections": [],
+      "spells": [
+        "escudo-de-polaridade",
+        "raio-arcantriko"
+      ],
+      "gear": {
+        "co": 50,
+        "items": "kit de entalhe de runas, 1 arma ou armadura mekânica de até 750 CO (inclui cárter, capacitor e placa rúnica)",
+        "kit": [
+          {
+            "item": "kit-de-entalhe-de-runas",
+            "qty": 1
+          },
+          {
+            "text": "Arma ou armadura mekânica de até 750 CO (inclui cárter, capacitor e placa rúnica)",
+            "qty": 1
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "as-comandante"
+        },
+        {
+          "ability": "controlador-de-gigantes"
+        },
+        {
+          "ability": "engenheiro-arcano"
+        },
+        {
+          "ability": "engenhoso"
+        },
+        {
+          "ability": "manobra-ataque"
+        },
+        {
+          "ability": "manobra-de-imediato"
+        },
+        {
+          "ability": "inscrever-formulas"
+        },
+        {
+          "ability": "vaporeiro"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "artilharia-leve",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "fuzil",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 1,
+          "specialty": null
+        },
+        {
+          "skill": "criptografia",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "engenharia-mekanica",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "oficio",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "pesquisar",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Organização de Mekânicos"
+      ],
+      "spellLists": [
+        "mekanico-arcano"
+      ]
+    },
+    "notes": [
+      "Engenhoso é exclusiva desta carreira (Veterano)."
+    ]
+  },
+  {
+    "slug": "mekanico-de-campo",
+    "name": "Mekânico de Campo",
+    "sourcePage": 138,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "controlador-de-gigantes"
+        },
+        {
+          "ability": "pro-chao"
+        },
+        {
+          "ability": "remendao"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "engenharia-mekanica",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "oficio",
+          "level": 1,
+          "specialty": "metalurgia"
+        }
+      ],
+      "connections": [
+        "Organização de Mekânicos"
+      ],
+      "spells": [],
+      "gear": {
+        "co": 25,
+        "items": "kit de ferramentas de mekânico, gigante-de-trabalho leve com 200 CO em armas (única carreira que começa com gigante-a-vapor)",
+        "kit": [
+          {
+            "item": "kit-de-ferramentas-de-mekanico",
+            "qty": 1
+          },
+          {
+            "text": "Gigante-de-trabalho leve com 200 CO em armas",
+            "qty": 1
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "as-comandante"
+        },
+        {
+          "ability": "controlador-de-gigantes"
+        },
+        {
+          "ability": "esquivo"
+        },
+        {
+          "ability": "manobra-ataque"
+        },
+        {
+          "ability": "manobra-ataque-auxiliar"
+        },
+        {
+          "ability": "manobra-de-imediato"
+        },
+        {
+          "ability": "manobra-qualquer-terreno"
+        },
+        {
+          "ability": "obter-pecas"
+        },
+        {
+          "ability": "pro-chao"
+        },
+        {
+          "ability": "remendao"
+        },
+        {
+          "ability": "sentinela-de-ferro"
+        },
+        {
+          "ability": "sintonizar"
+        },
+        {
+          "ability": "vaporeiro"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "engenharia-mekanica",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "oficio",
+          "maxLevel": 4,
+          "specialty": "qualquer"
+        }
+      ],
+      "connections": [
+        "Organização de Mekânicos"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "Sentinela de Ferro e Sintonizar = Veterano."
+    ]
+  },
+  {
+    "slug": "oficial-militar",
+    "name": "Oficial Militar",
+    "sourcePage": 139,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "lider-de-equipe"
+        },
+        {
+          "ability": "lider-natural"
+        },
+        {
+          "ability": "plano-de-batalha-chamado-para-acao"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arma-grande",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "medicina",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "navegacao",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 100,
+        "items": "uniforme de oficial",
+        "kit": [
+          {
+            "item": "uniforme-de-oficial",
+            "qty": 1
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "as-comandante"
+        },
+        {
+          "ability": "ataque-montado"
+        },
+        {
+          "ability": "boa-criacao"
+        },
+        {
+          "ability": "comandante-de-batalha"
+        },
+        {
+          "ability": "controlador-de-gigantes"
+        },
+        {
+          "ability": "defensor"
+        },
+        {
+          "ability": "disparo-montado"
+        },
+        {
+          "ability": "ginete-especialista"
+        },
+        {
+          "ability": "investida-de-cavalaria"
+        },
+        {
+          "ability": "lider-de-equipe"
+        },
+        {
+          "ability": "lider-natural"
+        },
+        {
+          "ability": "linguagem-de-sinais"
+        },
+        {
+          "ability": "manobra-ataque"
+        },
+        {
+          "ability": "manobra-de-imediato"
+        },
+        {
+          "ability": "plano-de-batalha-abaixar-se"
+        },
+        {
+          "ability": "plano-de-batalha-chamado-para-acao"
+        },
+        {
+          "ability": "plano-de-batalha-golpe-coordenado"
+        },
+        {
+          "ability": "plano-de-batalha-ritmo-desesperado"
+        },
+        {
+          "ability": "porto-de-escala"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "arma-grande",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "criptografia",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "direito",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "etiqueta",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "interrogatorio",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "medicina",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "navegacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "oratoria",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Exército ou Companhia Mercenária"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "Líder de Equipe é exclusiva; Comandante de Batalha = Veterano."
+    ]
+  },
+  {
+    "slug": "patrulheiro",
+    "name": "Patrulheiro",
+    "sourcePage": 140,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "camuflagem"
+        },
+        {
+          "ability": "desbravador"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arco",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "besta",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "fuzil",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "esgueirar-se",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "rastrear",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "sobrevivencia",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "cacador-veloz"
+        },
+        {
+          "ability": "camuflagem"
+        },
+        {
+          "ability": "cavalaria-ligeira"
+        },
+        {
+          "ability": "desbravador"
+        },
+        {
+          "ability": "disparo-montado"
+        },
+        {
+          "ability": "espreitar"
+        },
+        {
+          "ability": "ginete-veloz"
+        },
+        {
+          "ability": "linguagem-de-sinais"
+        },
+        {
+          "ability": "lutador-noturno"
+        },
+        {
+          "ability": "plano-de-batalha-abaixar-se"
+        },
+        {
+          "ability": "plano-de-batalha-reconhecimento"
+        },
+        {
+          "ability": "plano-de-batalha-sombra"
+        },
+        {
+          "ability": "recarga-rapida"
+        },
+        {
+          "ability": "rastro-sem-pegadas"
+        },
+        {
+          "ability": "resistencia-a-doencas"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arco",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "besta",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "fuzil",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "criptografia",
+          "maxLevel": 1,
+          "specialty": null
+        },
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "medicina",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "navegacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "oficio",
+          "maxLevel": 2,
+          "specialty": "qualquer"
+        },
+        {
+          "skill": "rastrear",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "sobrevivencia",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "usar-cordas",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spellLists": []
+    },
+    "notes": [
+      "Caçador Veloz e Plano de Batalha: Reconhecimento = Veterano."
+    ]
+  },
+  {
+    "slug": "pirata",
+    "name": "Pirata",
+    "sourcePage": 141,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "especializacao",
+          "param": "alfange"
+        },
+        {
+          "ability": "estavel"
+        },
+        {
+          "ability": "gangue"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arma-de-arremesso",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "escalar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "intimidar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "nadar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "marinhagem",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "ataque-surpresa"
+        },
+        {
+          "ability": "atirador"
+        },
+        {
+          "ability": "cabecada"
+        },
+        {
+          "ability": "especializacao",
+          "param": "alfange"
+        },
+        {
+          "ability": "estavel"
+        },
+        {
+          "ability": "gangue"
+        },
+        {
+          "ability": "idioma"
+        },
+        {
+          "ability": "otario"
+        },
+        {
+          "ability": "porto-de-escala"
+        },
+        {
+          "ability": "resistencia-a-doencas"
+        },
+        {
+          "ability": "retentor"
+        },
+        {
+          "ability": "trabalho-rapido"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "artilharia-leve",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "fuzil",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "enganar",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "navegacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "marinhagem",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "usar-cordas",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Tripulação Pirata"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "Otário! = Veterano."
+    ]
+  },
+  {
+    "slug": "pistoleiro",
+    "name": "Pistoleiro",
+    "sourcePage": 142,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "atirador"
+        },
+        {
+          "ability": "retornar-fogo"
+        },
+        {
+          "ability": "saque-rapido"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "pistola",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "esgueirar-se",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "intimidar",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 50,
+        "items": "bandoleira de munição, e uma de duas opções: canhão de mão (munição p/ 10 tiros) OU par de pistolas de repetição (cada uma com carregador e munição p/ 10 tiros)",
+        "kit": [
+          {
+            "item": "bandoleira-de-municao",
+            "qty": 1
+          }
+        ],
+        "choices": [
+          {
+            "label": "Arma",
+            "options": [
+              {
+                "label": "Canhão de mão (munição para 10 tiros)",
+                "kit": [
+                  {
+                    "item": "canhao-de-mao",
+                    "qty": 1
+                  },
+                  {
+                    "item": "municao-pesada-revestimento-de-papel-5-tiros",
+                    "qty": 2
+                  }
+                ]
+              },
+              {
+                "label": "Par de pistolas de repetição (cada uma com carregador e munição para 10 tiros)",
+                "kit": [
+                  {
+                    "item": "pistola-de-repeticao",
+                    "qty": 2
+                  },
+                  {
+                    "item": "municao-leve-revestimento-de-papel-5-tiros",
+                    "qty": 4
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "ataque-em-sequencia-prender"
+        },
+        {
+          "ability": "atirador"
+        },
+        {
+          "ability": "cacador-veloz"
+        },
+        {
+          "ability": "combater-com-duas-armas"
+        },
+        {
+          "ability": "esquivo"
+        },
+        {
+          "ability": "mira-aprimorada"
+        },
+        {
+          "ability": "recarga-rapida"
+        },
+        {
+          "ability": "retornar-fogo"
+        },
+        {
+          "ability": "saque-rapido"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "pistola",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "oficio",
+          "maxLevel": 4,
+          "specialty": "fabricação de armas de fogo"
+        }
+      ],
+      "connections": [],
+      "spellLists": []
+    },
+    "notes": [
+      "depende de pf para Atirar e Correr e Com as Próprias Mãos (p.216) ou ações rápidas extras p/ recarregar. Ataque em Sequência: Prender = Veterano."
+    ]
+  },
+  {
+    "slug": "presa-de-ferro",
+    "name": "Presa de Ferro",
+    "sourcePage": 143,
+    "prerequisites": {
+      "races": [
+        "humano"
+      ],
+      "archetypes": [],
+      "nation": "khadorano",
+      "text": "humano (khadorano); carreira inicial e segunda carreira restrita"
+    },
+    "initialOnly": true,
+    "focalizer": false,
+    "special": "segunda carreira obrigatória ∈ {aristocrata, conjurador de guerra, oficial militar, soldado}.",
+    "initial": {
+      "abilities": [
+        {
+          "ability": "especializacao",
+          "param": "lança explosiva"
+        },
+        {
+          "ability": "rearme-rapido",
+          "param": "lança explosiva"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-grande",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "escudo",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "sobrevivencia",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Exército Khadorano"
+      ],
+      "spells": [],
+      "gear": {
+        "co": 25,
+        "items": "armadura completa, escudo, lança explosiva (com ponta de lança e 10 pontas explosivas)",
+        "kit": [
+          {
+            "item": "armadura-completa",
+            "qty": 1
+          },
+          {
+            "item": "escudo",
+            "qty": 1
+          },
+          {
+            "item": "lanca-explosiva",
+            "qty": 1
+          },
+          {
+            "item": "lanca-explosiva-ponta-de-lanca",
+            "qty": 1
+          },
+          {
+            "item": "lanca-explosiva-ponta-explosiva",
+            "qty": 10
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "ataque-preciso"
+        },
+        {
+          "ability": "especializacao",
+          "param": "lança explosiva"
+        },
+        {
+          "ability": "ginete-veloz"
+        },
+        {
+          "ability": "investida-implacavel"
+        },
+        {
+          "ability": "linha-defensiva"
+        },
+        {
+          "ability": "rearme-rapido",
+          "param": "lança explosiva"
+        },
+        {
+          "ability": "solido-como-rocha"
+        },
+        {
+          "ability": "superconsciencia"
+        },
+        {
+          "ability": "suportar-carga"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-grande",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "escudo",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "lanca",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "sobrevivencia",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Exército Khadorano"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "Superconsciência e Sólido como Rocha = Veterano."
+    ],
+    "secondCareerOneOf": [
+      "aristocrata",
+      "conjurador-de-guerra",
+      "oficial-militar",
+      "soldado"
+    ]
+  },
+  {
+    "slug": "sacerdote",
+    "name": "Sacerdote",
+    "sourcePage": 144,
+    "prerequisites": {
+      "races": [
+        "humano"
+      ],
+      "archetypes": [
+        "dotado"
+      ],
+      "nation": null,
+      "text": "humano, Dotado, devoto de Morrow ou Menoth"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": "escolher a religião (Morrow ou Menoth) na criação.",
+    "initial": {
+      "abilities": [],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "arma-grande",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "coro"
+        },
+        {
+          "ability": "educacao-universitaria"
+        },
+        {
+          "ability": "grito-de-guerra"
+        },
+        {
+          "ability": "idioma"
+        },
+        {
+          "ability": "lider-natural"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-grande",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "escudo",
+          "maxLevel": 2,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "criptografia",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "direito",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "etiqueta",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "medicina",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "oratoria",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "pesquisar",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Igreja do personagem"
+      ],
+      "spellLists": [
+        "sacerdote-de-menoth",
+        "sacerdote-de-morrow"
+      ]
+    },
+    "notes": [
+      "Grito de Guerra = Veterano."
+    ],
+    "variantLabel": "Religião",
+    "variants": [
+      {
+        "slug": "morrow",
+        "name": "Morrow",
+        "abilities": [
+          {
+            "ability": "capacitar"
+          }
+        ],
+        "professionalSkills": [
+          {
+            "type": "fixed",
+            "skill": "conhecimento",
+            "level": 1,
+            "specialty": "fé morrowana"
+          },
+          {
+            "type": "fixed",
+            "skill": "medicina",
+            "level": 1,
+            "specialty": null
+          }
+        ],
+        "connections": [
+          "Igreja de Morrow"
+        ],
+        "spells": [
+          "dadiva-de-solovin",
+          "lamina-da-radiancia",
+          "visao-verdadeira"
+        ],
+        "spellList": "sacerdote-de-morrow"
+      },
+      {
+        "slug": "menoth",
+        "name": "Menoth",
+        "abilities": [
+          {
+            "ability": "dissipar"
+          }
+        ],
+        "professionalSkills": [
+          {
+            "type": "fixed",
+            "skill": "conhecimento",
+            "level": 1,
+            "specialty": "fé menita"
+          },
+          {
+            "type": "fixed",
+            "skill": "oratoria",
+            "level": 1,
+            "specialty": null
+          }
+        ],
+        "connections": [
+          "Templo Menita"
+        ],
+        "spells": [
+          "ignicao",
+          "imolacao",
+          "lamina-guiada"
+        ],
+        "spellList": "sacerdote-de-menoth"
+      }
+    ]
+  },
+  {
+    "slug": "salteador",
+    "name": "Salteador",
+    "sourcePage": 145,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "disparo-montado"
+        },
+        {
+          "ability": "emboscada"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-mao",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "choose",
+          "count": 1,
+          "options": [
+            {
+              "skill": "arco",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "besta",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "cavalgar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "intimidar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "lidar-com-animais",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 75,
+        "items": "cavalo de montaria, máscara, arreios",
+        "kit": [
+          {
+            "item": "cavalo-de-montaria",
+            "qty": 1
+          },
+          {
+            "text": "Máscara",
+            "qty": 1
+          },
+          {
+            "item": "arreios",
+            "qty": 1
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "ataque-montado"
+        },
+        {
+          "ability": "ataque-surpresa"
+        },
+        {
+          "ability": "avaliacao"
+        },
+        {
+          "ability": "cacador-veloz"
+        },
+        {
+          "ability": "cavalaria-ligeira"
+        },
+        {
+          "ability": "combater-com-duas-armas"
+        },
+        {
+          "ability": "disparo-montado"
+        },
+        {
+          "ability": "emboscada"
+        },
+        {
+          "ability": "espreitar"
+        },
+        {
+          "ability": "ginete-especialista"
+        },
+        {
+          "ability": "ginete-veloz"
+        },
+        {
+          "ability": "rastro-sem-pegadas"
+        },
+        {
+          "ability": "recarga-rapida"
+        },
+        {
+          "ability": "retentor"
+        },
+        {
+          "ability": "saque-rapido"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arco",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "besta",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "disfarce",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "enganar",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "interrogatorio",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "negociacao",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "seduzir",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "sobrevivencia",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "subornar",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "usar-cordas",
+          "maxLevel": 4,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Submundo"
+      ],
+      "spellLists": []
+    },
+    "notes": []
+  },
+  {
+    "slug": "soldado",
+    "name": "Soldado",
+    "sourcePage": 146,
+    "prerequisites": {
+      "races": [],
+      "archetypes": [],
+      "nation": null,
+      "text": "nenhum"
+    },
+    "initialOnly": false,
+    "focalizer": false,
+    "special": null,
+    "initial": {
+      "abilities": [
+        {
+          "ability": "encontrar-cobertura"
+        },
+        {
+          "ability": "sentinela"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "choose",
+          "count": 2,
+          "options": [
+            {
+              "skill": "arma-de-arremesso",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "arma-de-mao",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "arma-grande",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "besta",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "fuzil",
+              "level": 1,
+              "specialty": null
+            },
+            {
+              "skill": "pistola",
+              "level": 1,
+              "specialty": null
+            }
+          ]
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "conduzir",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "medicina",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "sobrevivencia",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [],
+      "spells": [],
+      "gear": {
+        "co": 100,
+        "items": null
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "absorver-impacto"
+        },
+        {
+          "ability": "avanco-cuidadoso"
+        },
+        {
+          "ability": "ataque-montado"
+        },
+        {
+          "ability": "controlador-de-gigantes"
+        },
+        {
+          "ability": "disparo-montado"
+        },
+        {
+          "ability": "encontrar-cobertura"
+        },
+        {
+          "ability": "granadeiro"
+        },
+        {
+          "ability": "idioma"
+        },
+        {
+          "ability": "investida-de-cavalaria"
+        },
+        {
+          "ability": "pro-chao"
+        },
+        {
+          "ability": "resistencia-a-doencas"
+        },
+        {
+          "ability": "recarga-rapida"
+        },
+        {
+          "ability": "sentinela"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-grande",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "artilharia-leve",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "besta",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "escudo",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "fuzil",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "medicina",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "navegacao",
+          "maxLevel": 2,
+          "specialty": null
+        },
+        {
+          "skill": "sobrevivencia",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Exército ou Companhia Mercenária"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "Sentinela é exclusiva; Avanço Cuidadoso = Veterano."
+    ]
+  },
+  {
+    "slug": "soldado-de-trincheira",
+    "name": "Soldado de Trincheira",
+    "sourcePage": 147,
+    "prerequisites": {
+      "races": [
+        "humano",
+        "ogrun",
+        "trolloide"
+      ],
+      "archetypes": [],
+      "nation": "cygnarano",
+      "text": "humano, ogrun ou trolloide (cygnaranos); carreira inicial e segunda carreira restrita"
+    },
+    "initialOnly": true,
+    "focalizer": false,
+    "special": "segunda carreira obrigatória ∈ {conjurador de guerra, fuzileiro, oficial militar, patrulheiro, soldado}.",
+    "initial": {
+      "abilities": [
+        {
+          "ability": "entrincheirar-se"
+        },
+        {
+          "ability": "investida-de-baioneta"
+        }
+      ],
+      "militarySkills": [
+        {
+          "type": "fixed",
+          "skill": "arma-de-arremesso",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "arma-grande",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "fuzil",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "type": "fixed",
+          "skill": "comandar",
+          "level": 1,
+          "specialty": null
+        },
+        {
+          "type": "fixed",
+          "skill": "detectar",
+          "level": 1,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Exército Cygnarano"
+      ],
+      "spells": [],
+      "gear": {
+        "co": 25,
+        "items": "armadura de infantaria, bandoleira de munição, baioneta, fuzil militar, 3 granadas de fumaça, pá de trincheira",
+        "kit": [
+          {
+            "item": "armadura-de-infantaria",
+            "qty": 1
+          },
+          {
+            "item": "bandoleira-de-municao",
+            "qty": 1
+          },
+          {
+            "item": "baioneta",
+            "qty": 1
+          },
+          {
+            "item": "fuzil-militar",
+            "qty": 1
+          },
+          {
+            "item": "granada-de-fumaca",
+            "qty": 3
+          },
+          {
+            "item": "pa-de-trincheira",
+            "qty": 1
+          }
+        ]
+      }
+    },
+    "progression": {
+      "abilities": [
+        {
+          "ability": "bombardeiro"
+        },
+        {
+          "ability": "controlador-de-gigantes"
+        },
+        {
+          "ability": "entrincheirar-se"
+        },
+        {
+          "ability": "especializacao",
+          "param": "baioneta"
+        },
+        {
+          "ability": "fogo-no-buraco"
+        },
+        {
+          "ability": "granadeiro"
+        },
+        {
+          "ability": "investida-de-baioneta"
+        },
+        {
+          "ability": "investida-implacavel"
+        },
+        {
+          "ability": "precisao-anatomica"
+        },
+        {
+          "ability": "pro-chao"
+        }
+      ],
+      "militarySkills": [
+        {
+          "skill": "arma-de-arremesso",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "arma-de-mao",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "arma-grande",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "artilharia-leve",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "combate-desarmado",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "fuzil",
+          "maxLevel": 4,
+          "specialty": null
+        },
+        {
+          "skill": "pistola",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "professionalSkills": [
+        {
+          "skill": "comandar",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "esgueirar-se",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "interrogatorio",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "medicina",
+          "maxLevel": 3,
+          "specialty": null
+        },
+        {
+          "skill": "sobrevivencia",
+          "maxLevel": 3,
+          "specialty": null
+        }
+      ],
+      "connections": [
+        "Exército Cygnarano"
+      ],
+      "spellLists": []
+    },
+    "notes": [
+      "Bombardeiro = Veterano (une Fogo no Buraco! e Granadeiro).",
+      "---"
+    ],
+    "secondCareerOneOf": [
+      "conjurador-de-guerra",
+      "fuzileiro",
+      "oficial-militar",
+      "patrulheiro",
+      "soldado"
+    ]
+  }
+]

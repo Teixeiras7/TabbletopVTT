@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { INVITE_CODE_LENGTH, normalizeInviteCode } from "./invite-code";
-import { BACKGROUND_TOO_BIG_MESSAGE, GRID_SIZES, MAX_BACKGROUND_BYTES, MAX_CELLS } from "./map";
+import { BACKGROUND_TOO_BIG_MESSAGE, GRID_SIZES, MAX_BACKGROUND_BYTES } from "./map";
 
 export const createMesaSchema = z.object({
   name: z
@@ -29,26 +29,6 @@ export const joinMesaSchema = z.object({
 });
 
 export const mesaIdSchema = z.uuid();
-
-// Posição do token em casas (0 = primeira). O teto é o do menor quadrado
-// (mais casas); sem limite, um clique malicioso poderia gravar coordenadas absurdas.
-const mapCoord = z.coerce.number().int().min(0).max(MAX_CELLS - 1);
-
-export const createTokenSchema = z.object({
-  label: z.string().trim().min(1, "Dê um nome ao token.").max(30, "Nome muito longo."),
-  color: z
-    .string()
-    .regex(/^#[0-9a-fA-F]{6}$/, "Cor inválida.")
-    .default("#6366f1"),
-  x: mapCoord.default(0),
-  y: mapCoord.default(0),
-});
-
-export const moveTokenSchema = z.object({
-  tokenId: z.uuid(),
-  x: mapCoord,
-  y: mapCoord,
-});
 
 export const chatMessageSchema = z
   .string()

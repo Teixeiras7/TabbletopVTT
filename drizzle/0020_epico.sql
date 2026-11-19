@@ -1,0 +1,1 @@
+ALTER TABLE "personagens" ADD COLUMN "epico" boolean DEFAULT false NOT NULL;

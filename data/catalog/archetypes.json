@@ -1,0 +1,284 @@
+[
+  {
+    "slug": "dotado",
+    "name": "Dotado",
+    "sourcePage": 113,
+    "rules": [
+      "Habilita carreiras mágicas: arcanista, conjurador de guerra, feiticeiro, mago-pistoleiro, mekânico arcano, sacerdote. Única forma de ter ARC.",
+      "Começa com uma **tradição** (p. 224): **focalizador** se tiver a carreira conjurador de guerra; senão **tecelão da vontade**. ARC inicial: focalizador 2, tecelão 3; aumenta com Pontos de Progressão/XP como outros atributos."
+    ],
+    "benefits": [
+      {
+        "slug": "circulo-de-protecao",
+        "name": "Círculo de Proteção",
+        "isFeat": false,
+        "text": "15 min para criar círculo de runas protetoras num quarto/acampamento pequeno; nomes dos protegidos entram nas runas. Personagens não nomeados que entram → nomeados são alertados. Dentro: mortos-vivos e infernais não nomeados sofrem −2 em jogadas de ataque; incorpóreo não nomeado torna-se corpóreo."
+      },
+      {
+        "slug": "conjurador-de-combate",
+        "name": "Conjurador de Combate",
+        "isFeat": false,
+        "text": "jogada de ataque mágico ganha 1 dado adicional; elimina-se o menor dado de cada jogada."
+      },
+      {
+        "slug": "conjurador-rapido",
+        "name": "Conjurador Rápido",
+        "isFeat": false,
+        "text": "+1 ação rápida, usável só para lançar magia."
+      },
+      {
+        "slug": "estudo-adicional",
+        "name": "Estudo Adicional",
+        "isFeat": false,
+        "text": "+1 magia de uma das listas de carreira; pode ser escolhido várias vezes; magias conhecidas ≤ **2 × INT**."
+      },
+      {
+        "slug": "facanha-conjurador-poderoso",
+        "name": "Façanha: Conjurador Poderoso",
+        "isFeat": true,
+        "text": "1 pf ao lançar: +4 m (2″) no ALC; magias com alcance CTR (área de controle) ou RJ (rajada) não afetadas."
+      },
+      {
+        "slug": "facanha-conjurador-veloz",
+        "name": "Façanha: Conjurador Veloz",
+        "isFeat": true,
+        "text": "1 pf para lançar imediatamente uma magia mantida no início do combate, antes da 1ª rodada, sem pagar o CST."
+      },
+      {
+        "slug": "facanha-conviccao",
+        "name": "Façanha: Convicção",
+        "isFeat": true,
+        "text": "após falhar em teste de fadiga, 1 pf = sucesso automático. Só tradição tecelão da vontade."
+      },
+      {
+        "slug": "facanha-dominador",
+        "name": "Façanha: Dominador",
+        "isFeat": true,
+        "text": "1 pf no seu turno: dobra a área de controle por 1 rodada."
+      },
+      {
+        "slug": "leitura-de-runas",
+        "name": "Leitura de Runas",
+        "isFeat": false,
+        "text": "identifica qualquer magia na linha de visão pelas runas (ver caixa \"Runas e Fórmulas\", p. 224); sente a tradição do conjurador e a lista de origem."
+      },
+      {
+        "slug": "sensibilidade-magica",
+        "name": "Sensibilidade Mágica",
+        "isFeat": false,
+        "text": "detecta automaticamente quando outro personagem lança magia a até 15 m por ponto de ARC (pode ser ignorado como ruído, mas percebe magias poderosas); focalizador também sente outros focalizadores no alcance."
+      }
+    ]
+  },
+  {
+    "slug": "habilidoso",
+    "name": "Habilidoso",
+    "sourcePage": 113,
+    "rules": [
+      "Base: na Fase de Ativação, se escolher **atacar**, recebe **1 ataque adicional** no turno."
+    ],
+    "benefits": [
+      {
+        "slug": "agil",
+        "name": "Ágil",
+        "isFeat": false,
+        "text": "testes de AGI ampliados."
+      },
+      {
+        "slug": "ambidestro",
+        "name": "Ambidestro",
+        "isFeat": false,
+        "text": "sem a penalidade normal na jogada de ataque da segunda arma ao usar Combater com Duas Armas."
+      },
+      {
+        "slug": "atencao-sobrenatural",
+        "name": "Atenção Sobrenatural",
+        "isFeat": false,
+        "text": "testes de Iniciativa ampliados; inimigos nunca ganham bônus de ataque pelas costas contra você."
+      },
+      {
+        "slug": "cauteloso",
+        "name": "Cauteloso",
+        "isFeat": false,
+        "text": "se derrubado, move-se imediatamente até 4 m (2″) sem sofrer ataques livres; derrubado, não é atingido automaticamente por corpo-a-corpo e sua DEF não é reduzida; levanta-se no turno sem gastar movimento/ação; sem efeito se montado."
+      },
+      {
+        "slug": "facanha-audaz",
+        "name": "Façanha: Audaz",
+        "isFeat": true,
+        "text": "1×/turno, 1 pf: no próximo ataque com arma de mão, arco frontal vira 360° e faz um ataque corpo-a-corpo contra cada inimigo na linha de visão e alcance corpo-a-corpo; Passo Lateral só ativa 1 vez."
+      },
+      {
+        "slug": "facanha-desarme",
+        "name": "Façanha: Desarme",
+        "isFeat": true,
+        "text": "após acertar (corpo-a-corpo ou distância, não rajada/ADE), em vez de dano, 1 pf desarma; a arma/objeto cai no chão."
+      },
+      {
+        "slug": "facanha-golpe-defensivo",
+        "name": "Façanha: Golpe Defensivo",
+        "isFeat": true,
+        "text": "quando inimigo avança e termina o movimento no seu alcance corpo-a-corpo, 1 pf para atacá-lo imediatamente."
+      },
+      {
+        "slug": "facanha-intocavel",
+        "name": "Façanha: Intocável",
+        "isFeat": true,
+        "text": "no seu turno, 1 pf = +3 DEF por 1 rodada."
+      },
+      {
+        "slug": "passo-lateral",
+        "name": "Passo Lateral",
+        "isFeat": false,
+        "text": "ao atingir inimigo com arma corpo-a-corpo, pode avançar até 4 m (2″) após resolver o ataque, sem ataques livres."
+      },
+      {
+        "slug": "virtuoso",
+        "name": "Virtuoso",
+        "isFeat": false,
+        "text": "escolher 1 perícia militar; em ataque sem ADE com arma dessa perícia, +1 dado nas jogadas de ataque e dano (elimina o menor de cada). Repetível com perícia militar diferente."
+      }
+    ]
+  },
+  {
+    "slug": "intelectual",
+    "name": "Intelectual",
+    "sourcePage": 114,
+    "rules": [
+      "Base: **+1 nas jogadas de ataque e dano**; aliados no seu alcance de comando que ouçam suas ordens também ganham +1 ataque/dano. **Não cumulativo** (um personagem só ganha o bônus de um Intelectual por vez)."
+    ],
+    "benefits": [
+      {
+        "slug": "coordenacao-em-campo-de-batalha",
+        "name": "Coordenação em Campo de Batalha",
+        "isFeat": false,
+        "text": "aliados no alcance de comando não sofrem a penalidade em ataques à distância/mágicos contra alvo engajado (p. 206) e não têm chance de atingir aliados ao errar."
+      },
+      {
+        "slug": "facanha-guerra-nao-convencional",
+        "name": "Façanha: Guerra Não Convencional",
+        "isFeat": true,
+        "text": "1 pf; explicar ao mestre como usa o ambiente; mestre define efeito (teste de dano ampliado — p. 193, derrubar, empurrar, lançar, queda de local alto)."
+      },
+      {
+        "slug": "facanha-pensamento-rapido",
+        "name": "Façanha: Pensamento Rápido",
+        "isFeat": true,
+        "text": "1×/rodada, 1 pf: faz um ataque ou ação rápida no início do turno de outro personagem."
+      },
+      {
+        "slug": "facanha-plano-de-acao",
+        "name": "Façanha: Plano de Ação",
+        "isFeat": true,
+        "text": "no início do combate, 1 pf: você e aliados que seguirem o plano ganham +2 Iniciativa e +2 ataque na 1ª rodada."
+      },
+      {
+        "slug": "facanha-plano-perfeito",
+        "name": "Façanha: Plano Perfeito",
+        "isFeat": true,
+        "text": "1 pf + pesquisa/supervisão detalhada cria um plano; quem o seguir ganha +1 dado em testes fora de combate no dia da execução."
+      },
+      {
+        "slug": "facanha-presciente",
+        "name": "Façanha: Presciente",
+        "isFeat": true,
+        "text": "1 pf = vence a iniciativa automaticamente (empate entre usuários: teste de iniciativa entre eles)."
+      },
+      {
+        "slug": "facanha-reflexo-impecavel",
+        "name": "Façanha: Reflexo Impecável",
+        "isFeat": true,
+        "text": "1 pf; definir um inimigo; na próxima vez que ele atingir diretamente você no encontro, o ataque conta como falha."
+      },
+      {
+        "slug": "genio",
+        "name": "Gênio",
+        "isFeat": false,
+        "text": "testes de INT ampliados."
+      },
+      {
+        "slug": "memoria-fotografica",
+        "name": "Memória Fotográfica",
+        "isFeat": false,
+        "text": "pode perguntar ao mestre sobre algo que viu/experimentou."
+      },
+      {
+        "slug": "superpercepcao",
+        "name": "Superpercepção",
+        "isFeat": false,
+        "text": "testes de PER ampliados."
+      }
+    ]
+  },
+  {
+    "slug": "poderoso",
+    "name": "Poderoso",
+    "sourcePage": 114,
+    "rules": [
+      "Base: **+1 dado** nos testes de **dano corpo-a-corpo**.",
+      "Nota: \"ampliado\" (teste ampliado) é termo definido no Cap. 4 (p. 193–194), fora desta parte."
+    ],
+    "benefits": [
+      {
+        "slug": "durao",
+        "name": "Durão",
+        "isFeat": false,
+        "text": "sempre que for incapacitado, jogar 1d6; com 5 ou 6, cura 1 ponto de vitalidade, deixa de estar incapacitado e fica derrubado."
+      },
+      {
+        "slug": "facanha-contra-investida",
+        "name": "Façanha: Contra-Investida",
+        "isFeat": true,
+        "text": "inimigo avança e termina a até 12 m (6″) na sua linha de visão: 1 pf para investir imediatamente contra ele; não pode se engajado."
+      },
+      {
+        "slug": "facanha-golpe-de-retorno",
+        "name": "Façanha: Golpe de Retorno",
+        "isFeat": true,
+        "text": "1×/turno, 1 pf = 1 ataque corpo-a-corpo adicional."
+      },
+      {
+        "slug": "facanha-invulneravel",
+        "name": "Façanha: Invulnerável",
+        "isFeat": true,
+        "text": "no seu turno, 1 pf = +3 ARM por 1 rodada."
+      },
+      {
+        "slug": "facanha-quebra-escudo",
+        "name": "Façanha: Quebra-Escudo",
+        "isFeat": true,
+        "text": "ao atingir alvo com escudo em corpo-a-corpo, 1 pf; após o dano o escudo fica completamente destruído."
+      },
+      {
+        "slug": "facanha-revitalizar",
+        "name": "Façanha: Revitalizar",
+        "isFeat": true,
+        "text": "no seu turno, 1 pf recupera pontos de vida = FIS; dano sofrido no turno deve ser resolvido antes; não pode se incapacitado."
+      },
+      {
+        "slug": "facanha-salto-superior",
+        "name": "Façanha: Salto Superior",
+        "isFeat": true,
+        "text": "1×/turno, só em turno sem correr/investir, 1 pf: avança até 10 m (5″) por cima dos inimigos."
+      },
+      {
+        "slug": "facanha-vinganca",
+        "name": "Façanha: Vingança",
+        "isFeat": true,
+        "text": "no seu turno, 1 pf; define inimigo; resto do encontro faz testes de ataque ampliados contra ele; 1×/encontro, salvo se o alvo original for destruído."
+      },
+      {
+        "slug": "furia-justa",
+        "name": "Fúria Justa",
+        "isFeat": false,
+        "text": "se aliado(s) sofrer(em) dano por ataque inimigo dentro do seu alcance de comando, +2 FOR e ARM por 1 rodada."
+      },
+      {
+        "slug": "repelir",
+        "name": "Repelir",
+        "isFeat": false,
+        "text": "ao atingir alvo com corpo-a-corpo, pode empurrá-lo 2 m (1″); depois pode avançar 2 m (1″)."
+      }
+    ]
+  }
+]

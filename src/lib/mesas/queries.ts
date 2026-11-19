@@ -1,7 +1,7 @@
 import "server-only";
-import { and, asc, desc, eq } from "drizzle-orm";
+import { and, asc, desc, eq, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
-import { gameTableMembers, gameTables, profiles, scenes, tokens } from "@/lib/db/schema";
+import { gameTableMembers, gameTables, profiles, scenes } from "@/lib/db/schema";
 import { generateInviteCode } from "./invite-code";
 import { roleOf, type MesaRole } from "./roles";
 
@@ -48,28 +48,22 @@ export async function updateTable(
 
 /** Retorna null quando a mesa não existe OU o usuário não participa — quem não é membro não descobre que ela existe. */
 export async function getTableForMember(tableId: string, userId: string) {
-  const [row] = await db
-    .select({ table: gameTables })
-    .from(gameTables)
-    .innerJoin(
-      gameTableMembers,
-      and(eq(gameTableMembers.tableId, gameTables.id), eq(gameTableMembers.userId, userId)),
-    )
-    .where(eq(gameTables.id, tableId))
-    .limit(1);
-
+  // As duas em paralelo (cada ida ao banco custa ~170 ms); a lista de membros só sai se ele participa.
+  const [[row], members] = await Promise.all([
+    db
+      .select({ table: gameTables })
+      .from(gameTables)
+      .innerJoin(gameTableMembers, and(eq(gameTableMembers.tableId, gameTables.id), eq(gameTableMembers.userId, userId)))
+      .where(eq(gameTables.id, tableId))
+      .limit(1),
+    db
+      .select({ userId: gameTableMembers.userId, displayName: profiles.displayName, joinedAt: gameTableMembers.joinedAt })
+      .from(gameTableMembers)
+      .innerJoin(profiles, eq(gameTableMembers.userId, profiles.id))
+      .where(eq(gameTableMembers.tableId, tableId))
+      .orderBy(asc(gameTableMembers.joinedAt)),
+  ]);
   if (!row) return null;
-
-  const members = await db
-    .select({
-      userId: gameTableMembers.userId,
-      displayName: profiles.displayName,
-      joinedAt: gameTableMembers.joinedAt,
-    })
-    .from(gameTableMembers)
-    .innerJoin(profiles, eq(gameTableMembers.userId, profiles.id))
-    .where(eq(gameTableMembers.tableId, tableId))
-    .orderBy(asc(gameTableMembers.joinedAt));
 
   return {
     table: row.table,
@@ -86,16 +80,20 @@ export async function createTable(
   // UNIQUE: em vez de checar antes (corrida), tenta e repete se colidir.
   for (let attempt = 0; attempt < 5; attempt++) {
     try {
-      return await db.transaction(async (tx) => {
-        const [table] = await tx
-          .insert(gameTables)
-          .values({ ...input, ownerId: userId, inviteCode: generateInviteCode() })
-          .returning();
-        if (!table) throw new Error("Falha ao criar a mesa.");
-        await tx.insert(gameTableMembers).values({ tableId: table.id, userId });
-        await tx.insert(scenes).values({ tableId: table.id });
-        return table;
-      });
+      // Um comando só (mesa + Mestre como membro + cena): atômico sem transação e uma ida ao banco.
+      // Transação não dá: o cliente roda sem pipelining (src/lib/db/index.ts), que o sql.begin exige.
+      const rows = await db.execute<{ id: string }>(sql`
+        with mesa as (
+          insert into ${gameTables} (nome, descricao, dono_id, codigo_convite)
+          values (${input.name}, ${input.description}, ${userId}, ${generateInviteCode()})
+          returning id
+        ),
+        membro as (insert into ${gameTableMembers} (mesa_id, usuario_id) select id, ${userId} from mesa),
+        cena as (insert into ${scenes} (mesa_id) select id from mesa)
+        select id from mesa`);
+      const table = rows[0];
+      if (!table) throw new Error("Falha ao criar a mesa.");
+      return table;
     } catch (error) {
       if (!isUniqueViolation(error)) throw error;
     }
@@ -160,10 +158,7 @@ export async function getSceneForMember(tableId: string, userId: string) {
     .where(eq(scenes.tableId, tableId))
     .limit(1);
   if (!row) return null;
-
-  const sceneTokens = await db.select().from(tokens).where(eq(tokens.sceneId, row.scene.id));
-
-  return { scene: row.scene, role: roleOf(row.ownerId, userId), tokens: sceneTokens };
+  return { scene: row.scene, role: roleOf(row.ownerId, userId) };
 }
 
 async function assertMaster(sceneId: string, userId: string) {
@@ -196,52 +191,4 @@ export async function updateSceneBackground(sceneId: string, userId: string, bac
     .where(eq(scenes.id, sceneId))
     .returning({ id: scenes.id });
   return updated.length > 0;
-}
-
-/** Só o Mestre da mesa cria tokens. */
-export async function createToken(
-  sceneId: string,
-  userId: string,
-  input: { label: string; color: string; x: number; y: number },
-) {
-  if (!(await assertMaster(sceneId, userId))) return null;
-  const [token] = await db
-    .insert(tokens)
-    .values({ ...input, sceneId, createdBy: userId })
-    .returning();
-  return token ?? null;
-}
-
-/** Só o Mestre da mesa move tokens. */
-export async function moveToken(tokenId: string, userId: string, x: number, y: number) {
-  const [row] = await db
-    .select({ ownerId: gameTables.ownerId })
-    .from(tokens)
-    .innerJoin(scenes, eq(tokens.sceneId, scenes.id))
-    .innerJoin(gameTables, eq(scenes.tableId, gameTables.id))
-    .where(eq(tokens.id, tokenId))
-    .limit(1);
-  if (row?.ownerId !== userId) return false;
-
-  const updated = await db
-    .update(tokens)
-    .set({ x, y })
-    .where(eq(tokens.id, tokenId))
-    .returning({ id: tokens.id });
-  return updated.length > 0;
-}
-
-/** Só o Mestre da mesa remove tokens. */
-export async function deleteToken(tokenId: string, userId: string) {
-  const [row] = await db
-    .select({ ownerId: gameTables.ownerId })
-    .from(tokens)
-    .innerJoin(scenes, eq(tokens.sceneId, scenes.id))
-    .innerJoin(gameTables, eq(scenes.tableId, gameTables.id))
-    .where(eq(tokens.id, tokenId))
-    .limit(1);
-  if (row?.ownerId !== userId) return false;
-
-  const deleted = await db.delete(tokens).where(eq(tokens.id, tokenId)).returning({ id: tokens.id });
-  return deleted.length > 0;
 }

@@ -1,0 +1,1194 @@
+[
+  {
+    "slug": "absorver-impacto",
+    "name": "Absorver Impacto",
+    "prerequisites": null,
+    "text": "onde seria derrubado, fica deitado; perde se montado.",
+    "repeatable": false,
+    "sourcePage": 153
+  },
+  {
+    "slug": "academico-arcano",
+    "name": "Acadêmico Arcano",
+    "prerequisites": null,
+    "text": "limite de magias = INT×3 (em vez de INT×2).",
+    "repeatable": false,
+    "sourcePage": 153
+  },
+  {
+    "slug": "acrobatico",
+    "name": "Acrobático",
+    "prerequisites": "AGI 6",
+    "text": "pode avançar por outros personagens se o movimento permitir passar por suas bases; +3 em Saltar.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "alquimista-de-campo",
+    "name": "Alquimista de Campo",
+    "prerequisites": "Alquimia 1",
+    "text": "ver 6.1.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "aparar",
+    "name": "Aparar",
+    "prerequisites": null,
+    "text": "armado com arma de mão, não pode ser atingido por ataques livres.",
+    "repeatable": false,
+    "sourcePage": 153
+  },
+  {
+    "slug": "as-comandante",
+    "name": "Ás Comandante",
+    "prerequisites": "Controlador de Gigantes, Comandar 2",
+    "text": "ver 6.1.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "assassino-arcano",
+    "name": "Assassino Arcano",
+    "prerequisites": null,
+    "text": "ataques ignoram pontos de foco em ampliação adicional no Campo de Poder do alvo e efeitos mágicos que aumentem ARM ou DEF dele.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "assassino-de-magos",
+    "name": "Assassino de Magos",
+    "prerequisites": "PER 6",
+    "text": "+1 dado nas jogadas de dano contra personagens que possam conjurar.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "astuto",
+    "name": "Astuto",
+    "prerequisites": "Detectar 1",
+    "text": "relança falhas em Detectar (1× cada).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "ataque-em-sequencia-prender",
+    "name": "Ataque em Sequência: Prender",
+    "prerequisites": "Combater com Duas Armas, Pistola 3",
+    "text": "lutando com duas pistolas e atingindo o mesmo alvo vivo com os dois ataques iniciais: ataque à distância adicional; se acertar, **não causa dano**: alvo avança até 4 m (2\") e é derrubado.",
+    "repeatable": false,
+    "sourcePage": 155
+  },
+  {
+    "slug": "ataque-em-sequencia-sangrar",
+    "name": "Ataque em Sequência: Sangrar",
+    "prerequisites": "Combater com Duas Armas, Arma de Mão 3",
+    "text": "com duas armas c-a-c de mão atingindo o mesmo alvo vivo com os dois ataques iniciais: ataque c-a-c adicional; se acertar, sem dano, mas o alvo deve desistir do movimento **ou** da ação na próxima Fase de Ativação. (texto original: \"ataque corpo-a-corpo dano\" — ver Dúvidas)",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "ataque-montado",
+    "name": "Ataque Montado",
+    "prerequisites": "Cavalgar 2",
+    "text": "ver 6.1: avanço completo, pode parar a qualquer momento p/ atacar, depois continua.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "ataque-preciso",
+    "name": "Ataque Preciso",
+    "prerequisites": null,
+    "text": "em sucesso c-a-c, escolhe o ramo da espiral vital ou a coluna da tabela de dano atingida (se aplicável).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "ataque-surpresa",
+    "name": "Ataque Surpresa",
+    "prerequisites": null,
+    "text": "quando o ataque pode nocautear, +2 no número-alvo da jogada de Força de Vontade para resistir.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "atirador",
+    "name": "Atirador",
+    "prerequisites": null,
+    "text": "sem −4 nos ataques à distância com pistolas/carabinas enquanto engajado.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "atirador-de-elite",
+    "name": "Atirador de Elite",
+    "prerequisites": null,
+    "text": "ver 6.1.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "avaliacao",
+    "name": "Avaliação",
+    "prerequisites": null,
+    "text": "julga valor da maioria dos itens; falsificações muito boas exigem Detectar + INT.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "avanco-cuidadoso",
+    "name": "Avanço Cuidadoso",
+    "prerequisites": "Sobrevivência 3",
+    "text": "ver 6.1.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "besteiro",
+    "name": "Besteiro",
+    "prerequisites": null,
+    "text": "ver 6.1.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "boa-criacao",
+    "name": "Boa Criação",
+    "prerequisites": null,
+    "text": "relança falhas em Etiqueta.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "bombardeiro",
+    "name": "Bombardeiro",
+    "prerequisites": "Arma de Arremesso 3",
+    "text": "se seu ataque à distância com granada desvia, relança direção e/ou distância do desvio.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "brado-balada-heroica",
+    "name": "Brado: Balada Heroica",
+    "prerequisites": "Brado de Matança 2",
+    "text": "ação rápida; 1 rodada; trolloides aliados no alcance de comando ficam destemidos e +2 nos ataques c-a-c.",
+    "repeatable": false,
+    "sourcePage": 155
+  },
+  {
+    "slug": "brado-cacofonia",
+    "name": "Brado: Cacofonia",
+    "prerequisites": "Brado de Matança 2",
+    "text": "ação rápida; 1 rodada; inimigos no alcance de comando não podem usar planos de batalha, manobras nem conjurar magias.",
+    "repeatable": false,
+    "sourcePage": 155
+  },
+  {
+    "slug": "brado-chamado",
+    "name": "Brado: Chamado",
+    "prerequisites": "Brado de Matança 1",
+    "text": "ação rápida; grito ouvido em raio = nível de BM em **km**.",
+    "repeatable": false,
+    "sourcePage": 155
+  },
+  {
+    "slug": "brado-chamado-do-desafio",
+    "name": "Brado: Chamado do Desafio",
+    "prerequisites": "Brado de Matança 2",
+    "text": "ação rápida; 1 rodada; trolloide aliado no alcance de comando que faça jogada de Durão e obtenha 4, 5 ou 6 recupera 1 vitalidade e é derrubado.",
+    "repeatable": false,
+    "sourcePage": 155
+  },
+  {
+    "slug": "brado-rajada-sonica",
+    "name": "Brado: Rajada Sônica",
+    "prerequisites": "Brado de Matança 2",
+    "text": "1×/turno, em vez de atacar; ataque à distância RJ ALC 8, PDR 12; ataque = DES + BM.",
+    "repeatable": false,
+    "sourcePage": 155
+  },
+  {
+    "slug": "brado-reverberacao",
+    "name": "Brado: Reverberação",
+    "prerequisites": "Brado de Matança 2",
+    "text": "ação rápida; ataque à distância RJ ALC 6 **sem dano**; DES + BM; inimigos atingidos empurrados 1d3\" diretamente para longe (mover primeiro o mais distante).",
+    "repeatable": false,
+    "sourcePage": 155
+  },
+  {
+    "slug": "brado-tremor",
+    "name": "Brado: Tremor",
+    "prerequisites": "Brado de Matança 3",
+    "text": "1×/turno, em vez de atacar; ataque à distância de brado ALC 10, ADE 5, sem dano; alvos derrubados.",
+    "repeatable": false,
+    "sourcePage": 155
+  },
+  {
+    "slug": "cabecada",
+    "name": "Cabeçada",
+    "prerequisites": "FOR 5, Combate Desarmado 2",
+    "text": "em vez de ataque desarmado, gasta 1 pf: ataque c-a-c desarmado; se acertar, alvo **derrubado** e sofre dano com PDR = sua FOR; não vale contra alvo de base maior.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "cacador-de-feras",
+    "name": "Caçador de Feras",
+    "prerequisites": "Sobrevivência 1",
+    "text": "bônus nas jogadas de ataque c-a-c/à distância = nível de Sobrevivência contra animal natural ou fera nativa das selvas de Immoren.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "cacador-veloz",
+    "name": "Caçador Veloz",
+    "prerequisites": "AGI 6",
+    "text": "ao incapacitar inimigo com ataque à distância normal, avança até 4 m (2\") logo após o ataque.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "camuflagem",
+    "name": "Camuflagem",
+    "prerequisites": null,
+    "text": "+2 adicional de DEF ao usar ocultação/cobertura (total +4 ou +6).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "capacitar",
+    "name": "Capacitar",
+    "prerequisites": null,
+    "text": "no seu turno, BAB com aliado não incapacitado, gasta 1 pf: aliado recupera 1d3+1 de vitalidade.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "carteador",
+    "name": "Carteador",
+    "prerequisites": "Jogatina 2",
+    "text": "+1 dado nas jogadas de Jogatina, descarta o menor; quem o vê pode fazer Detectar; dificuldade = INT + AGI + Jogatina.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "cavalaria-ligeira",
+    "name": "Cavalaria Ligeira",
+    "prerequisites": "Cavalgar 2",
+    "text": "em montaria que não seja cavalo de guerra, no fim do turno avança até 10 m (5\").",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "comandante-de-batalha",
+    "name": "Comandante de Batalha",
+    "prerequisites": "Comandar 3",
+    "text": "1 plano de batalha por turno sem gastar pf.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "comandante-de-campo-ataque-magico",
+    "name": "Comandante de Campo: Ataque Mágico",
+    "prerequisites": "ARC 5",
+    "text": "1 foco no turno; 1 rodada: armas dos personagens do grupo de batalha viram mágicas enquanto na área de controle do conjurador.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "comandante-de-campo-investida-implacavel",
+    "name": "Comandante de Campo: Investida Implacável",
+    "prerequisites": "ARC 5",
+    "text": "1 foco; 1 rodada: personagem do grupo de batalha que inicie investida na área de controle ganha Investida Implacável; quem já tem ignora penalidades de terreno difícil naquela ativação.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "comandante-de-campo-protecao-de-escudo",
+    "name": "Comandante de Campo: Proteção de Escudo",
+    "prerequisites": "ARC 7",
+    "text": "1 foco; 1 rodada: personagens do grupo de batalha na área de controle ganham Proteção de Escudo (1×/turno, aliado a 4 m/2\" atingido diretamente → este personagem vira o alvo); não vale incorpóreo, derrubado ou imóvel.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "combater-com-duas-armas",
+    "name": "Combater com Duas Armas",
+    "prerequisites": "AGI 4",
+    "text": "com arma de uma mão (ou pistola) em cada mão: 1 ataque adicional com a segunda arma, com −2 nesse ataque.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "conselheiro",
+    "name": "Conselheiro",
+    "prerequisites": "Comandar 2",
+    "text": "aliados BAB com você: +1 no alcance de comando.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "contragolpe",
+    "name": "Contragolpe",
+    "prerequisites": null,
+    "text": "1×/rodada, se inimigo erra ataque c-a-c contra você: ataque normal imediato (se à distância, arma carregada).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "controlador-de-gigantes",
+    "name": "Controlador de Gigantes",
+    "prerequisites": null,
+    "text": "comanda gigantes-a-vapor; exige conhecer o idioma do córtex e os códigos de travamento (regras p.310); gigantes **vinculados** (p.310) não são afetados.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "coro",
+    "name": "Coro",
+    "prerequisites": "ARC 4",
+    "text": "+1 cumulativo nos ataques mágicos por outro aliado da mesma fé com Coro a até 2 m (1\").",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "defensor",
+    "name": "Defensor",
+    "prerequisites": null,
+    "text": "1×/rodada, aliado no alcance de comando atingido por ataque inimigo: após resolver, avança até 4 m (2\") em direção ao inimigo e faz ataque c-a-c.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "defesas-arcanas",
+    "name": "Defesas Arcanas",
+    "prerequisites": "ARC 5",
+    "text": "+3 ARM contra ataques mágicos.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "desbravador",
+    "name": "Desbravador",
+    "prerequisites": "Sobrevivência 1",
+    "text": "move em terreno difícil sem penalidades.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "detectar-mentiras",
+    "name": "Detectar Mentiras",
+    "prerequisites": "Detectar 3",
+    "text": "sabe quando alguém mente (≠ discernir a verdade).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "detonador",
+    "name": "Detonador",
+    "prerequisites": null,
+    "text": "+2 no ataque com ataques elétricos à distância.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "disparo-montado",
+    "name": "Disparo Montado",
+    "prerequisites": "Cavalgar 1",
+    "text": "sem a penalidade de atacar à distância montado (p.209).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "dissipar",
+    "name": "Dissipar",
+    "prerequisites": null,
+    "text": "ao atingir inimigo com ataque c-a-c, gasta 1 pf: magias em manutenção daquele inimigo terminam imediatamente.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "educacao-universitaria",
+    "name": "Educação Universitária",
+    "prerequisites": null,
+    "text": "relança falhas em Pesquisar.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "emboscada",
+    "name": "Emboscada",
+    "prerequisites": null,
+    "text": "na 1ª rodada do combate: jogadas de ataque e dano **ampliadas** contra inimigos ainda não ativados.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "encontrar-cobertura",
+    "name": "Encontrar Cobertura",
+    "prerequisites": null,
+    "text": "ver 6.1.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "enganador",
+    "name": "Enganador",
+    "prerequisites": "Enganar 1, Subornar 1",
+    "text": "relança falhas em Enganar e Subornar.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "engenheiro-arcano",
+    "name": "Engenheiro Arcano",
+    "prerequisites": "Eng. Mekânica 2",
+    "text": "relança falhas em Engenharia Mekânica.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "engenhoso",
+    "name": "Engenhoso",
+    "prerequisites": "Eng. Mekânica 3",
+    "text": "mantém magias em gigantes-a-vapor que controla sem gastar foco nem ganhar fadiga.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "entrincheirar-se",
+    "name": "Entrincheirar-se",
+    "prerequisites": null,
+    "text": "com pá nas mãos, ação rápida: trincheira improvisada; até mover, ser deslocado, derrubado ou engajar: ganha cobertura, sem dano de explosão, LDV não bloqueada; não no turno em que correu.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "escapar",
+    "name": "Escapar",
+    "prerequisites": "Esquivo, Arte da Fuga 3",
+    "text": "quando ataque inimigo o erra, em vez de avançar 4 m (Esquivo) pode fazer avanço completo.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "especializacao",
+    "name": "Especialização",
+    "prerequisites": null,
+    "text": "sem penalidades na jogada de ataque com o tipo escolhido; várias vezes, um tipo por vez.",
+    "repeatable": true,
+    "sourcePage": null
+  },
+  {
+    "slug": "espreitar",
+    "name": "Espreitar",
+    "prerequisites": "Esgueirar-se 1",
+    "text": "fica furtivo (p.216) em terreno com ocultação, na ADE de magia que dê ocultação ou de efeito de névoa.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "esquivo",
+    "name": "Esquivo",
+    "prerequisites": null,
+    "text": "quando ataque inimigo o erra, avança imediatamente até 4 m (2\") (exceto se foi atacado durante o avanço); sem ataques livres nesse movimento.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "estavel",
+    "name": "Estável",
+    "prerequisites": null,
+    "text": "não pode ser derrubado; perde se montado.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "estilo-livre",
+    "name": "Estilo Livre",
+    "prerequisites": "Alquimia 1",
+    "text": "improvisa ingredientes de compostos alquímicos (teste de Alquimia, número-alvo = 10 + valor em CO do ingrediente); reduz em 1 CO o custo de cada composto (mín. 1 CO); resultado com aparência/qualidade levemente diferente.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "eximio-atirador",
+    "name": "Exímio Atirador",
+    "prerequisites": null,
+    "text": "+2 no ataque à distância/mágico contra alvo com cobertura, ocultação ou em terreno elevado.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "fabricar-bala-runica",
+    "name": "Fabricar Bala Rúnica",
+    "prerequisites": null,
+    "text": "fabrica munição para tiros arcanos: 1 CO de material por bala; até 5 balas/hora; exige kit de fabricação.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "fogo-no-buraco",
+    "name": "Fogo no Buraco!",
+    "prerequisites": "Arma de Arremesso 1",
+    "text": "ver 6.1.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "forcar-o-ataque",
+    "name": "Forçar o Ataque",
+    "prerequisites": "Golpe com Escudo, Escudo 3",
+    "text": "ao lançar um inimigo, após resolver, avança em direção a ele pela distância em que ele se moveu e faz ataque c-a-c.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "franco-atirador",
+    "name": "Franco Atirador",
+    "prerequisites": "Fuzil 3",
+    "text": "ao desistir do movimento para mirar, o 1º ataque à distância do turno tem dano ampliado.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "gangue",
+    "name": "Gangue",
+    "prerequisites": null,
+    "text": "ataque c-a-c contra inimigo em alcance c-a-c de outro aliado: +1 ataque e dano; +2 se o aliado também tem Gangue.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "ginete-de-combate",
+    "name": "Ginete de Combate",
+    "prerequisites": "Cavalgar 1",
+    "text": "montaria designada cavalo de guerra, sem investida neste turno: a montaria pode fazer ataque de impacto contra alvo em alcance c-a-c.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "ginete-especialista",
+    "name": "Ginete Especialista",
+    "prerequisites": "Cavalgar 2",
+    "text": "relança falhas em Cavalgar; personagem e montaria não podem ser derrubados enquanto montado e montaria não nocauteada.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "ginete-veloz",
+    "name": "Ginete Veloz",
+    "prerequisites": null,
+    "text": "montado, move em terreno difícil sem penalidades.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "golpe-com-escudo",
+    "name": "Golpe com Escudo",
+    "prerequisites": "FOR 6",
+    "text": "ao investir com escudo, em vez de investir, gasta 1 pf para **lançar** o alvo: ataque com o escudo (−2 se alvo de base maior); POD do dano = FOR + POD do escudo; POD do dano colateral = FOR.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "golpe-de-retaliacao",
+    "name": "Golpe de Retaliação",
+    "prerequisites": "FIS 7",
+    "text": "atingido por ataque c-a-c fora do seu turno, após resolver, gasta 1 pf: ataque c-a-c normal imediato contra quem o atingiu.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "granadeiro",
+    "name": "Granadeiro",
+    "prerequisites": "Arma de Arremesso 1",
+    "text": "ver 6.1.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "grito-de-guerra",
+    "name": "Grito de Guerra",
+    "prerequisites": "Comandar 3",
+    "text": "1 pf; 1 rodada: seu alcance de comando dobra e aliados no alcance (incluindo você) ficam destemidos (p.220).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "guarda-costas",
+    "name": "Guarda-Costas",
+    "prerequisites": "Proteção de Escudo, Escudo 3",
+    "text": "sem limite de usos de Proteção de Escudo por rodada.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "identidade-falsa",
+    "name": "Identidade Falsa",
+    "prerequisites": "Disfarce 1",
+    "text": "jogadas de Disfarce com essa identidade são ampliadas; escolhe uma carreira e recebe 1 PP nível 1 dela; identidade verossímil; várias vezes, uma identidade por vez.",
+    "repeatable": true,
+    "sourcePage": null
+  },
+  {
+    "slug": "idioma",
+    "name": "Idioma",
+    "prerequisites": null,
+    "text": "aprende a falar/ler/escrever um idioma; várias vezes, um idioma por vez.",
+    "repeatable": true,
+    "sourcePage": null
+  },
+  {
+    "slug": "imobilizar",
+    "name": "Imobilizar",
+    "prerequisites": null,
+    "text": "ao incapacitar personagem com ataque, alvo dentro do alcance c-a-c: alvo recupera 1 vitalidade e deixa de estar incapacitado, mas é considerado algemado/amarrado/inconsciente/fora de ação até o fim do encontro (fica à disposição dos vitoriosos).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "imunidade-corrosao",
+    "name": "Imunidade: Corrosão",
+    "prerequisites": null,
+    "text": "Imune a dano de corrosão.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "imunidade-eletricidade",
+    "name": "Imunidade: Eletricidade",
+    "prerequisites": null,
+    "text": "Imune a dano de eletricidade.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "imunidade-fogo",
+    "name": "Imunidade: Fogo",
+    "prerequisites": null,
+    "text": "Imune a dano de fogo.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "imunidade-frio",
+    "name": "Imunidade: Frio",
+    "prerequisites": null,
+    "text": "Imune a dano de frio.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "inscrever-formulas",
+    "name": "Inscrever Fórmulas",
+    "prerequisites": "Eng. Mekânica 1",
+    "text": "inscreve placas rúnicas (Mekânica, p.271).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "investida-de-baioneta",
+    "name": "Investida de Baioneta",
+    "prerequisites": null,
+    "text": "ao investir com arma à distância com baioneta: após mover, antes do ataque de investida, faz 1 ataque à distância contra o alvo, **sem** a penalidade de alvo engajado (p.206); não vale se estava engajado com o alvo no início do turno; se o alvo não ficou em alcance c-a-c, pode fazer o ataque à distância antes do fim do turno; o ataque de investida deve ser feito com a baioneta.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "investida-de-cavalaria",
+    "name": "Investida de Cavalaria",
+    "prerequisites": "Cavalgar 1",
+    "text": "pode fazer investida de cavalaria (p.209) em cavalo de guerra.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "investida-implacavel",
+    "name": "Investida Implacável",
+    "prerequisites": null,
+    "text": "ignora penalidades de terreno difícil ao investir.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "legado-de-bragg",
+    "name": "Legado de Bragg",
+    "prerequisites": "Brado de Matança 2",
+    "text": "ver 6.1.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "lider-de-equipe",
+    "name": "Líder de Equipe",
+    "prerequisites": null,
+    "text": "ao ganhar um pf, pode passá-lo a outro personagem no alcance de comando em vez de guardar.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "lider-natural",
+    "name": "Líder Natural",
+    "prerequisites": "Comandar 1",
+    "text": "+4 m (2\") no alcance de comando.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "linguagem-de-sinais",
+    "name": "Linguagem de Sinais",
+    "prerequisites": "Criptografia 1",
+    "text": "cria linguagem codificada com o grupo (regras de códigos); NA de Criptografia baseado no da criação; ensinável a quem tenha INT ≥ 3.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "linha-defensiva",
+    "name": "Linha Defensiva",
+    "prerequisites": null,
+    "text": "BAB com ≥1 aliado: +1 ARM; se o aliado também tem: +2.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "lingua-dos-cinco",
+    "name": "Língua dos Cinco",
+    "prerequisites": null,
+    "text": "idioma do submundo (Cinco Dedos, Ord, norte de Cygnar); sem forma escrita.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "lutador-noturno",
+    "name": "Lutador Noturno",
+    "prerequisites": null,
+    "text": "contra alvo furtivo ou com Espreitar, o ataque à distância/mágico só erra automaticamente se a distância ≥ 16 m (8\") (em vez de 10 m/5\").",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "maestria-elemental",
+    "name": "Maestria Elemental",
+    "prerequisites": "ARC 5",
+    "text": "+1 nos ataques e dano ao conjurar magia ofensiva da lista elemental.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "magia-das-sombras",
+    "name": "Magia das Sombras",
+    "prerequisites": "Dotado, Esgueirar-se 2",
+    "text": "ao conjurar, nenhuma runa aparece e sensíveis à magia não sentem; focalizador com esta habilidade não é detectável por outro com o benefício Sensibilidade Mágica.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "manobra-ataque",
+    "name": "Manobra: Ataque",
+    "prerequisites": "Controlador de Gigantes",
+    "text": "ação rápida no gigante controlado: ele faz investida neste turno sem gastar foco nem ser forçado; como parte da investida, após mover e antes do ataque de investida, faz 1 ataque à distância no alvo (sem penalidade de alvo engajado; não vale se engajado no início do turno; se o alvo não ficou em alcance c-a-c, pode fazer antes do fim do turno).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "manobra-ataque-auxiliar",
+    "name": "Manobra: Ataque Auxiliar",
+    "prerequisites": "Controlador de Gigantes",
+    "text": "ação rápida no gigante: ele faz imediatamente um ataque c-a-c ou à distância normal.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "manobra-de-imediato",
+    "name": "Manobra: De Imediato",
+    "prerequisites": "Controlador de Gigantes",
+    "text": "ação rápida no gigante: ele faz imediatamente um avanço completo.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "manobra-qualquer-terreno",
+    "name": "Manobra: Qualquer Terreno",
+    "prerequisites": "Controlador de Gigantes",
+    "text": "ação rápida no gigante: ganha Desbravador nesta rodada e deve usar movimento + ação de combate para investida ou ataque de pancada.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "mestre-das-infusoes",
+    "name": "Mestre das Infusões",
+    "prerequisites": "Alquimia 2",
+    "text": "relança falhas em Alquimia.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "mira-agucada",
+    "name": "Mira Aguçada",
+    "prerequisites": null,
+    "text": "+4 m (2\") no alcance efetivo e +20 m (10\") no alcance extremo de arco/fuzil.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "mira-aprimorada",
+    "name": "Mira Aprimorada",
+    "prerequisites": null,
+    "text": "em sucesso à distância, escolhe o ramo da espiral vital ou coluna da tabela de dano atingida.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "obter-pecas",
+    "name": "Obter Peças",
+    "prerequisites": null,
+    "text": "acha peça cara/difícil de gigante-a-vapor em 1 dia numa cidade/comunidade industrializada; compra peças, armas e equipamentos de gigantes pela metade do preço.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "otario",
+    "name": "Otário!",
+    "prerequisites": "Intimidar 3",
+    "text": "se for atingido diretamente por ataque à distância inimigo, pode escolher um aliado vivo e corpóreo a até 4 m (2\") para ser atingido no lugar (automaticamente atingido, sofre todo dano/efeito).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "perseguir",
+    "name": "Perseguir",
+    "prerequisites": "Rastrear 3",
+    "text": "gasta 1 pf no turno e define um inimigo: pelo resto do encontro, quando ele se mover no turno dele, logo após terminar o movimento você pode fazer um avanço completo; uma vez por encontro, exceto se o alvo for destruído (então 1 pf para escolher novo inimigo).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "pes-ligeiros",
+    "name": "Pés Ligeiros",
+    "prerequisites": "VEL 7",
+    "text": "ao correr, move com VEL × 3.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "plano-de-batalha-abaixar-se",
+    "name": "Plano de Batalha: Abaixar-se",
+    "prerequisites": "Comandar 2",
+    "text": "Custa 1 pf, ação rápida. aliados que sigam suas ordens ganham cobertura, sem dano de explosão, sem perder LDV até mover, ser deslocados ou engajar.",
+    "repeatable": false,
+    "sourcePage": 161
+  },
+  {
+    "slug": "plano-de-batalha-chamado-para-acao",
+    "name": "Plano de Batalha: Chamado para Ação",
+    "prerequisites": "Comandar 1",
+    "text": "Custa 1 pf, ação rápida. aliado no alcance de comando derrubado pode levantar-se imediatamente ou ficar deitado.",
+    "repeatable": false,
+    "sourcePage": 161
+  },
+  {
+    "slug": "plano-de-batalha-golpe-coordenado",
+    "name": "Plano de Batalha: Golpe Coordenado",
+    "prerequisites": "Comandar 1",
+    "text": "Custa 1 pf, ação rápida. só em rodada surpresa (p.197) antes da batalha; cada aliado no alcance de comando faz 1 ataque imediato; depois a rodada surpresa termina e os personagens são detectados.",
+    "repeatable": false,
+    "sourcePage": 161
+  },
+  {
+    "slug": "plano-de-batalha-reconhecimento",
+    "name": "Plano de Batalha: Reconhecimento",
+    "prerequisites": "Comandar 2, Sobrevivência 3",
+    "text": "Custa 1 pf, ação rápida. você e aliados que iniciem a ativação no alcance de comando ganham Desbravador por 1 rodada.",
+    "repeatable": false,
+    "sourcePage": 161
+  },
+  {
+    "slug": "plano-de-batalha-ritmo-desesperado",
+    "name": "Plano de Batalha: Ritmo Desesperado",
+    "prerequisites": "Comandar 3",
+    "text": "Custa 1 pf, ação rápida. aliados que sigam suas ordens +4 m (2\") de movimento por 1 rodada.",
+    "repeatable": false,
+    "sourcePage": 161
+  },
+  {
+    "slug": "plano-de-batalha-sombra",
+    "name": "Plano de Batalha: Sombra",
+    "prerequisites": "Comandar 1",
+    "text": "Custa 1 pf, ação rápida. aliados que sigam suas ordens ganham Espreitar por 1 rodada.",
+    "repeatable": false,
+    "sourcePage": 161
+  },
+  {
+    "slug": "poder-maior",
+    "name": "Poder Maior",
+    "prerequisites": null,
+    "text": "mantém 1 magia por turno sem gastar foco nem ganhar fadiga.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "porto-de-escala",
+    "name": "Porto de Escala",
+    "prerequisites": "Navegação 1",
+    "text": "1 porto de escala por nível de Navegação (local visitado >1 vez); ao viajar p/ porto de escala e usar Navegação (p.181), resultados piores que \"chega como planejado\" contam como \"chega como planejado\".",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "precisao-anatomica",
+    "name": "Precisão Anatômica",
+    "prerequisites": null,
+    "text": "c-a-c em alvo vivo cujo dano não supera a ARM: alvo sofre 1d3 em vez do dano rolado.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "precisao-arcana",
+    "name": "Precisão Arcana",
+    "prerequisites": "Detectar 3",
+    "text": "ao desistir do movimento para mirar com arma à distância, ignora furtividade neste turno.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "preparacao-rapida",
+    "name": "Preparação Rápida",
+    "prerequisites": "Alquimia 2",
+    "text": "cria itens alquímicos na metade do tempo.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "preparar-defesa",
+    "name": "Preparar Defesa",
+    "prerequisites": "Arma Grande 2",
+    "text": "com arma de alcance, inimigo no seu arco frontal sofre −2 em investida, ataques de lançar e ataques de impacto contra você.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "privilegio",
+    "name": "Privilégio",
+    "prerequisites": null,
+    "text": "linhagem nobre: imune a acusação de crimes menores; só julgado por tribunal de pares; direito a execução nobre em crime maior; teste de Etiqueta bem-sucedido permite exigir hospitalidade/auxílio de nobres não em guerra com seu reino; +2 em perícias sociais com quem reconheça a posição e esteja abaixo. Efeitos variam por reino (\"Tribunais Superiores\": privilegiados raramente presos por crimes menores; crimes maiores → julgamento por nobres do reino).",
+    "repeatable": false,
+    "sourcePage": 162
+  },
+  {
+    "slug": "pro-chao",
+    "name": "Pro Chão!",
+    "prerequisites": null,
+    "text": "deitado: sem dano de ADE exceto acerto direto; se no alcance de ADE de explosão sem acerto direto, fica deitado e não sofre dano.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "protecao-de-escudo",
+    "name": "Proteção de Escudo",
+    "prerequisites": "Escudo 1",
+    "text": "aliado a até 4 m (2\") atingido diretamente: você pode ser atingido no lugar; 1×/turno; não vale incorpóreo, derrubado, deitado ou imóvel.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "protegido",
+    "name": "Protegido",
+    "prerequisites": "Escudo 2",
+    "text": "com escudo, sem dano de explosão; aliados BAB também não sofrem.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "punhalada-pelas-costas",
+    "name": "Punhalada pelas Costas",
+    "prerequisites": null,
+    "text": "ataque pelas costas: +1 dado no dano.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "rastro-sem-pegadas",
+    "name": "Rastro sem Pegadas",
+    "prerequisites": "Esgueirar-se 2",
+    "text": "esconde rastro; só move a metade da velocidade (a pé ou montado); quem rastreia tem +3 no número-alvo.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "rearme-rapido",
+    "name": "Rearme Rápido",
+    "prerequisites": null,
+    "text": "ver 6.1.",
+    "repeatable": true,
+    "sourcePage": null
+  },
+  {
+    "slug": "recarga-rapida",
+    "name": "Recarga Rápida",
+    "prerequisites": null,
+    "text": "ver 6.1.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "remendao",
+    "name": "Remendão",
+    "prerequisites": "Eng. Mekânica 1",
+    "text": "consertos temporários em gigante-a-vapor durante o combate (Cap. 7).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "resistencia-a-doencas",
+    "name": "Resistência a Doenças",
+    "prerequisites": null,
+    "text": "Jogadas ampliadas para resistir a doenças/infecções.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "resistencia-a-veneno",
+    "name": "Resistência a Veneno",
+    "prerequisites": null,
+    "text": "Jogadas ampliadas para resistir a venenos/toxinas.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "retentor",
+    "name": "Retentor",
+    "prerequisites": "Usar Cordas 1",
+    "text": "ao amarrar/prender/restringir outro personagem: +3 na dificuldade para se libertar.",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "retornar-fogo",
+    "name": "Retornar Fogo",
+    "prerequisites": null,
+    "text": "1×/rodada, se inimigo erra ataque à distância contra você: ataque normal imediato (arma à distância carregada).",
+    "repeatable": false,
+    "sourcePage": null
+  },
+  {
+    "slug": "sanguinario",
+    "name": "Sanguinário",
+    "prerequisites": "Arma de Mão 3",
+    "text": "+2 nas jogadas de dano contra personagens vivos (passiva)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "saque-rapido",
+    "name": "Saque Rápido",
+    "prerequisites": null,
+    "text": "+2 em iniciativa; recebe **uma ação rápida adicional no primeiro turno de combate, só para sacar uma arma** (passiva / ação rápida restrita (tipo: sacar arma))",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "sentinela",
+    "name": "Sentinela",
+    "prerequisites": null,
+    "text": "1×/rodada, se inimigo entrar na sua linha de visão, faz imediatamente um ataque contra ele (reação/ataque fora do turno, 1×/rodada)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "sentinela-de-ferro",
+    "name": "Sentinela de Ferro",
+    "prerequisites": "Controlador de Gigantes, Comandar 3",
+    "text": "Enquanto BAB com ≥1 gigante-a-vapor que comanda: +2 ARM e não pode ser derrubado (passiva condicional)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "sintonizar",
+    "name": "Sintonizar",
+    "prerequisites": "Engenharia Mekânica 3",
+    "text": "BAB com gigante-a-vapor que controla: **ação rápida**; no turno dele nessa rodada o gigante faz jogadas de ataque ou de dano **ampliadas** (ação rápida)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "solido-como-rocha",
+    "name": "Sólido como Rocha",
+    "prerequisites": "FIS 8",
+    "text": "Você e aliados BAB com você não podem ser derrubados. Perde a habilidade enquanto montado (passiva)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "superconsciencia",
+    "name": "Superconsciência",
+    "prerequisites": "Comandar 3",
+    "text": "Aliados no seu alcance de comando recebem Visão Circular (arco frontal 360°) (passiva de aura)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "suportar-carga",
+    "name": "Suportar Carga",
+    "prerequisites": "FOR 5",
+    "text": "Reduz em 1 cada as penalidades de VEL e DEF da armadura usada (armadura pesada) (passiva)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "tiro-duplo",
+    "name": "Tiro Duplo",
+    "prerequisites": null,
+    "text": "No turno, pode abrir mão do movimento; se o fizer, faz 1 ataque à distância adicional com **pistola ou fuzil** (opção de turno (troca movimento por ataque))",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "tiro-proximo",
+    "name": "Tiro Próximo",
+    "prerequisites": null,
+    "text": "Sem –4 nas jogadas de ataque à distância com **gládio tempestuoso** enquanto engajado (passiva)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "trabalho-rapido",
+    "name": "Trabalho Rápido",
+    "prerequisites": "AGI 5",
+    "text": "Ao matar ≥1 inimigo com ataque corpo-a-corpo **durante sua ação de combate**, faz 1 ataque à distância adicional logo após resolver; arma à distância deve estar carregada (ataque adicional por gatilho)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "trespassar",
+    "name": "Trespassar",
+    "prerequisites": "Arma Grande 1",
+    "text": "Ao incapacitar ≥1 inimigo com ataque corpo-a-corpo de **arma grande** durante seu turno, faz 1 ataque corpo-a-corpo adicional contra **outro** inimigo em alcance CaC; máx. 1 adicional de Trespassar por turno (ataque adicional por gatilho)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "vaporeiro",
+    "name": "Vaporeiro",
+    "prerequisites": "Engenharia Mekânica 2",
+    "text": "Pode rejogar falhas em testes de Engenharia Mekânica para consertar/desmontar gigantes-a-vapor; cada falha rejogada só 1× (rejogada)",
+    "repeatable": false,
+    "sourcePage": 164
+  },
+  {
+    "slug": "vinculo",
+    "name": "Vínculo",
+    "prerequisites": null,
+    "text": "Cada escolha dá 1 **espaço de vínculo** (ver abaixo) (ação completa para vincular)",
+    "repeatable": true,
+    "sourcePage": 164
+  },
+  {
+    "slug": "vontade-de-ferro",
+    "name": "Vontade de Ferro",
+    "prerequisites": null,
+    "text": "Rejoga falhas em testes de Força de Vontade; cada falha só 1× (rejogada)",
+    "repeatable": false,
+    "sourcePage": 164
+  }
+]

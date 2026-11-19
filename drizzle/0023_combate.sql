@@ -1,0 +1,1 @@
+ALTER TABLE "cenas" ADD COLUMN "combate" jsonb;

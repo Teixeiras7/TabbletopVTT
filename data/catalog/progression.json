@@ -1,0 +1,58 @@
+{
+  "source": "Manual, p. 152 (docs/regras/02-progressao-habilidades.md §5). As tabelas de Veterano e Épico são idênticas no livro (conferido por imagem na etapa 6); a regra de transição entre estágios não foi encontrada.",
+  "skillMaxLevelByStage": { "hero": 2, "veteran": 3, "epic": 4 },
+  "creationAttributePoints": 3,
+  "creationFacadePoints": 3,
+  "table": {
+    "hero": [
+      { "xp": 2, "grant": "professional-points" },
+      { "xp": 4, "grant": "choose-one" },
+      { "xp": 6, "grant": "attribute" },
+      { "xp": 8, "grant": "professional-points" },
+      { "xp": 10, "grant": "choose-one" },
+      { "xp": 12, "grant": "archetype-benefit" },
+      { "xp": 15, "grant": "attribute" },
+      { "xp": 18, "grant": "professional-points" },
+      { "xp": 21, "grant": "choose-one" },
+      { "xp": 24, "grant": "attribute" },
+      { "xp": 27, "grant": "professional-points" },
+      { "xp": 30, "grant": "archetype-benefit-or-career" },
+      { "xp": 33, "grant": "choose-one" },
+      { "xp": 36, "grant": "attribute" },
+      { "xp": 39, "grant": "professional-points" },
+      { "xp": 42, "grant": "choose-one" },
+      { "xp": 45, "grant": "attribute" }
+    ],
+    "veteran": [
+      { "xp": 50, "grant": "archetype-benefit" },
+      { "xp": 55, "grant": "professional-points" },
+      { "xp": 60, "grant": "choose-one" },
+      { "xp": 65, "grant": "attribute" },
+      { "xp": 70, "grant": "professional-points" },
+      { "xp": 75, "grant": "choose-one" },
+      { "xp": 80, "grant": "archetype-benefit-or-career" },
+      { "xp": 85, "grant": "attribute" },
+      { "xp": 90, "grant": "professional-points" },
+      { "xp": 95, "grant": "choose-one" }
+    ],
+    "epic": [
+      { "xp": 50, "grant": "archetype-benefit" },
+      { "xp": 55, "grant": "professional-points" },
+      { "xp": 60, "grant": "choose-one" },
+      { "xp": 65, "grant": "attribute" },
+      { "xp": 70, "grant": "professional-points" },
+      { "xp": 75, "grant": "choose-one" },
+      { "xp": 80, "grant": "archetype-benefit-or-career" },
+      { "xp": 85, "grant": "attribute" },
+      { "xp": 90, "grant": "professional-points" },
+      { "xp": 95, "grant": "choose-one" }
+    ]
+  },
+  "grants": {
+    "professional-points": "+2 pontos em perícias profissionais das carreiras do personagem (nova ou aumentar), dentro do limite de nível do estágio",
+    "choose-one": "+1 perícia militar, ou +1 habilidade, ou +1 conexão, ou +1 magia (de uma das carreiras do personagem)",
+    "attribute": "+1 em um atributo, sem passar do máximo racial do estágio",
+    "archetype-benefit": "+1 benefício de arquétipo",
+    "archetype-benefit-or-career": "+1 benefício de arquétipo, ou (+1 carreira e +2 pontos em perícias profissionais)"
+  }
+}

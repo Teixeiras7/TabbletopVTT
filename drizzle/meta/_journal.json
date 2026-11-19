@@ -71,6 +71,111 @@
       "when": 1790733279815,
       "tag": "0009_infos",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1790988069599,
+      "tag": "0010_catalog",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1790988992889,
+      "tag": "0011_characters",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1790995319848,
+      "tag": "0012_character_sheet",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1790995338692,
+      "tag": "0013_character_policy",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1791246371818,
+      "tag": "0014_catalog_equipment",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "7",
+      "when": 1791248523357,
+      "tag": "0015_banco_em_portugues",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1791251044325,
+      "tag": "0016_loja",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1791251592660,
+      "tag": "0017_remover_tokens",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1791343344081,
+      "tag": "0018_equipamento_detalhes",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1791343723960,
+      "tag": "0019_xp",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1795057922622,
+      "tag": "0020_epico",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1795059419391,
+      "tag": "0021_tokens_personagens",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "7",
+      "when": 1795059933944,
+      "tag": "0022_sem_epico",
+      "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1795060484882,
+      "tag": "0023_combate",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1795061246365,
+      "tag": "0024_rolagem_chat",
+      "breakpoints": true
     }
   ]
 }

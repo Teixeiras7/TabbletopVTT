@@ -1,0 +1,537 @@
+[
+  {
+    "slug": "humano",
+    "name": "Humano",
+    "attributes": {
+      "FIS": {
+        "start": 5,
+        "hero": 7,
+        "veteran": 8,
+        "epic": 8
+      },
+      "VEL": {
+        "start": 6,
+        "hero": 7,
+        "veteran": 7,
+        "epic": 7
+      },
+      "FOR": {
+        "start": 4,
+        "hero": 6,
+        "veteran": 7,
+        "epic": 8
+      },
+      "AGI": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "DES": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "MAE": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "INT": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "ARC": {
+        "start": null,
+        "hero": 4,
+        "veteran": 6,
+        "epic": 8
+      },
+      "PER": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      }
+    },
+    "sourcePage": 106,
+    "archetypes": [
+      "dotado",
+      "habilidoso",
+      "intelectual",
+      "poderoso"
+    ],
+    "languages": "2: nativo + 1 outro. Nativo: Cygnar/Protetorado = cygnarano/sulês; Khador = khadorano; Llael = llaelês; Ord = órdico; tribo isolada = idioma do povo",
+    "features": "**Potencial Excepcional**: +1 FIS, +1 AGI ou +1 INT (escolha), somado antes de gastar pontos de progressão; aumenta só o valor inicial, não o máximo racial",
+    "grants": {
+      "attributeChoice": {
+        "options": [
+          "FIS",
+          "AGI",
+          "INT"
+        ],
+        "amount": 1
+      }
+    },
+    "restrictions": {},
+    "heightWeightNote": "humano 1,55–1,90 m (H) / 1,40–1,75 (M), 55–100 kg / 45–85; anão 1,32–1,52 / 1,20–1,40, 75–95 / 53–73; gobber 0,86–1,06 / 0,81–1,01, 21–30 / 19–28; iosano 1,65–1,90 / 1,52–1,77, 63–90 / 43–70; nyss 1,70–1,95 / 1,57–1,82, 70–98 / 48–65; ogrun 2,28–2,66 / 2,08–2,46, 225–250 / 165–190; trolloide 1,80–2,13 / 1,60–1,93, 125–165 / 75–115."
+  },
+  {
+    "slug": "anao",
+    "name": "Anão",
+    "attributes": {
+      "FIS": {
+        "start": 6,
+        "hero": 7,
+        "veteran": 7,
+        "epic": 8
+      },
+      "VEL": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 6
+      },
+      "FOR": {
+        "start": 5,
+        "hero": 6,
+        "veteran": 7,
+        "epic": 8
+      },
+      "AGI": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "DES": {
+        "start": 3,
+        "hero": 4,
+        "veteran": 5,
+        "epic": 6
+      },
+      "MAE": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "INT": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "ARC": {
+        "start": null,
+        "hero": 4,
+        "veteran": 6,
+        "epic": 7
+      },
+      "PER": {
+        "start": 3,
+        "hero": 4,
+        "veteran": 6,
+        "epic": 7
+      }
+    },
+    "sourcePage": 107,
+    "archetypes": [
+      "dotado",
+      "habilidoso",
+      "intelectual",
+      "poderoso"
+    ],
+    "languages": "2: rhúlico + 1 outro",
+    "features": "Começa com habilidade **Suportar Carga** (p. 164) e Conexão **clã anão** (p. 189), além das das carreiras",
+    "grants": {
+      "abilities": [
+        "suportar-carga"
+      ],
+      "connections": [
+        "Clã Anão"
+      ]
+    },
+    "restrictions": {},
+    "heightWeightNote": null
+  },
+  {
+    "slug": "gobber",
+    "name": "Gobber",
+    "attributes": {
+      "FIS": {
+        "start": 4,
+        "hero": 6,
+        "veteran": 7,
+        "epic": 7
+      },
+      "VEL": {
+        "start": 6,
+        "hero": 7,
+        "veteran": 7,
+        "epic": 7
+      },
+      "FOR": {
+        "start": 3,
+        "hero": 4,
+        "veteran": 5,
+        "epic": 6
+      },
+      "AGI": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "DES": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "MAE": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "INT": {
+        "start": 3,
+        "hero": 4,
+        "veteran": 5,
+        "epic": 6
+      },
+      "ARC": null,
+      "PER": {
+        "start": 3,
+        "hero": 4,
+        "veteran": 4,
+        "epic": 5
+      }
+    },
+    "sourcePage": 108,
+    "archetypes": [
+      "habilidoso",
+      "intelectual",
+      "poderoso"
+    ],
+    "languages": "2: gobberês + 1 outro",
+    "features": "Benefício de arquétipo **Ágil** (p. 113) além do arquétipo; **+1 DEF**; **não pode usar armas grandes nem fuzis**",
+    "grants": {
+      "archetypeBenefits": [
+        "agil"
+      ],
+      "defBonus": 1
+    },
+    "restrictions": {
+      "forbiddenMilitarySkills": [
+        "arma-grande",
+        "fuzil"
+      ]
+    },
+    "heightWeightNote": null
+  },
+  {
+    "slug": "iosano",
+    "name": "Iosano",
+    "attributes": {
+      "FIS": {
+        "start": 5,
+        "hero": 7,
+        "veteran": 7,
+        "epic": 7
+      },
+      "VEL": {
+        "start": 6,
+        "hero": 7,
+        "veteran": 7,
+        "epic": 7
+      },
+      "FOR": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "AGI": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "DES": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "MAE": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "INT": {
+        "start": 4,
+        "hero": 6,
+        "veteran": 6,
+        "epic": 7
+      },
+      "ARC": {
+        "start": null,
+        "hero": 4,
+        "veteran": 6,
+        "epic": 8
+      },
+      "PER": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      }
+    },
+    "sourcePage": 109,
+    "archetypes": [
+      "dotado",
+      "habilidoso",
+      "intelectual",
+      "poderoso"
+    ],
+    "languages": "2: shyr + 1 outro",
+    "features": "Começa com **1 habilidade adicional** escolhida de uma de suas carreiras",
+    "grants": {
+      "extraCareerAbility": 1
+    },
+    "restrictions": {},
+    "heightWeightNote": null
+  },
+  {
+    "slug": "nyss",
+    "name": "Nyss",
+    "attributes": {
+      "FIS": {
+        "start": 5,
+        "hero": 7,
+        "veteran": 7,
+        "epic": 8
+      },
+      "VEL": {
+        "start": 6,
+        "hero": 7,
+        "veteran": 7,
+        "epic": 7
+      },
+      "FOR": {
+        "start": 4,
+        "hero": 6,
+        "veteran": 7,
+        "epic": 8
+      },
+      "AGI": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "DES": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "MAE": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "INT": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 6
+      },
+      "ARC": {
+        "start": null,
+        "hero": 4,
+        "veteran": 6,
+        "epic": 7
+      },
+      "PER": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 6
+      }
+    },
+    "sourcePage": 110,
+    "archetypes": [
+      "dotado",
+      "habilidoso",
+      "poderoso"
+    ],
+    "languages": "2: aérico + 1 outro",
+    "features": "Dotado nyss **não pode** ter as carreiras arcanista, conjurador de guerra, mago-pistoleiro, mekânico arcano. Custo de claymores nyss (p. 248) e arcos nyss (p. 254) **−10 CO** na criação. **+1 em testes de Iniciativa e PER**. **+3 ARM** contra dano de frio; **−3 ARM** contra dano de fogo",
+    "grants": {},
+    "restrictions": {
+      "dotadoCareerBans": [
+        "arcanista",
+        "conjurador-de-guerra",
+        "mago-pistoleiro",
+        "mekanico-arcano"
+      ]
+    },
+    "heightWeightNote": null
+  },
+  {
+    "slug": "ogrun",
+    "name": "Ogrun",
+    "attributes": {
+      "FIS": {
+        "start": 6,
+        "hero": 7,
+        "veteran": 8,
+        "epic": 9
+      },
+      "VEL": {
+        "start": 5,
+        "hero": 6,
+        "veteran": 6,
+        "epic": 6
+      },
+      "FOR": {
+        "start": 6,
+        "hero": 8,
+        "veteran": 9,
+        "epic": 10
+      },
+      "AGI": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 5,
+        "epic": 6
+      },
+      "DES": {
+        "start": 3,
+        "hero": 4,
+        "veteran": 5,
+        "epic": 6
+      },
+      "MAE": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "INT": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 5,
+        "epic": 6
+      },
+      "ARC": null,
+      "PER": {
+        "start": 2,
+        "hero": 4,
+        "veteran": 5,
+        "epic": 6
+      }
+    },
+    "sourcePage": 111,
+    "archetypes": [
+      "habilidoso",
+      "poderoso"
+    ],
+    "languages": "3: molgur-og, rhúlico + 1 outro",
+    "features": "**Estatura Enorme**: pode empunhar com uma mão arma que normalmente exige duas, com **−2** nas jogadas de ataque com ela",
+    "grants": {},
+    "restrictions": {},
+    "heightWeightNote": null
+  },
+  {
+    "slug": "trolloide",
+    "name": "Trolloide",
+    "attributes": {
+      "FIS": {
+        "start": 6,
+        "hero": 8,
+        "veteran": 9,
+        "epic": 10
+      },
+      "VEL": {
+        "start": 5,
+        "hero": 6,
+        "veteran": 6,
+        "epic": 6
+      },
+      "FOR": {
+        "start": 5,
+        "hero": 7,
+        "veteran": 8,
+        "epic": 9
+      },
+      "AGI": {
+        "start": 3,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "DES": {
+        "start": 2,
+        "hero": 4,
+        "veteran": 5,
+        "epic": 6
+      },
+      "MAE": {
+        "start": 4,
+        "hero": 5,
+        "veteran": 6,
+        "epic": 7
+      },
+      "INT": {
+        "start": 3,
+        "hero": 4,
+        "veteran": 5,
+        "epic": 6
+      },
+      "ARC": {
+        "start": null,
+        "hero": 4,
+        "veteran": 6,
+        "epic": 7
+      },
+      "PER": {
+        "start": 3,
+        "hero": 4,
+        "veteran": 5,
+        "epic": 6
+      }
+    },
+    "sourcePage": 112,
+    "archetypes": [
+      "dotado",
+      "habilidoso",
+      "poderoso"
+    ],
+    "languages": "2: morgur-trul + 1 outro",
+    "features": "Dotado trolloide **não pode** ter arcanista, conjurador de guerra, mekânico arcano. Benefícios **Durão** e **Façanha: Revitalizar** (arquétipo Poderoso, p. 115) além dos do arquétipo",
+    "grants": {
+      "archetypeBenefits": [
+        "durao",
+        "facanha-revitalizar"
+      ]
+    },
+    "restrictions": {
+      "dotadoCareerBans": [
+        "arcanista",
+        "conjurador-de-guerra",
+        "mekanico-arcano"
+      ]
+    },
+    "heightWeightNote": null
+  }
+]

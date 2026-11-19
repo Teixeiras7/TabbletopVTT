@@ -40,19 +40,25 @@ creatures, chassis, cortexes, conditions, progression_table
 
 Personagens, criaturas e gigantes-a-vapor têm em comum o que o jogo pede o tempo todo: posição no mapa, iniciativa, dano, efeitos ativos, serem alvo de ataque. Sem um supertipo, cada uma dessas tabelas precisaria de três chaves estrangeiras opcionais (personagem, criatura ou gigante) ou de um par `tipo + id` sem integridade. Com `actors(id, table_id, kind)`, tokens, combate e efeitos apontam para uma única chave; cada subtipo tem `actor_id` como chave primária. É o mesmo princípio de catálogo x instância do CLAUDE.md §10: "Orc #1" e "Orc #2" são dois `actors`.
 
-## 3. Já implementado
+## 3. Já implementado (nomes em português desde a etapa 18; `src/lib/db/schema.ts` é a referência)
 
 | Tabela | Conteúdo |
 |---|---|
-| `profiles` | id = id do Supabase Auth, `display_name` |
-| `game_tables` | mesa: nome, descrição, `owner_id`, `invite_code` único |
-| `game_table_members` | participantes (criador incluso); papel derivado: criador = Mestre, demais = Jogador. `chat_cleared_at`: corte do "Limpar chat" pessoal (mensagens anteriores não aparecem para este participante) |
-| `infos` | aba Infos: `kind` (`image` \| `note`), nome, descrição (nota), `image_url` (imagem, Storage `info-images/<mesa>/<info>`), `created_by`, `hidden`. Imagem: só o Mestre cria. Nota: qualquer participante. Info do Mestre: só ele edita/exclui; de jogador: todos. O que o Mestre cria nasce `hidden` (só ele vê, ele mostra/oculta). A RLS de leitura já esconde as ocultas de jogadores. Regras em `src/lib/mesas/info-rules.ts` |
-| `chat_messages` | chat da mesa: `table_id`, `author_id`, `author_name` (cópia do nome no envio, para o evento de Realtime vir completo), texto, data. Só participante envia/lê; o Mestre apaga tudo (delete de verdade). Sincronizado via `postgres_changes` |
-| `scenes` | uma por mesa (criada junto com `game_tables`), nome, tamanho do quadrado do grid em px (`grid_size`, só valores que dividem 1440), imagem de fundo |
-| `tokens` | marcador no grid: `scene_id`, nome, cor, posição (x/y = **casa** do grid, 0 = primeira; o token acompanha o tamanho do quadrado; mapa fixo de 1440 px, ver `src/lib/mesas/map.ts`), criado por. Só o Mestre cria/move/remove (checado no backend). Sincronizado entre clientes via `postgres_changes` do Supabase Realtime (ver `docs/arquitetura.md` §7.2) |
+| `perfis` | id = id do Supabase Auth, `nome` |
+| `mesas` | `nome`, `descricao`, `dono_id` (= Mestre), `codigo_convite` único |
+| `membros` | participantes (o criador também); papel derivado: dono = Mestre, demais = Jogador. `chat_limpo_em` = "limpar chat" pessoal |
+| `mensagens` | chat: `mesa_id`, `autor_id`, `autor_nome`, `texto`. Só as **últimas 100 por mesa** ficam |
+| `personagens` | `escolhas` (ids do catálogo), `detalhes` (nome, idade…), `estado` (dano, ações gastas), `notas` (lista título + texto), `imagem_url`. Nada calculado é gravado |
+| `infos` | aba Infos: `tipo` (imagem/nota), `nome`, `descricao`, `imagem_url`, `criado_por`, `oculta` |
+| `cenas` | mapa da mesa: `tamanho_grid`, `fundo_url` |
+| `tokens` | marcador no grid: `cena_id`, `rotulo`, `cor`, `x`/`y` (casa) |
+| catálogo | `racas`, `arquetipos`, `carreiras`, `pericias`, `habilidades`, `magias`, `listas_de_magias`, `conexoes`, `acoes`, `progressao`, `equipamentos` (ver §4) |
 
 ## 4. Catálogo (seed do manual)
+
+**Implementado**: uma tabela por tipo (`racas`, `arquetipos`, `carreiras`, `pericias`, `habilidades`, `magias`, `listas_de_magias`, `conexoes`, `acoes`, `progressao`, `equipamentos`), com colunas reais e jsonb só para regras aninhadas. `id` (texto, ex.: `armadura-completa`) é o que a ficha guarda. Fonte: `data/catalog/*.json` (gerados de `docs/regras/`, conferidos por `src/lib/catalog/catalog.test.ts`), carregados por `npm run db:seed` (apaga e recarrega numa transação). Sem policy: só o backend lê. `equipamentos` é a Lista de Preços (pp. 241-245, 294 itens: categoria, preço em CO, preço mínimo "5+", acréscimo "+10", tipo de armadura), ainda sem estatísticas de arma/armadura. Criaturas, gigantes e condições ainda não estão no catálogo; o desenho abaixo é o plano para eles.
+
+Desenho original (mantido como referência do que ainda falta):
 
 Fonte da verdade: arquivos de seed no repositório (`data/catalog/*.json`), validados por zod e aplicados por upsert em `slug`. O banco não é editado à mão. Cada conjunto só entra depois que as tabelas do manual correspondentes forem conferidas contra o PDF (ver `docs/regras-rpg.md` §5).
 
@@ -86,7 +92,8 @@ Persistente entre sessões, pertence a uma mesa (`table_id`) e a um usuário. Pd
 
 | Tabela | Conteúdo |
 |---|---|
-| `characters` | `actor_id` (PK), owner_user_id, is_npc, nome, race, archetype, XP total, coroas (CO), pontos de façanha atuais, foco e fadiga, vitalidade (§7), dados narrativos (jsonb: sexo, idade, religião…) |
+| `characters` | personagem de um jogador numa mesa: `table_id`, `owner_id`, `name`, `choices` (jsonb: só as escolhas da criação), `details` (jsonb: idade, nacionalidade, filiação, organização, altura, peso, crimes, aparência), `image_url` (Storage `character-images/<mesa>/<personagem>/image`) e `state` (jsonb: dano marcado por ramo da espiral vital e ações já gastas no turno). **Nada calculado é gravado**: a ficha é montada na hora pelo engine. **Dossiê** (nome, imagem, dados pessoais): todo participante. **Ficha completa, notas, estado e edição**: só o dono e o Mestre (RLS e backend). Lista atualizada por aviso `characters:<mesa>` |
+| `character_notes` | notas do personagem (título e texto); só o dono e o Mestre leem e editam |
 | `character_attributes` | character, atributo, valor **base** (comprado). Bônus temporários são efeitos, não alteram esta linha |
 | `character_careers` | character, career, posição (1 ou 2), carreira inicial? |
 | `character_skills` | character, skill, especialidade (Ofício, Conhecimento), nível |

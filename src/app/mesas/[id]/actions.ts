@@ -1,59 +1,26 @@
 "use server";
 
 import { notFound } from "next/navigation";
+import { z } from "zod";
+import { listTokens, placeToken, removeToken } from "@/lib/mesas/tokens";
+import { endCombat, endTurn, startCombat } from "@/lib/mesas/combat";
 import { requireUser } from "@/lib/auth/session";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { clearAllChat, clearMyChat, sendChatMessage } from "@/lib/mesas/chat";
 import {
-  createToken,
-  deleteToken,
-  moveToken,
   updateSceneBackground,
   updateSceneGridSize,
 } from "@/lib/mesas/queries";
 import {
   chatMessageSchema,
-  createTokenSchema,
   gridSizeSchema,
   imageFileError,
   mesaIdSchema,
-  moveTokenSchema,
 } from "@/lib/mesas/schemas";
 
 // Chamadas diretamente pelo Canvas (cliente), não por <form>: a permissão
 // (só o Mestre) é sempre checada de novo no backend antes de qualquer
 // escrita, nunca só pela interface (CLAUDE.md §17).
-
-export async function createTokenAction(
-  sceneId: string,
-  input: { label: string; color?: string; x?: number; y?: number },
-) {
-  const user = await requireUser();
-  const parsedScene = mesaIdSchema.safeParse(sceneId);
-  const parsed = createTokenSchema.safeParse(input);
-  if (!parsedScene.success || !parsed.success) notFound();
-
-  const token = await createToken(parsedScene.data, user.id, parsed.data);
-  return token ? { ok: true as const } : { ok: false as const };
-}
-
-export async function moveTokenAction(input: { tokenId: string; x: number; y: number }) {
-  const user = await requireUser();
-  const parsed = moveTokenSchema.safeParse(input);
-  if (!parsed.success) notFound();
-
-  const ok = await moveToken(parsed.data.tokenId, user.id, parsed.data.x, parsed.data.y);
-  return { ok };
-}
-
-export async function deleteTokenAction(tokenId: string) {
-  const user = await requireUser();
-  const parsed = mesaIdSchema.safeParse(tokenId);
-  if (!parsed.success) notFound();
-
-  const ok = await deleteToken(parsed.data, user.id);
-  return { ok };
-}
 
 export async function updateGridSizeAction(sceneId: string, gridSize: number) {
   const user = await requireUser();
@@ -134,4 +101,46 @@ export async function uploadSceneBackgroundAction(
 
   const ok = await updateSceneBackground(parsedScene.data, user.id, url);
   return ok ? { ok: true, url } : { ok: false, message: "Não foi possível salvar." };
+}
+
+/** Remove o fundo: apaga o arquivo do Storage (policy: só o Mestre) e volta o mapa ao grid normal. */
+export async function removeSceneBackgroundAction(sceneId: string, tableId: string): Promise<{ ok: boolean }> {
+  const user = await requireUser();
+  const parsedScene = mesaIdSchema.safeParse(sceneId);
+  const parsedTable = mesaIdSchema.safeParse(tableId);
+  if (!parsedScene.success || !parsedTable.success) return { ok: false };
+  if (!(await updateSceneBackground(parsedScene.data, user.id, null))) return { ok: false };
+  const supabase = await createSupabaseServerClient();
+  await supabase.storage.from(BACKGROUND_BUCKET).remove([`${parsedTable.data}/background`]);
+  return { ok: true };
+}
+
+const cellSchema = z.number().int().min(0).max(200);
+
+export async function listTokensAction(sceneId: string) {
+  const user = await requireUser();
+  const parsed = mesaIdSchema.safeParse(sceneId);
+  return parsed.success ? listTokens(parsed.data, user.id) : null;
+}
+
+/** Coloca/move o personagem numa casa do mapa (dono ou Mestre). */
+export async function placeTokenAction(sceneId: string, characterId: string, x: number, y: number) {
+  const user = await requireUser();
+  const ids = z.object({ sceneId: z.uuid(), characterId: z.uuid(), x: cellSchema, y: cellSchema }).safeParse({ sceneId, characterId, x, y });
+  return ids.success ? placeToken(ids.data.sceneId, ids.data.characterId, user.id, ids.data.x, ids.data.y) : false;
+}
+
+export async function removeTokenAction(sceneId: string, characterId: string) {
+  const user = await requireUser();
+  const ids = z.object({ sceneId: z.uuid(), characterId: z.uuid() }).safeParse({ sceneId, characterId });
+  return ids.success ? removeToken(ids.data.sceneId, ids.data.characterId, user.id) : false;
+}
+
+/** Combate da cena (iniciar e encerrar: Mestre; encerrar turno: dono do personagem da vez ou Mestre). */
+export async function combatAction(sceneId: string, action: "start" | "end-turn" | "end") {
+  const user = await requireUser();
+  const parsed = z.uuid().safeParse(sceneId);
+  if (!parsed.success) return { ok: false as const, error: "Pedido inválido." };
+  const run = action === "start" ? startCombat : action === "end-turn" ? endTurn : action === "end" ? endCombat : null;
+  return run ? run(parsed.data, user.id) : { ok: false as const, error: "Pedido inválido." };
 }

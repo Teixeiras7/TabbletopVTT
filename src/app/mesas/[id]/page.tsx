@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { requireUser } from "@/lib/auth/session";
 import { getProfile } from "@/lib/db/profiles";
 import { listChatForMember } from "@/lib/mesas/chat";
+import { listCharacters } from "@/lib/mesas/characters";
 import { listInfosForMember } from "@/lib/mesas/infos";
 import { getSceneForMember, getTableForMember } from "@/lib/mesas/queries";
 import { mesaIdSchema } from "@/lib/mesas/schemas";
@@ -18,12 +19,13 @@ export default async function MesaPage({ params }: { params: Promise<{ id: strin
   if (!lobby) notFound();
   const { table, role, members } = lobby;
 
-  const [scene, profile, origin, chatMessages, infoList] = await Promise.all([
+  const [scene, profile, origin, chatMessages, infoList, characterList] = await Promise.all([
     getSceneForMember(id, user.id),
     getProfile(user.id),
     getOrigin(),
     listChatForMember(id, user.id),
     listInfosForMember(id, user.id),
+    listCharacters(id, user.id),
   ]);
 
   const displayName = profile?.displayName ?? user.email ?? "Jogador";
@@ -37,8 +39,9 @@ export default async function MesaPage({ params }: { params: Promise<{ id: strin
             sceneId={scene.scene.id}
             gridSize={scene.scene.gridSize}
             backgroundUrl={scene.scene.backgroundUrl}
-            initialTokens={scene.tokens}
+            currentUserId={user.id}
             isMaster={role === "master"}
+            combat={scene.scene.combat}
           />
         ) : (
           <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
@@ -62,6 +65,7 @@ export default async function MesaPage({ params }: { params: Promise<{ id: strin
           }}
           initialMessages={chatMessages ?? []}
           initialInfos={infoList ?? []}
+          initialCharacters={characterList ?? []}
         />
       )}
     </div>

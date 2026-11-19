@@ -1,5 +1,6 @@
 "use client";
 
+import { confirm } from "@/components/confirm";
 import { useActionState, useState } from "react";
 import { Settings, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -99,10 +100,10 @@ export function MesaSettingsDialog({
             size="icon"
             aria-label="Excluir mesa"
             className="text-destructive hover:bg-destructive/10 hover:text-destructive"
-            onClick={(event) => {
-              if (!window.confirm(`Excluir a mesa "${table.name}" para todos os participantes? Não dá para desfazer.`)) {
-                event.preventDefault();
-              }
+            onClick={async (event) => {
+              event.preventDefault();
+              const form = document.getElementById(DELETE_FORM_ID) as HTMLFormElement | null;
+              if (await confirm(`Excluir a mesa "${table.name}"?`, { message: "Some para todos os participantes e não dá para desfazer." })) form?.requestSubmit();
             }}
           >
             <Trash2 className="size-4" />

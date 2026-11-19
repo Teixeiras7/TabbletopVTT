@@ -1,0 +1,179 @@
+[
+  {
+    "slug": "ataque-corpo-a-corpo",
+    "name": "Ataque corpo-a-corpo",
+    "cost": "attack",
+    "freeWith": [],
+    "sourcePage": 201,
+    "note": "ACO = 2d6 + MAE + perícia militar + modificador da arma (p. 203). A ação de ataque é um ataque só: corpo-a-corpo ou à distância. Ataques adicionais de habilidades podem ser divididos entre alvos."
+  },
+  {
+    "slug": "ataque-a-distancia",
+    "name": "Ataque à distância",
+    "cost": "attack",
+    "freeWith": [],
+    "sourcePage": 201,
+    "note": "ADI = 2d6 + DES (MAE com arma de arremesso) + perícia militar + modificador da arma (p. 203). A ação de ataque é um ataque só: corpo-a-corpo ou à distância."
+  },
+  {
+    "slug": "pegar-item",
+    "name": "Pegar arma ou item (inclui munição)",
+    "cost": "quick",
+    "note": "Guardar também é ação rápida; soltar no chão não gasta ação.",
+    "freeWith": [
+      {
+        "kind": "ability",
+        "slug": "saque-rapido",
+        "note": "só para sacar uma arma, no primeiro turno de combate"
+      }
+    ],
+    "sourcePage": 201
+  },
+  {
+    "slug": "recarregar",
+    "name": "Recarregar arma",
+    "cost": "quick",
+    "note": "Algumas armas (ex.: bestas) exigem ação completa, ver a arma. Pegar munição é outra ação rápida, exceto com aljava ou bandoleira.",
+    "freeWith": [
+      {
+        "kind": "ability",
+        "slug": "recarga-rapida",
+        "note": "só para recarregar arma à distância"
+      },
+      {
+        "kind": "ability",
+        "slug": "rearme-rapido",
+        "note": "+1 por turno, só para rearmar o tipo de arma escolhido"
+      }
+    ],
+    "sourcePage": 201
+  },
+  {
+    "slug": "recarregar-besta",
+    "name": "Recarregar besta",
+    "cost": "full",
+    "note": "Ação completa pela descrição da arma.",
+    "altCost": [
+      {
+        "kind": "ability",
+        "slug": "besteiro",
+        "cost": "quick",
+        "note": "recarrega a besta como ação rápida"
+      }
+    ],
+    "freeWith": [],
+    "sourcePage": 201
+  },
+  {
+    "slug": "puxar-pino",
+    "name": "Puxar o pino de uma granada",
+    "cost": "quick",
+    "note": "Sacar a granada é outra ação, exceto com bandoleira.",
+    "freeWith": [
+      {
+        "kind": "ability",
+        "slug": "granadeiro",
+        "note": "só para puxar o pino de uma granada"
+      }
+    ],
+    "sourcePage": 201
+  },
+  {
+    "slug": "conjurar-magia",
+    "name": "Conjurar magia",
+    "cost": "quick",
+    "note": "Só em turno em que não correu.",
+    "freeWith": [
+      {
+        "kind": "benefit",
+        "slug": "conjurador-rapido",
+        "note": "só para lançar magia"
+      }
+    ],
+    "sourcePage": 201
+  },
+  {
+    "slug": "ativar-placa-runica",
+    "name": "Ativar placa rúnica",
+    "cost": "quick",
+    "freeWith": [],
+    "sourcePage": 201
+  },
+  {
+    "slug": "manobra-de-gigante",
+    "name": "Manobra de gigante-a-vapor",
+    "cost": "quick",
+    "note": "Habilidade Controlador de Gigantes, dentro do alcance de comando.",
+    "freeWith": [
+      {
+        "kind": "ability",
+        "slug": "as-comandante",
+        "note": "só para manobrar um gigante"
+      }
+    ],
+    "sourcePage": 201
+  },
+  {
+    "slug": "encontrar-cobertura",
+    "name": "Encontrar cobertura",
+    "cost": "quick",
+    "note": "A até 1″ de terreno que obscureça ou seja barreira sólida; vale por 1 rodada.",
+    "freeWith": [
+      {
+        "kind": "ability",
+        "slug": "avanco-cuidadoso",
+        "note": "só para conseguir cobertura"
+      }
+    ],
+    "sourcePage": 202
+  },
+  {
+    "slug": "deitar",
+    "name": "Deitar",
+    "cost": "quick",
+    "note": "Permanece até levantar. Levantar ou deitar no início do turno não gasta ação.",
+    "freeWith": [],
+    "sourcePage": 202
+  },
+  {
+    "slug": "usar-brado",
+    "name": "Usar brado de matança",
+    "cost": "quick",
+    "freeWith": [
+      {
+        "kind": "ability",
+        "slug": "legado-de-bragg",
+        "note": "só para usar brados"
+      }
+    ],
+    "sourcePage": 155
+  },
+  {
+    "slug": "alquimia-de-campo",
+    "name": "Alquimia de campo (efeito rápido)",
+    "cost": "quick",
+    "freeWith": [
+      {
+        "kind": "ability",
+        "slug": "alquimista-de-campo",
+        "note": "só para criar um efeito rápido de alquimia de campo"
+      }
+    ],
+    "sourcePage": 153
+  },
+  {
+    "slug": "outra-rapida",
+    "name": "Outra ação rápida (perícia ou habilidade que exija, ou a critério do Mestre)",
+    "cost": "quick",
+    "freeWith": [],
+    "sourcePage": 201
+  },
+  {
+    "slug": "acao-completa",
+    "name": "Ação completa",
+    "cost": "full",
+    "note": "Pode mover, mas não fazer ação rápida nem de ataque. Ex.: estabilizar um ferido gravemente (INT + Medicina, NA 14).",
+    "freeWith": [],
+    "sourcePage": 201
+  }
+]
